@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from api.deps import RATE, get_db, limiter
+from api.errors import not_found
 from api.schemas import SupplierOut
 from schema.models import Supplier
 
@@ -19,7 +20,7 @@ router = APIRouter()
 def get_supplier(request: Request, supplier_id: int, db: Session = Depends(get_db)) -> Supplier:
     row = db.get(Supplier, supplier_id)
     if not row:
-        raise HTTPException(404, "Supplier not found")
+        raise not_found("Proveedor")
     return row
 
 

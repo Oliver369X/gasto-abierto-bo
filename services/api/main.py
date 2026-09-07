@@ -11,6 +11,7 @@ from api.fire import create_fire_router
 from api.routers import (
     alerts,
     audits,
+    budgets,
     contracts,
     coverage,
     documents,
@@ -39,6 +40,7 @@ app.add_middleware(
 app.include_router(create_fire_router(get_db, limiter, RATE))
 app.include_router(meta.router)
 app.include_router(entities.router)
+app.include_router(budgets.router)
 app.include_router(contracts.router)
 app.include_router(suppliers.router)
 app.include_router(alerts.router)

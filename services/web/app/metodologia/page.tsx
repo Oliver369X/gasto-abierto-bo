@@ -1,45 +1,59 @@
+import { alertRuleLabel } from "@/lib/labels";
+
+const RULES = [
+  {
+    id: "supplier_concentration",
+    desc: "Proveedor ≥35% del monto contractual de una entidad.",
+  },
+  {
+    id: "recurrent_direct_award",
+    desc: "≥2 contratos directa/excepción/emergencia al mismo proveedor.",
+  },
+  {
+    id: "zero_execution_late",
+    desc: "Vigente ≥1M BOB y ejecución 0 post-Q3.",
+  },
+  {
+    id: "source_discrepancy",
+    desc: "Montos distintos entre fuentes para el mismo concepto/CUCE.",
+  },
+  {
+    id: "possible_split_awards",
+    desc: "≥3 contratos chicos misma pareja entidad-proveedor en ≤45 días.",
+  },
+  {
+    id: "low_execution_ratio",
+    desc: "Ejecución <15% con vigente ≥5M BOB (desde junio).",
+  },
+];
+
 export default function MetodologiaPage() {
   return (
     <section className="section">
       <h2>Metodología</h2>
       <p className="lead">Cómo se construyen los datos y las alertas. Sin cajas negras.</p>
       <div className="grid-2">
-        <article className="panel">
-          <h3>
-            <code>supplier_concentration</code>
-          </h3>
-          <p>Proveedor ≥35% del monto contractual de una entidad.</p>
-        </article>
-        <article className="panel">
-          <h3>
-            <code>recurrent_direct_award</code>
-          </h3>
-          <p>≥2 contratos directa/excepción/emergencia al mismo proveedor.</p>
-        </article>
-        <article className="panel">
-          <h3>
-            <code>zero_execution_late</code>
-          </h3>
-          <p>Vigente ≥1M BOB y ejecución 0 post-Q3.</p>
-        </article>
-        <article className="panel">
-          <h3>
-            <code>source_discrepancy</code>
-          </h3>
-          <p>Montos distintos entre fuentes para el mismo concepto/CUCE.</p>
-        </article>
-        <article className="panel">
-          <h3>
-            <code>possible_split_awards</code>
-          </h3>
-          <p>≥3 contratos chicos misma pareja entidad-proveedor en ≤45 días.</p>
-        </article>
-        <article className="panel">
-          <h3>
-            <code>low_execution_ratio</code>
-          </h3>
-          <p>Ejecución &lt;15% con vigente ≥5M BOB (desde junio).</p>
-        </article>
+        {RULES.map((r) => (
+          <article key={r.id} className="panel">
+            <h3>{alertRuleLabel(r.id)}</h3>
+            <p>{r.desc}</p>
+            <p className="hint">
+              Identificador técnico: <code>{r.id}</code>
+            </p>
+          </article>
+        ))}
+      </div>
+
+      <div id="presupuesto" style={{ marginTop: "2.5rem" }}>
+        <h2>Presupuesto Abierto — integración</h2>
+        <p className="lead">
+          Preferimos descargas oficiales CSV/Parquet desde{" "}
+          <a href="https://abierto.economiayfinanzas.gob.bo/descargas" rel="noreferrer" target="_blank">
+            abierto.economiayfinanzas.gob.bo/descargas
+          </a>{" "}
+          sobre scraping del portal. Correlacionamos por institución, departamento, gestión y
+          objeto de gasto; cruzamos con contratos SICOES/OCP y marcamos discrepancias.
+        </p>
       </div>
 
       <div id="incendios" style={{ marginTop: "2.5rem" }}>

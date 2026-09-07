@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from api.deps import RATE, get_db, limiter
+from api.errors import not_found
 from api.schemas import AuditFindingOut, AuditOut
 from schema.models import AuditFinding, AuditReport
 
@@ -34,7 +35,7 @@ def list_audits(
 def get_audit(request: Request, audit_id: int, db: Session = Depends(get_db)) -> AuditReport:
     audit = db.get(AuditReport, audit_id)
     if not audit:
-        raise HTTPException(404, "Audit not found")
+        raise not_found("Auditoría")
     return audit
 
 
@@ -44,7 +45,7 @@ def audit_findings(
     request: Request, audit_id: int, db: Session = Depends(get_db)
 ) -> list[AuditFinding]:
     if not db.get(AuditReport, audit_id):
-        raise HTTPException(404, "Audit not found")
+        raise not_found("Auditoría")
     return list(
         db.scalars(select(AuditFinding).where(AuditFinding.audit_report_id == audit_id)).all()
     )

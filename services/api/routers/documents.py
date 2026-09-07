@@ -9,6 +9,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from api.deps import RATE, get_db, limiter
+from api.errors import not_found
 from api.schemas import DocumentOut
 from common.storage import get_store
 from schema.models import Document
@@ -36,18 +37,18 @@ def list_documents(
 def download_document(request: Request, document_id: int, db: Session = Depends(get_db)):
     row = db.get(Document, document_id)
     if not row:
-        raise HTTPException(404, "Document not found")
+        raise not_found("Documento")
     if not row.minio_key:
         if row.url and row.url.startswith("http"):
             return RedirectResponse(row.url)
-        raise HTTPException(404, "No raw object stored for this document")
+        raise not_found("Documento", detail="No hay objeto raw almacenado para este documento")
     store = get_store()
     url = store.presigned_get(row.minio_key)
     if url:
         return RedirectResponse(url)
     data, ctype = store.get_bytes(row.minio_key)
     if data is None:
-        raise HTTPException(503, "Object store unavailable")
+        raise HTTPException(503, "Almacén de objetos no disponible")
     return StreamingResponse(
         iter([data]),
         media_type=ctype or row.mime or "application/octet-stream",

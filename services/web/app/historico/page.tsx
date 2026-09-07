@@ -10,6 +10,13 @@ type YearAgg = {
   budget_executed_total: string;
 };
 
+function executionRatio(current: string, executed: string) {
+  const cur = Number(current);
+  const exe = Number(executed);
+  if (!cur || cur <= 0) return "—";
+  return `${((exe / cur) * 100).toFixed(1)}%`;
+}
+
 type Compare = {
   year_a: number;
   year_b: number;
@@ -58,8 +65,9 @@ export default async function HistoricoPage({
     <section className="section">
       <h2>Histórico</h2>
       <p className="lead">
-        Serie consolidada por gestión. Compará dos años lado a lado. Solo se suman
-        montos efectivamente reportados — la ausencia de dato nunca cuenta como Bs 0.
+        Serie consolidada por gestión desde Presupuesto Abierto y contratos SICOES/OCP.
+        Compará dos años lado a lado. Solo se suman montos efectivamente reportados — la
+        ausencia de dato nunca cuenta como Bs 0.
       </p>
 
       {apiDown && <p className="error-box">No pudimos cargar la serie histórica.</p>}
@@ -113,6 +121,7 @@ export default async function HistoricoPage({
               <th>Líneas presupuesto</th>
               <th>Vigente</th>
               <th>Ejecutado</th>
+              <th>Ejecución</th>
               <th></th>
             </tr>
           </thead>
@@ -125,8 +134,11 @@ export default async function HistoricoPage({
                 <td>{y.budget_lines}</td>
                 <td>{formatMoney(y.budget_current_total)}</td>
                 <td>{formatMoney(y.budget_executed_total)}</td>
+                <td>{executionRatio(y.budget_current_total, y.budget_executed_total)}</td>
                 <td>
-                  <Link href={`/explorar?year=${y.year}`}>Filtrar</Link>
+                  <Link href={`/presupuesto?year=${y.year}`}>Presupuesto</Link>
+                  {" · "}
+                  <Link href={`/explorar?year=${y.year}`}>Contratos</Link>
                   {" · "}
                   <Link href={`/historico?a=${y.year - 1}&b=${y.year}`}>YoY</Link>
                 </td>
@@ -134,7 +146,7 @@ export default async function HistoricoPage({
             ))}
             {years.length === 0 && (
               <tr>
-                <td colSpan={7}>Sin serie histórica.</td>
+                <td colSpan={8}>Sin serie histórica.</td>
               </tr>
             )}
           </tbody>

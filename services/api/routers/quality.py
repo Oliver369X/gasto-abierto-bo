@@ -9,6 +9,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from api.deps import RATE, get_db, limiter
+from api.errors import not_found
 from api.schemas import ClaimConflictOut, CrossSourceSummary, DiscrepancyOut, ProductGateOut
 from common.data_quality import PUBLIC_BLOCKED_QUALITIES, public_contract_filter
 from common.discrepancy import delta_pct
@@ -115,7 +116,7 @@ def get_discrepancy(
 ) -> DiscrepancyOut:
     r = db.get(Discrepancy, disc_id)
     if not r:
-        raise HTTPException(404, "Discrepancy not found")
+        raise not_found("Discrepancia")
     return DiscrepancyOut(
         id=r.id,
         concept=r.concept,

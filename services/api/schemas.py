@@ -229,7 +229,33 @@ class StatsOut(BaseModel):
     discrepancies: int
     documents: int
     total_contract_amount: Decimal
+    budget_current_total: Decimal = Decimal("0")
+    budget_executed_total: Decimal = Decimal("0")
+    budget_execution_ratio_pct: Optional[float] = None
     alerts_by_severity: dict[str, int]
+
+
+class BudgetTotalsOut(BaseModel):
+    lines: int
+    current_total: Decimal
+    executed_total: Decimal
+    payment_total: Decimal
+    execution_ratio_pct: Optional[float] = None
+    years: list[int] = Field(default_factory=list)
+    source_id: str = "presupuesto_abierto"
+
+
+class BudgetAggregateOut(BaseModel):
+    key: str
+    label: str
+    lines: int
+    current_total: Decimal
+    executed_total: Decimal
+    entity_count: int = 0
+    execution_ratio_pct: Optional[float] = None
+    year: Optional[int] = None
+    group_by: Optional[str] = None
+    href: Optional[str] = None
 
 
 class PageMeta(BaseModel):

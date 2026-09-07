@@ -1,3 +1,12 @@
+const RULE: Record<string, string> = {
+  supplier_concentration: "Concentración de proveedor",
+  recurrent_direct_award: "Adjudicación directa recurrente",
+  zero_execution_late: "Cero ejecución tardía",
+  source_discrepancy: "Discrepancia entre fuentes",
+  possible_split_awards: "Posible fraccionamiento",
+  low_execution_ratio: "Baja ejecución presupuestaria",
+};
+
 const SEVERITY: Record<string, string> = {
   high: "Alta",
   medium: "Media",
@@ -94,6 +103,7 @@ function from(table: Record<string, string>, v?: string | null): string {
 }
 
 export const severityLabel = (v?: string | null) => from(SEVERITY, v);
+export const alertRuleLabel = (v?: string | null) => from(RULE, v);
 export const attributionLabel = (v?: string | null) => from(ATTRIBUTION, v);
 export const cycleLabel = (v?: string | null) => from(CYCLE, v);
 export const runStatusLabel = (v?: string | null) => from(RUN_STATUS, v);

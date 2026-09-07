@@ -41,6 +41,17 @@ def compute_stats(session: Session, *, quality: str = "public") -> dict[str, Any
     total_amt = session.scalar(
         select(func.coalesce(func.sum(Contract.amount), 0)).where(c_filter)
     ) or Decimal("0")
+    budget_cur = session.scalar(
+        select(func.coalesce(func.sum(BudgetLine.current_amount), 0)).where(b_filter)
+    ) or Decimal("0")
+    budget_exe = session.scalar(
+        select(func.coalesce(func.sum(BudgetLine.executed_amount), 0)).where(b_filter)
+    ) or Decimal("0")
+    budget_ratio = (
+        float(Decimal(budget_exe) / Decimal(budget_cur) * 100)
+        if Decimal(budget_cur) > 0
+        else None
+    )
     severities = dict(
         session.execute(
             select(Alert.severity, func.count()).where(a_filter).group_by(Alert.severity)
@@ -66,6 +77,9 @@ def compute_stats(session: Session, *, quality: str = "public") -> dict[str, Any
         "discrepancies": session.scalar(select(func.count()).select_from(Discrepancy)) or 0,
         "documents": session.scalar(select(func.count()).select_from(Document)) or 0,
         "total_contract_amount": str(Decimal(total_amt)),
+        "budget_current_total": str(Decimal(budget_cur)),
+        "budget_executed_total": str(Decimal(budget_exe)),
+        "budget_execution_ratio_pct": budget_ratio,
         "alerts_by_severity": {str(k): int(v) for k, v in severities.items()},
     }
 

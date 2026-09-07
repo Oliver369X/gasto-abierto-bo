@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from api.deps import RATE, get_db, limiter
+from api.errors import not_found
 from api.schemas import AlertOut
 from schema.models import Alert
 
@@ -46,5 +47,5 @@ def list_alerts(
 def get_alert(request: Request, alert_id: int, db: Session = Depends(get_db)) -> Alert:
     row = db.get(Alert, alert_id)
     if not row:
-        raise HTTPException(404, "Alert not found")
+        raise not_found("Alerta")
     return row

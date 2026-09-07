@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from api.deps import RATE, get_db, limiter
+from api.errors import not_found
 from api.schemas import EntityMasterOut, MergeCandidateOut, SupplierMasterOut
 from schema.models import EntityAlias, MergeCandidate, PublicEntityMaster, SupplierAlias, SupplierMaster
 
@@ -21,7 +22,7 @@ def get_supplier_master(
 ) -> SupplierMaster:
     row = db.get(SupplierMaster, master_id)
     if not row:
-        raise HTTPException(404, "Supplier master not found")
+        raise not_found("Proveedor maestro")
     return row
 
 
@@ -31,7 +32,7 @@ def supplier_master_aliases(
     request: Request, master_id: int, db: Session = Depends(get_db)
 ) -> list[str]:
     if not db.get(SupplierMaster, master_id):
-        raise HTTPException(404, "Supplier master not found")
+        raise not_found("Proveedor maestro")
     return [
         a.alias
         for a in db.scalars(
@@ -47,7 +48,7 @@ def get_entity_master(
 ) -> PublicEntityMaster:
     row = db.get(PublicEntityMaster, master_id)
     if not row:
-        raise HTTPException(404, "Entity master not found")
+        raise not_found("Entidad maestra")
     return row
 
 
@@ -57,7 +58,7 @@ def entity_master_aliases(
     request: Request, master_id: int, db: Session = Depends(get_db)
 ) -> list[str]:
     if not db.get(PublicEntityMaster, master_id):
-        raise HTTPException(404, "Entity master not found")
+        raise not_found("Entidad maestra")
     return [
         a.alias
         for a in db.scalars(

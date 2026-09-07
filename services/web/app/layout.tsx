@@ -8,13 +8,14 @@ export const metadata = {
 };
 
 const NAV_MAIN = [
-  { href: "/incendios", label: "Incendios" },
+  { href: "/presupuesto", label: "Presupuesto" },
   { href: "/explorar", label: "Explorar" },
-  { href: "/alertas", label: "Alertas" },
   { href: "/historico", label: "Histórico" },
+  { href: "/alertas", label: "Alertas" },
 ];
 
 const NAV_MORE = [
+  { href: "/incendios", label: "Incendios" },
   { href: "/auditorias", label: "Auditorías" },
   { href: "/discrepancias", label: "Discrepancias" },
   { href: "/fuentes", label: "Fuentes" },

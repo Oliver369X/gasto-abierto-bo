@@ -9,6 +9,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from api.deps import RATE, get_db, limiter
+from api.errors import not_found
 from api.schemas import (
     ActivityItem,
     BudgetOut,
@@ -46,7 +47,7 @@ def list_entities(
 def get_entity(request: Request, entity_id: int, db: Session = Depends(get_db)) -> Entity:
     row = db.get(Entity, entity_id)
     if not row:
-        raise HTTPException(404, "Entity not found")
+        raise not_found("Entidad")
     return row
 
 
@@ -184,7 +185,7 @@ def entity_activity(
     limit: int = Query(40, ge=1, le=100),
 ) -> list[ActivityItem]:
     if not db.get(Entity, entity_id):
-        raise HTTPException(404, "Entity not found")
+        raise not_found("Entidad")
     items: list[ActivityItem] = []
     for c in db.scalars(
         select(Contract)

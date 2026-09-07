@@ -1089,7 +1089,7 @@ def create_fire_router(get_db, limiter, rate: str) -> APIRouter:
         if territory:
             ids = _territory_filter_ids(db, territory)
             if ids is None:
-                raise HTTPException(404, "Territory not found")
+                raise HTTPException(404, "Territorio no encontrado")
             stmt = stmt.where(FireExpenditure.beneficiary_territory_id.in_(ids))
         rows = list(db.scalars(stmt).unique().all())
 

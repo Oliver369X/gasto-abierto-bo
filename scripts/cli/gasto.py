@@ -36,10 +36,18 @@ def register(parser: argparse.ArgumentParser) -> None:
     p_verify = sub.add_parser("verify", help="Smoke DoD master plan")
     p_verify.set_defaults(handler=_cmd_verify)
 
-    p_fetch = sub.add_parser("fetch-open-data", help="Descargar datasets open-data")
+    p_fetch = sub.add_parser("fetch-open-data", help="Descargar datasets open-data (datos.gob.bo/OCP)")
     p_fetch.add_argument("--force", action="store_true")
     p_fetch.add_argument("--list-only", action="store_true")
     p_fetch.set_defaults(handler=_cmd_fetch)
+
+    p_pa = sub.add_parser(
+        "fetch-presupuesto",
+        help="Descargar CSV/Parquet oficiales de Presupuesto Abierto",
+    )
+    p_pa.add_argument("--force", action="store_true")
+    p_pa.add_argument("--list-only", action="store_true")
+    p_pa.set_defaults(handler=_cmd_fetch_presupuesto)
 
     p_enrich = sub.add_parser("enrich-sicoes", help="Cola enrich SICOES por CUCE")
     p_enrich.add_argument("--limit", type=int, default=100)
@@ -127,6 +135,19 @@ def _cmd_fetch(args: argparse.Namespace) -> int:
     dest = ROOT / "tests" / "fixtures" / "real"
     paths = fetch_packages(dest, force=args.force)
     print(json.dumps({"wrote": [str(p) for p in paths]}, indent=2))
+    return 0
+
+
+def _cmd_fetch_presupuesto(args: argparse.Namespace) -> int:
+    from common.fetch_presupuesto_abierto import fetch_presupuesto, list_download_urls
+
+    if args.list_only:
+        for u in list_download_urls():
+            print(u)
+        return 0
+    dest = ROOT / "tests" / "fixtures" / "real" / "presupuesto_abierto"
+    paths = fetch_presupuesto(dest, force=args.force)
+    print(json.dumps({"wrote": [str(p) for p in paths]}, indent=2, ensure_ascii=False))
     return 0
 
 

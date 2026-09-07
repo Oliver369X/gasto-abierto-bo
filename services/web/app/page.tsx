@@ -5,13 +5,22 @@ import { severityLabel } from "@/lib/labels";
 type Stats = {
   entities: number;
   contracts: number;
+  budgets: number;
   alerts: number;
   audits: number;
   total_contract_amount: string;
+  budget_current_total: string;
+  budget_executed_total: string;
+  budget_execution_ratio_pct?: number;
   alerts_by_severity: Record<string, number>;
 };
 
 type Alert = { id: number; title: string; severity: string; explanation: string };
+
+function pct(v?: number) {
+  if (v === undefined || v === null) return "—";
+  return `${v.toFixed(1)}%`;
+}
 
 export default async function HomePage() {
   let stats: Stats | null = null;
@@ -29,15 +38,22 @@ export default async function HomePage() {
       <section className="hero">
         <h1>El gasto público de Bolivia, explicado y verificable</h1>
         <p>
-          Consolidamos presupuestos, contrataciones y auditorías de fuentes
-          oficiales — cada cifra enlaza a su documento de origen.
+          Consolidamos presupuestos del{" "}
+          <a href="https://abierto.economiayfinanzas.gob.bo/" rel="noreferrer" target="_blank">
+            Presupuesto Abierto
+          </a>
+          , contrataciones SICOES y auditorías de fuentes oficiales — cada cifra enlaza a su
+          documento de origen.
         </p>
         <div className="cta-row">
-          <Link className="btn btn-primary" href="/incendios">
-            Gasto en incendios 2024
+          <Link className="btn btn-primary" href="/presupuesto">
+            Explorar presupuesto
           </Link>
           <Link className="btn btn-ghost" href="/explorar">
             Explorar contratos
+          </Link>
+          <Link className="btn btn-ghost" href="/incendios">
+            Gasto en incendios
           </Link>
         </div>
       </section>
@@ -56,6 +72,13 @@ export default async function HomePage() {
           <h2>Qué hay dentro</h2>
           <p className="lead">Cobertura actual de la plataforma.</p>
           <div className="grid-2">
+            <article className="panel">
+              <h3>Presupuesto vigente</h3>
+              <p className="stat-sm">{formatMoney(stats.budget_current_total)}</p>
+              <p className="hint">
+                {stats.budgets.toLocaleString("es-BO")} líneas · ejecución {pct(stats.budget_execution_ratio_pct)}
+              </p>
+            </article>
             <article className="panel">
               <h3>Contratos</h3>
               <p className="stat">{stats.contracts.toLocaleString("es-BO")}</p>
@@ -77,6 +100,14 @@ export default async function HomePage() {
             <article className="panel">
               <h3>Auditorías</h3>
               <p className="stat">{stats.audits.toLocaleString("es-BO")}</p>
+            </article>
+            <article className="panel">
+              <h3>Cruce de fuentes</h3>
+              <p className="stat-sm">
+                <Link href="/discrepancias">Discrepancias</Link> ·{" "}
+                <Link href="/historico">Histórico</Link>
+              </p>
+              <p className="hint">Presupuesto ↔ contratos ↔ auditorías</p>
             </article>
           </div>
         </section>

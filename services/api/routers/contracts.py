@@ -9,6 +9,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from api.deps import RATE, get_db, limiter
+from api.errors import not_found
 from api.schemas import ClaimEvidenceOut, ClaimOut, ContractOut
 from common.categorize import normalize_category
 from common.claims import claims_for_contract
@@ -76,7 +77,7 @@ def list_contracts(
 def get_contract(request: Request, contract_id: int, db: Session = Depends(get_db)) -> Contract:
     row = db.get(Contract, contract_id)
     if not row:
-        raise HTTPException(404, "Contract not found")
+        raise not_found("Contrato")
     return row
 
 
@@ -86,7 +87,7 @@ def contract_claims(
     request: Request, contract_id: int, db: Session = Depends(get_db)
 ) -> list[Claim]:
     if not db.get(Contract, contract_id):
-        raise HTTPException(404, "Contract not found")
+        raise not_found("Contrato")
     return claims_for_contract(db, contract_id)
 
 
@@ -100,7 +101,7 @@ def contract_evidence(
     request: Request, contract_id: int, db: Session = Depends(get_db)
 ) -> list[ClaimEvidence]:
     if not db.get(Contract, contract_id):
-        raise HTTPException(404, "Contract not found")
+        raise not_found("Contrato")
     claim_ids = [
         c.id
         for c in db.scalars(

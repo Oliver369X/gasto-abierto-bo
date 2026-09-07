@@ -43,6 +43,9 @@ def stats(
     from worker.gasto.stats_snapshot import get_or_refresh_stats
 
     payload = get_or_refresh_stats(db, quality=quality)
+    cur = _Dec(str(payload.get("budget_current_total") or 0))
+    exe = _Dec(str(payload.get("budget_executed_total") or 0))
+    ratio = payload.get("budget_execution_ratio_pct")
     return StatsOut(
         entities=int(payload.get("entities") or 0),
         suppliers=int(payload.get("suppliers") or 0),
@@ -53,6 +56,9 @@ def stats(
         discrepancies=int(payload.get("discrepancies") or 0),
         documents=int(payload.get("documents") or 0),
         total_contract_amount=_Dec(str(payload.get("total_contract_amount") or 0)),
+        budget_current_total=cur,
+        budget_executed_total=exe,
+        budget_execution_ratio_pct=float(ratio) if ratio is not None else None,
         alerts_by_severity={
             str(k): int(v) for k, v in (payload.get("alerts_by_severity") or {}).items()
         },
