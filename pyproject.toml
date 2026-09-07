@@ -36,6 +36,9 @@ dev = [
 parquet = [
   "pyarrow>=18.0.0",
 ]
+workbook = [
+  "openpyxl>=3.1.0",
+]
 
 [build-system]
 requires = ["setuptools>=75.0"]

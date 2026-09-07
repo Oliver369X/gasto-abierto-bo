@@ -38,8 +38,23 @@ type Activity = {
   href?: string;
   meta?: Record<string, string | null>;
 };
+type YearRow = {
+  year: number;
+  contracts: number;
+  contract_amount: string;
+  budget_lines: number;
+  budget_current_total: string;
+  budget_executed_total: string;
+};
 type Alert = { id: number; title: string; severity: string };
 type Master = { id: number; canonical_name: string; level?: string; department?: string };
+
+function executionRatio(current: string, executed: string) {
+  const cur = Number(current);
+  const exe = Number(executed);
+  if (!cur || cur <= 0) return "—";
+  return `${((exe / cur) * 100).toFixed(1)}%`;
+}
 
 export default async function EntidadPage({
   params,
@@ -66,16 +81,18 @@ export default async function EntidadPage({
     );
   }
 
-  const [contractsR, budgetsR, activityR, alertsR] = await Promise.allSettled([
+  const [contractsR, budgetsR, activityR, alertsR, historyR] = await Promise.allSettled([
     apiGet<Contract[]>(`/v1/contracts?entity=${id}&limit=50`),
     apiGet<Budget[]>(`/v1/budgets?entity_id=${id}`),
     apiGet<Activity[]>(`/v1/entities/${id}/activity?limit=30`),
     apiGet<Alert[]>(`/v1/alerts?entity_id=${id}&limit=10`),
+    apiGet<YearRow[]>(`/v1/history/years?entity_id=${id}`),
   ]);
   const contracts = contractsR.status === "fulfilled" ? contractsR.value : [];
   const budgets = budgetsR.status === "fulfilled" ? budgetsR.value : [];
   const activity = activityR.status === "fulfilled" ? activityR.value : [];
   const alerts = alertsR.status === "fulfilled" ? alertsR.value : [];
+  const history = historyR.status === "fulfilled" ? historyR.value : [];
 
   let master: Master | null = null;
   let aliases: string[] = [];
@@ -150,6 +167,48 @@ export default async function EntidadPage({
       <p className="lead">
         Inicial, vigente y ejecutado son fases del mismo presupuesto — no se suman entre sí.
       </p>
+
+      {history.length > 0 && (
+        <>
+          <h4>Correlación por gestión</h4>
+          <p className="lead" style={{ marginBottom: "0.75rem" }}>
+            Presupuesto vigente vs. contratos adjudicados por año (fuente Presupuesto Abierto + SICOES/OCP).
+          </p>
+          <div className="table-wrap" style={{ marginBottom: "1.5rem" }}>
+            <table>
+              <thead>
+                <tr>
+                  <th>Gestión</th>
+                  <th>Líneas PPTO</th>
+                  <th>Vigente</th>
+                  <th>Ejecutado</th>
+                  <th>Contratos</th>
+                  <th>Monto contratos</th>
+                  <th>Ejecución PPTO</th>
+                </tr>
+              </thead>
+              <tbody>
+                {history.map((y) => (
+                  <tr key={y.year}>
+                    <td>
+                      <Link href={`/presupuesto?year=${y.year}`}>{y.year}</Link>
+                    </td>
+                    <td>{y.budget_lines}</td>
+                    <td>{formatMoney(y.budget_current_total)}</td>
+                    <td>{formatMoney(y.budget_executed_total)}</td>
+                    <td>{y.contracts}</td>
+                    <td>{formatMoney(y.contract_amount)}</td>
+                    <td>
+                      {executionRatio(y.budget_current_total, y.budget_executed_total)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
       {budgets.length === 0 ? (
         <p className="empty">Sin líneas presupuestarias para esta entidad.</p>
       ) : (

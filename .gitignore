@@ -48,3 +48,8 @@ qa-artifacts/**
 
 # Accidental pip/CLI dumps
 /2.0.36
+
+# Requirements reference workbooks (local only — may contain sensitive drafts)
+docs/requirements/*.xlsx
+docs/requirements/*.xls
+docs/requirements/workbook-traceability.json
