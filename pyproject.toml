@@ -1,0 +1,52 @@
+[project]
+name = "gasto-abierto-bo"
+version = "0.7.0"
+description = "Fiscalización ciudadana de gasto público — Bolivia"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  "sqlalchemy>=2.0.36",
+  "psycopg[binary]>=3.2.0",
+  "alembic>=1.14.0",
+  "pydantic>=2.10.0",
+  "pydantic-settings>=2.6.0",
+  "redis>=5.2.0",
+  "arq>=0.26.0",
+  "httpx>=0.28.0",
+  "beautifulsoup4>=4.12.0",
+  "lxml>=5.3.0",
+  "rapidfuzz>=3.10.0",
+  "python-dateutil>=2.9.0",
+  "minio>=7.2.0",
+  "pdfplumber>=0.11.0",
+  "pytesseract>=0.3.13",
+  "playwright>=1.49.0",
+  "slowapi>=0.1.9",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+  "pytest-asyncio>=0.24.0",
+  "ruff>=0.8.0",
+]
+
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["packages", "services"]
+include = ["schema*", "common*", "api*", "worker*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["packages", "services"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

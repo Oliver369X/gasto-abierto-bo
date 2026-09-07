@@ -1,0 +1,36 @@
+{
+  "records": [
+    {
+      "title": "Decreto Departamental Nº 505 — Emergencia por vientos, sequía e incendios forestales",
+      "decree_number": "DD-505/2025",
+      "event_type": "incendio_forestal",
+      "entity_name": "Gobierno Autónomo Departamental de Santa Cruz",
+      "territory_name": "Santa Cruz",
+      "promulgated_at": "2025-09-10",
+      "published_at": "2025-09-11",
+      "url": "https://gacetaoficial.santacruz.gob.bo/decretosdepartamentales",
+      "summary": "Declara emergencia departamental por fuertes vientos, sequía e incendios forestales."
+    },
+    {
+      "title": "Decreto Departamental — Emergencia por incendios forestales 2024",
+      "decree_number": "DD-FIRE-2024",
+      "event_type": "incendio_forestal",
+      "entity_name": "Gobierno Autónomo Departamental de Santa Cruz",
+      "territory_name": "Santa Cruz",
+      "promulgated_at": "2024-08-15",
+      "published_at": "2024-08-16",
+      "url": "https://gacetaoficial.santacruz.gob.bo/decretosdepartamentales",
+      "summary": "Habilita mecanismos extraordinarios de contratación y respuesta ante incendios forestales."
+    },
+    {
+      "title": "Decreto — Emergencia por inundaciones (NO incendio)",
+      "decree_number": "DD-FLOOD-2024",
+      "event_type": "inundacion",
+      "entity_name": "Gobierno Autónomo Departamental de Santa Cruz",
+      "territory_name": "Santa Cruz",
+      "promulgated_at": "2024-02-10",
+      "published_at": "2024-02-11",
+      "summary": "Control negativo: inundación no debe mezclarse con ledger de incendios."
+    }
+  ]
+}

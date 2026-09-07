@@ -1,0 +1,47 @@
+name: Nightly live scrape (optional)
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Source id or 'all'"
+        default: "agetic"
+        required: true
+  schedule:
+    - cron: "0 8 * * 1"
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Compose
+        run: |
+          cp .env.example .env
+          echo "LIVE_SCRAPE=1" >> .env
+          docker compose up -d --build postgres redis minio minio-init api
+          for i in $(seq 1 40); do curl -sf http://localhost:8010/v1/health && break; sleep 5; done
+      - name: Ingest live sample
+        env:
+          DATABASE_URL: postgresql+psycopg://gasto:gasto_dev_change_me@localhost:5434/gasto_abierto
+          LIVE_SCRAPE: "1"
+          PYTHONPATH: packages:services
+          MINIO_ENDPOINT: localhost:9010
+          MINIO_SECURE: "0"
+        run: |
+          SOURCE="${{ github.event.inputs.source || 'agetic' }}"
+          if [ "$SOURCE" = "all" ]; then
+            python scripts/ingest.py --all --sync --live || true
+          else
+            python scripts/ingest.py --source "$SOURCE" --sync --live || true
+          fi
+          curl -sf http://localhost:8010/v1/stats
+      - name: Teardown
+        if: always()
+        run: docker compose down -v

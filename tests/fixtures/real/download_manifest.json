@@ -1,0 +1,355 @@
+{
+  "downloads": [
+    {
+      "url": "https://datos.gob.bo/dataset/c0d87e59-2cd7-412f-b431-75454d383659/resource/4526c3bc-3d6a-45b5-ade9-db0942db39b0/download/sicoes_ocp_2019.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\agetic\\sicoes_ocp_2019.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/c0d87e59-2cd7-412f-b431-75454d383659/resource/be665deb-828f-41a0-a104-c34817cd9def/download/sicoes_ocp_2019_ocds-releases-2.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\agetic\\sicoes_ocp_2019_ocds_releases.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/c0d87e59-2cd7-412f-b431-75454d383659/resource/4526c3bc-3d6a-45b5-ade9-db0942db39b0/download/sicoes_ocp_2019.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_contrataciones-agetic-2019-estandar-ocp\\sicoes_ocp_2019.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/c0d87e59-2cd7-412f-b431-75454d383659/resource/be665deb-828f-41a0-a104-c34817cd9def/download/sicoes_ocp_2019_ocds-releases-2.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_contrataciones-agetic-2019-estandar-ocp\\sicoes_ocp_2019_ocds.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/db96b470-0b6b-4e92-b1af-ca2012c0bb92/resource/091f9861-adeb-470f-95ae-3ea8dbad5c02/download/mindesarrollorural_proyectos_emprendimientos_agricolas_no_agricolas_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-accesos-apoyo-a-los-emprend\\Proyectos_de_acceso_y_apoyo_a_los_emprendimientos_agrícolas_y_no_agrícolas_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/db96b470-0b6b-4e92-b1af-ca2012c0bb92/resource/52d03305-5bd6-42f7-8930-ee5ac79539a5/download/mindesarrollorural_proyectos_emprendimientos_agricolas_no_agricolas_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-accesos-apoyo-a-los-emprend\\Proyectos_de_acceso_y_apoyo_a_los_emprendimientos_agrícolas_y_no_agrícolas_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/a760a632-9d5c-4e2b-b993-669980486db9/resource/6a827544-86b3-47d6-85f2-430335557af8/download/mindesarrollorural_proyectos_rumiantes_menores_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-apoyo-a-la-crianza-de-rumia\\Proyectos_de_apoyo_a_la_crianza_de_rumiantes_menores_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/a760a632-9d5c-4e2b-b993-669980486db9/resource/2496877c-85aa-4264-a4f1-fcddd78cb3a7/download/mindesarrollorural_proyectos_rumiantes_menores_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-apoyo-a-la-crianza-de-rumia\\Proyectos_de_apoyo_a_la_crianza_de_rumiantes_menores_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/45b50b26-41ff-47b1-897e-044e5364043b/resource/ffa3190f-7721-4a5d-9ed2-302ac5df4b78/download/mindesarrollorural_proyectos_produccion_frutas_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-apoyo-a-la-produccion-de-fr\\Proyectos_de_apoyo_a_la_producción_de_frutas_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/45b50b26-41ff-47b1-897e-044e5364043b/resource/fc8df768-b4c0-41b1-a416-5085394687c6/download/mindesarrollorural_proyectos_produccion_frutas_2015.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-apoyo-a-la-produccion-de-fr\\Proyectos_de_apoyo_a_la_producción_de_frutas_2015.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/45b50b26-41ff-47b1-897e-044e5364043b/resource/eaa86f0c-27c0-4080-b514-9fefd6bed3ca/download/mindesarrollorural_proyectos_produccion_frutas_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-apoyo-a-la-produccion-de-fr\\Proyectos_de_apoyo_a_la_producción_de_frutas_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bf3a43d9-6614-4616-8e16-254b7996e9d0/resource/aaec49a3-8295-4d1f-94d3-338623b8cff8/download/mindesarrollorural_proyectos_apoyo_produccion_tomate_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-apoyo-a-la-produccion-de-to\\Proyectos_de_apoyo_a_la_producción_de_tomate_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/5067a700-cf24-4d9d-ab87-569c901c1824/resource/b45da58c-10d9-4289-8b0a-38c61c85c537/download/mindesarrollorural_proyectos_caminos_vecinales_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-construccion-y-mantenimient\\Proyectos_de_construcción_y_mantenimiento_de_caminos_vecinales_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/5067a700-cf24-4d9d-ab87-569c901c1824/resource/8e9fcdda-e6ff-4b80-8888-5ad1aad442f5/download/mindesarrollorural_proyectos_caminos_vecinales_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-construccion-y-mantenimient\\Proyectos_de_construcción_y_mantenimiento_de_caminos_vecinales_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/bff20772-e60d-4e5f-ba20-cac7801bd65e/download/fonadal_proyectos_desarrollo_alternativo_2005.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2005.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/47ce64c3-8768-4aa8-acd7-92204b9b788a/download/fonadal_proyectos_desarrollo_alternativo_2006.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2006.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/455f9736-5876-4442-967e-b3dcaae8912f/download/fonadal_proyectos_desarrollo_alternativo_2007.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2007.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/3f6f882e-18b3-46a5-a2ef-40f08916cbf9/download/fonadal_proyectos_desarrollo_alternativo_2008.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2008.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/0b4ba678-d2bc-4c3b-848a-cf349023646a/download/fonadal_proyectos_desarrollo_alternativo_2009.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2009.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/18d73f1c-c1b4-4248-88e5-6a19d371aed7/download/fonadal_proyectos_desarrollo_alternativo_2010.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2010.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/f7e115eb-f10c-415f-905f-e7489e8bb15b/download/fonadal_proyectos_desarrollo_alternativo_2011.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2011.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/c552db9b-fd54-4270-9deb-7b15ed779833/download/fonadal_proyectos_desarrollo_alternativo_2012.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2012.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/9262155f-caee-4b3b-bcf9-d90cfd7369fd/download/fonadal_proyectos_desarrollo_alternativo_2013.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2013.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/b7506b9a-7bfc-4ee6-ac66-7969d456d799/download/fonadal_proyectos_desarrollo_alternativo_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/cfc45ae5-3931-4a12-b3e0-5a2e1c3dd1a9/resource/c49e136d-8bf7-4fbe-bcd9-4f561d627633/download/fonadal_proyectos_desarrollo_alternativo_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-alternativo-2005\\Proyectos_de_desarrollo_alternativo_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/277edb52-f906-45d7-be71-a89d9523dac4/resource/7c699b8d-a0ba-4363-a932-a42d5507f23d/download/mindesarrollorural_proyectos_desarrollo_economico_territorial_con_inclusion_2015.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-economico-territ\\Proyectos_de_desarrollo_económico_territorial_con_inclusión_2015.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/277edb52-f906-45d7-be71-a89d9523dac4/resource/c8df61f6-cdfb-4228-9897-d3b7f0879ca0/download/mindesarrollorural_proyectos_desarrollo_economico_territorial_con_inclusion_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-desarrollo-economico-territ\\Proyectos_de_desarrollo_económico_territorial_con_inclusión_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bd0da05a-a67f-4d00-bfca-be1c53e526e8/resource/8210bf1e-841a-4942-8b22-729d95e9e452/download/mindesarrollorural_par_proyectos_empredimientos_organizados_autogestionarios_2009.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-emprendimientos-organizados\\Proyectos_de_emprendimientos_organizados_para_el_desarrollo_rural_autogestionario_2009.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bd0da05a-a67f-4d00-bfca-be1c53e526e8/resource/be167571-0674-4474-a4ce-bf52ba85b26c/download/mindesarrollorural_par_proyectos_empredimientos_organizados_autogestionarios_2010.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-emprendimientos-organizados\\Proyectos_de_emprendimientos_organizados_para_el_desarrollo_rural_autogestionario_2010.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bd0da05a-a67f-4d00-bfca-be1c53e526e8/resource/8c4f1295-4a15-4c28-9cf0-685e97c9a41f/download/mindesarrollorural_par_proyectos_empredimientos_organizados_autogestionarios_2011.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-emprendimientos-organizados\\Proyectos_de_emprendimientos_organizados_para_el_desarrollo_rural_autogestionario_2011.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bd0da05a-a67f-4d00-bfca-be1c53e526e8/resource/125fd0d2-2866-4192-8bb6-b3f646ffa732/download/mindesarrollorural_par_proyectos_empredimientos_organizados_autogestionarios_2012.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-emprendimientos-organizados\\Proyectos_de_emprendimientos_organizados_para_el_desarrollo_rural_autogestionario_2012.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bd0da05a-a67f-4d00-bfca-be1c53e526e8/resource/02371639-ef88-4989-848a-45158ea8b3f1/download/mindesarrollorural_par_proyectos_empredimientos_organizados_autogestionarios_2013.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-emprendimientos-organizados\\Proyectos_de_emprendimientos_organizados_para_el_desarrollo_rural_autogestionario_2013.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bd0da05a-a67f-4d00-bfca-be1c53e526e8/resource/39e8c5d2-4911-499b-8d6b-2987cdf8187e/download/mindesarrollorural_par_proyectos_empredimientos_organizados_autogestionarios_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-emprendimientos-organizados\\Proyectos_de_emprendimientos_organizados_para_el_desarrollo_rural_autogestionario_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bd0da05a-a67f-4d00-bfca-be1c53e526e8/resource/6c9c5cf4-cd15-4154-bd69-e43b0693f34e/download/mindesarrollorural_par_proyectos_empredimientos_organizados_autogestionarios_2015.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-emprendimientos-organizados\\Proyectos_de_emprendimientos_organizados_para_el_desarrollo_rural_autogestionario_2015.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bd0da05a-a67f-4d00-bfca-be1c53e526e8/resource/82d55e8a-4f91-4b2d-ad58-b6615d675bf6/download/mindesarrollorural_par_proyectos_empredimientos_organizados_autogestionarios_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-emprendimientos-organizados\\Proyectos_de_emprendimientos_organizados_para_el_desarrollo_rural_autogestionario_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/83a5934e-4a94-4616-8edc-48b1ec17990a/resource/8ecf2755-0cf6-465b-a349-333e591fc31d/download/mindesarrollorural_proyectos_apoyo_produccion_papa_siembras_invierno_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-fortalecimiento-a-la-produc\\Proyectos_de_fortalecimiento_a_la_producción_de_papa_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/bca5aff9-029d-41f0-8fc4-9d5a2ab8042a/resource/4e93abe2-0874-4dee-b367-578031f2d99d/download/mindesarrollorural_proyectos_ganaderia_bovina_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-ganaderia-bovina-2016\\Proyectos_de_ganadería_bovina_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/fc04a752-3347-4622-8c0f-2c70267186d1/resource/a269f81a-79dc-47a7-9c9a-dafd2c182f4c/download/mindesarrollorural_proyectos_innovacion_agropecuaria_forestal_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-innovacion-agropecuaria-y-f\\Proyectos_de_innovación_agropecuaria_y_forestal_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/fc04a752-3347-4622-8c0f-2c70267186d1/resource/15c99c87-c48b-42aa-9b9a-e8a8b7ab0a32/download/mindesarrollorural_proyectos_innovacion_agropecuaria_forestal_2015.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-innovacion-agropecuaria-y-f\\Proyectos_de_innovación_agropecuaria_y_forestal_2015.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/fc04a752-3347-4622-8c0f-2c70267186d1/resource/cb8219f3-5c05-4230-942e-6fb436df450b/download/mindesarrollorural_proyectos_innovacion_agropecuaria_forestal_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-innovacion-agropecuaria-y-f\\Proyectos_de_innovación_agropecuaria_y_forestal_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/f5430d3a-0fbb-49c1-b954-cf4cc4b8eda1/resource/2f81ce36-d17d-43e7-b57c-2015cab909cb/download/mindesarrollorural_empoderar_proyectos_inversion_areas_rurales_2011.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-inversion-comunitaria-en-ar\\Proyectos_de_inversión_comunitaria_en_áreas_rurales_2011.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/f5430d3a-0fbb-49c1-b954-cf4cc4b8eda1/resource/a58075b1-7aa6-4385-ad07-e1a064765197/download/mindesarrollorural_empoderar_proyectos_inversion_areas_rurales_2012.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-inversion-comunitaria-en-ar\\Proyectos_de_inversión_comunitaria_en_áreas_rurales_2012.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/f5430d3a-0fbb-49c1-b954-cf4cc4b8eda1/resource/7dfc663e-90a7-40b1-9ef2-8caa186c82f5/download/mindesarrollorural_empoderar_proyectos_inversion_areas_rurales_2013.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-inversion-comunitaria-en-ar\\Proyectos_de_inversión_comunitaria_en_áreas_rurales_2013.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/f5430d3a-0fbb-49c1-b954-cf4cc4b8eda1/resource/eb3f7d6e-93e7-4ae6-9b34-7cefc0c368c2/download/mindesarrollorural_empoderar_proyectos_inversion_areas_rurales_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-inversion-comunitaria-en-ar\\Proyectos_de_inversión_comunitaria_en_áreas_rurales_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/f5430d3a-0fbb-49c1-b954-cf4cc4b8eda1/resource/8f2b2694-2550-4aab-9739-b6e9f56537fc/download/mindesarrollorural_empoderar_proyectos_inversion_areas_rurales_2015.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-inversion-comunitaria-en-ar\\Proyectos_de_inversión_comunitaria_en_áreas_rurales_2015.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/164212ab-3f0b-45e2-9466-0c7dba4b4e27/resource/d39ab369-5fec-4315-82b2-9bd8df127ed9/download/mindesarrollorural_proyectos_seguro_agropecuario_2013_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-del-seguro-agrario-2013-2015\\Proyectos_del_seguro_agrario_2013-2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/164212ab-3f0b-45e2-9466-0c7dba4b4e27/resource/722a8a70-48e1-472b-aa9b-98fbc32b169d/download/mindesarrollorural_proyectos_seguro_agropecuario_2014-2015.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-del-seguro-agrario-2013-2015\\Proyectos_del_seguro_agrario_2014-2015.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/42f2a9ca-a197-44c8-aa8f-3e6e3df2788c/resource/64096749-1826-42d1-a69a-613d830273d6/download/mindesarrollorural_proyectos_produccion_ecologica_2010.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-agropecuaria-y-f\\Proyectos_de_producción_agropecuaria_y_forestal_no_maderable_ecológica_2010.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/42f2a9ca-a197-44c8-aa8f-3e6e3df2788c/resource/538ac214-bbbb-4b31-8966-39748b7468f1/download/mindesarrollorural_proyectos_produccion_ecologica_2011.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-agropecuaria-y-f\\Proyectos_de_producción_agropecuaria_y_forestal_no_maderable_ecológica_2011.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/42f2a9ca-a197-44c8-aa8f-3e6e3df2788c/resource/950e4181-9fb8-48b6-88f5-ff31dbc75a49/download/mindesarrollorural_proyectos_produccion_ecologica_2012.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-agropecuaria-y-f\\Proyectos_de_producción_agropecuaria_y_forestal_no_maderable_ecológica_2012.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/42f2a9ca-a197-44c8-aa8f-3e6e3df2788c/resource/7d586ad7-5e6d-4da3-a895-18939a09a3e0/download/mindesarrollorural_proyectos_produccion_ecologica_2013.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-agropecuaria-y-f\\Proyectos_de_producción_agropecuaria_y_forestal_no_maderable_ecológica_2013.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/42f2a9ca-a197-44c8-aa8f-3e6e3df2788c/resource/906d4e27-ba99-4a58-b38f-3f62ba42b55e/download/mindesarrollorural_proyectos_produccion_ecologica_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-agropecuaria-y-f\\Proyectos_de_producción_agropecuaria_y_forestal_no_maderable_ecológica_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/42f2a9ca-a197-44c8-aa8f-3e6e3df2788c/resource/a16a8464-64ac-4488-802a-cad2f86894e9/download/mindesarrollorural_proyectos_produccion_ecologica_2015.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-agropecuaria-y-f\\Proyectos_de_producción_agropecuaria_y_forestal_no_maderable_ecológica_2015.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/3ae1687e-b68f-4a7d-8d4c-96638265f290/resource/1c197c88-ccce-4ba5-8660-21f4107c3361/download/mindesarrollorural_proyecto_produccion_hortalizas_2014.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-de-hortalizas-20\\Proyectos_de_producción_de_hortalizas_2014.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/3ae1687e-b68f-4a7d-8d4c-96638265f290/resource/843384db-6302-4c57-9847-1e7f1b59e374/download/mindesarrollorural_proyecto_produccion_hortalizas_2015.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-de-hortalizas-20\\Proyectos_de_producción_de_hortalizas_2015.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/3ae1687e-b68f-4a7d-8d4c-96638265f290/resource/b8680201-9fcb-49f8-8ba5-a3a5a167576f/download/mindesarrollorural_proyecto_produccion_hortalizas_2016.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-de-produccion-de-hortalizas-20\\Proyectos_de_producción_de_hortalizas_2016.csv"
+    },
+    {
+      "url": "https://datos.gob.bo/dataset/ea7001f3-7d1e-432f-ae66-3c42e2ea930d/resource/cfaac208-f853-4607-907b-249887235c37/download/fps_programa_miagua_1.csv",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ckan_proyectos-programa-miagua-i\\Tabla_de_registro_de_proyectos_de_agua_potable_y_riego_del_Programa_MIAGUA_I_2011-2015.csv"
+    },
+    {
+      "url": "https://data.open-contracting.org/media/bolivia-agetic/all.jsonl.gz",
+      "ok": false,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\all.jsonl.gz"
+    },
+    {
+      "url": "https://data.open-contracting.org/media/bolivia/agetic/all.jsonl.gz",
+      "ok": false,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\all.jsonl.gz"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download/jsonl/all",
+      "ok": false,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\all.bin"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download/csv/all",
+      "ok": false,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\all.bin"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=2019.csv.tar.gz",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_2019.csv.tar.gz"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=2019.jsonl.gz",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_2019.jsonl.gz"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=2019.xlsx",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_2019.xlsx"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=2020.csv.tar.gz",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_2020.csv.tar.gz"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=2020.jsonl.gz",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_2020.jsonl.gz"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=2020.xlsx",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_2020.xlsx"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=full.csv.tar.gz",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_full.csv.tar.gz"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=full.jsonl.gz",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_full.jsonl.gz"
+    },
+    {
+      "url": "https://data.open-contracting.org/en/publication/20/download?name=full.xlsx",
+      "ok": true,
+      "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\ocp_agetic\\download_name_full.xlsx"
+    }
+  ],
+  "normalized_rows": 520
+}

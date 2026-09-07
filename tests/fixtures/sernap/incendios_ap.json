@@ -1,0 +1,60 @@
+{
+  "records": [
+    {
+      "record_type": "fire_operational",
+      "year": 2024,
+      "metric_key": "sernap_focos_ap",
+      "metric_label": "Focos de calor en áreas protegidas nacionales",
+      "value_numeric": 1842,
+      "unit": "focos",
+      "entity_name": "SERNAP",
+      "evidence_quote": "Reporte semanal focos de calor y fuego activo en AP de interés nacional"
+    },
+    {
+      "record_type": "fire_operational",
+      "year": 2024,
+      "metric_key": "sernap_eventos_sofocados",
+      "metric_label": "Eventos de fuego sofocados en AP",
+      "value_numeric": 67,
+      "unit": "eventos",
+      "entity_name": "SERNAP"
+    },
+    {
+      "record_type": "fire_expenditure_candidate",
+      "year": 2024,
+      "code": "FIRE-BO-2024-SERNAP-001",
+      "title": "Equipamiento de brigadas para combate de incendios en áreas protegidas",
+      "object_description": "Adquisición de EPP forestal y motobombas para brigadas SERNAP — incendios forestales",
+      "entity_name": "SERNAP",
+      "level": "nacional",
+      "amount": "2450000.00",
+      "amount_attributed": "2450000.00",
+      "attribution": "directo",
+      "cycle": "preparacion",
+      "quality_grade": "C",
+      "force_direct": true,
+      "territory_name": "Santa Cruz"
+    },
+    {
+      "record_type": "budget",
+      "year": 2024,
+      "entity_name": "SERNAP",
+      "level": "nacional",
+      "program_project": "Monitoreo de focos de calor en áreas protegidas",
+      "budget_item": "3.01.01",
+      "initial_amount": "4200000.00",
+      "current_amount": "4200000.00",
+      "executed_amount": "3900000.00"
+    },
+    {
+      "record_type": "budget",
+      "year": 2023,
+      "entity_name": "SERNAP",
+      "level": "nacional",
+      "program_project": "Prevención de incendios en áreas protegidas",
+      "initial_amount": "3800000.00",
+      "current_amount": "3800000.00",
+      "executed_amount": "3500000.00"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+_link,_link_main,id,description,quantity,unit_name,unit_value_amount,classification_id
+0.tender.items.0,0,servicioservicio-de-revestimiento172455,SERVICIO DE REVESTIMIENTO,1,Servicio,17245.5,72100000
+0.tender.items.1,0,"servicioservicio-de-habilitaciónde-ambientes-para-elbaño,-cocineta12700","SERVICIO DE HABILITACIóNDE AMBIENTES PARA ELBAñO, COCINETA",1,Servicio,12700,72100000
+1.tender.items.0,1,servicioservicio-de-limpiezapara-la-gestoin-2020147552,SERVICIO DE LIMPIEZAPARA LA GESTOIN 2020,1,Servicio,147552,76110000
+2.tender.items.0,2,servicioservicio-de-provisionde-pasajes-aereosnacionales50000,SERVICIO DE PROVISIONDE PASAJES AEREOSNACIONALES,1,Servicio,50000,90120000
+3.tender.items.0,3,servicioconsultoria-individualde-linea-soporte-tecnico8924,CONSULTORIA INDIVIDUALDE LINEA SOPORTE TECNICO,5,Servicio,8924,80110000
+4.tender.items.0,4,mensualconsultoria-individualde-linea-tecnico-deapoyo-para-la-implementacion-deprocesos-yprocedimientos5739,CONSULTORIA INDIVIDUALDE LINEA TECNICO DEAPOYO PARA LA IMPLEMENTACION DEPROCESOS YPROCEDIMIENTOS,6,Mensual,5739,83100000
+5.tender.items.0,5,mensualconsultor-individual-delinea-desarrollo-desistemas-35739,CONSULTOR INDIVIDUAL DELINEA DESARROLLO DESISTEMAS 3,6,Mensual,5739,83100000
+6.tender.items.0,6,mensualconsultoria-individualde-linea-técnico-en-atencion-35739,CONSULTORIA INDIVIDUALDE LINEA TÉCNICO EN ATENCION 3,6,Mensual,5739,80110000
+7.tender.items.0,7,servicioconsultor-individual-delinea-tecnico-enprocesos-yprocedimientos-35739,CONSULTOR INDIVIDUAL DELINEA TECNICO ENPROCESOS YPROCEDIMIENTOS 3,6,Servicio,5739,83100000
+8.tender.items.0,8,mescontratacion-serviciode-limpieza-recurrente--20199000,CONTRATACION SERVICIODE LIMPIEZA RECURRENTE- 2019,12,Mes,9000,76110000
+9.tender.items.0,9,servicioconsultoria-individualde-linea-desarrollo-desistemas-18924,CONSULTORIA INDIVIDUALDE LINEA DESARROLLO DESISTEMAS 1,5,Servicio,8924,83100000
+10.tender.items.0,10,mensualtecnico-en-procesos-y-procedimientos-28924,TECNICO EN PROCESOS Y PROCEDIMIENTOS 2,5,Mensual,8924,83100000
+11.tender.items.0,11,mensualconsultor-individual-de-linea-tecnico-en-procesos-y-procedimientos-18924,CONSULTOR INDIVIDUAL DE LINEA TECNICO EN PROCESOS Y PROCEDIMIENTOS 1,5,Mensual,8924,83100000
+12.tender.items.0,12,mensualconsultoria-individualde-linea-apoyo-en-laadministracion-del-cpd8924,CONSULTORIA INDIVIDUALDE LINEA APOYO EN LAADMINISTRACION DEL CPD,5,Mensual,8924,83100000
+13.tender.items.0,13,mensualconsultoria-individualde-linea-desarrollo-de-sistemas-27425,CONSULTORIA INDIVIDUALDE LINEA DESARROLLO DE SISTEMAS 2,6,Mensual,7425,83100000
+14.tender.items.0,14,mensualconsultoria-individualde-linea-tecnico-en-atencion-25739,CONSULTORIA INDIVIDUALDE LINEA TECNICO EN ATENCION 2,6,Mensual,5739,83100000
+15.tender.items.0,15,mensualconsultoria-individualde-linea-técnico-en-atencion-17425,CONSULTORIA INDIVIDUALDE LINEA TÉCNICO EN ATENCION 1,6,Mensual,7425,83100000
+16.tender.items.0,16,mensualconsultoria-individualde-linea-desarrollo-desistemas-45739,CONSULTORIA INDIVIDUALDE LINEA DESARROLLO DESISTEMAS 4,6,Mensual,5739,83100000
+17.tender.items.0,17,mensualconsultoria-individual-de-linea-profesional-en-comunicacion-digital11852,CONSULTORIA INDIVIDUAL DE LINEA PROFESIONAL EN COMUNICACION DIGITAL,4,Mensual,11852,83100000
+18.tender.items.0,18,mensualconsultor-individual-de-linea-desarrollo-de-sistemas-68924,CONSULTOR INDIVIDUAL DE LINEA DESARROLLO DE SISTEMAS 6,5,Mensual,8924,83100000
+19.tender.items.0,19,servicioconsultoria-individualde-linea-desarrollo-desistemas-57425,CONSULTORIA INDIVIDUALDE LINEA DESARROLLO DESISTEMAS 5,6,Servicio,7425,83100000
+20.tender.items.0,20,mensualconsultoria-individual-de-linea-desarrollo-de-sistemas-95739,CONSULTORIA INDIVIDUAL DE LINEA DESARROLLO DE SISTEMAS 9,4,Mensual,5739,83100000
+21.tender.items.0,21,mensualconsultoria-individual-de-linea-desarrollo-de-sistemas-118924,CONSULTORIA INDIVIDUAL DE LINEA DESARROLLO DE SISTEMAS 11,5,Mensual,8924,83100000
+22.tender.items.0,22,mensualconsultor-individual-de-linea-asistente-en-informacion-y-procesamiento-de-datos-abiertos7425,CONSULTOR INDIVIDUAL DE LINEA ASISTENTE EN INFORMACION Y PROCESAMIENTO DE DATOS ABIERTOS,6,Mensual,7425,83100000
+23.tender.items.0,23,mensualconsultoria-individual-de-linea-desarrollo-de-sistemas-107425,CONSULTORIA INDIVIDUAL DE LINEA DESARROLLO DE SISTEMAS 10,6,Mensual,7425,83100000
+24.tender.items.0,24,servicioconsultoria-individualde-linea-desarrollo-desistemas-87425,CONSULTORIA INDIVIDUALDE LINEA DESARROLLO DESISTEMAS 8,6,Servicio,7425,83100000
+25.tender.items.0,25,servicioservicio-de-publicidad-en-facebook48000,SERVICIO DE PUBLICIDAD EN FACEBOOK,1,Servicio,48000,82100000
+26.tender.items.0,26,mensualconsultoria-individual-de-linea-tecnico-en-implementacion-deprocesos-y-procedimientos8924,CONSULTORIA INDIVIDUAL DE LINEA TECNICO EN IMPLEMENTACION DEPROCESOS Y PROCEDIMIENTOS,5,Mensual,8924,83100000
+27.tender.items.0,27,unidadmemoria-ram-para-servidores-de-tipo-18900,Memoria ram para servidores de tipo 1,26,Unidad,8900,44120000
+27.tender.items.1,27,unidadmemoria-ram-para-servidores-de-tipo-28898,Memoria ram para servidores de tipo 2,13,Unidad,8898,44120000
+27.tender.items.2,27,unidadtarjeta-de-tipo-idrac-para-servidor783,Tarjeta de tipo idrac para servidor,3,Unidad,783,44120000
+27.tender.items.3,27,unidadfuente-de-poder-hot-plug-power-supply-de-servidores2500,Fuente de poder (hot-plug power supply) de servidores,4,Unidad,2500,44120000
+28.tender.items.0,28,globaladquisicion-de-mediaconverter-10-100-1000-base-t-dual-1000-base-xsfp35390,ADQUISICION DE MEDIACONVERTER 10 100 1000 BASE T DUAL 1000 BASE XSFP,1,GLOBAL,35390,32110000
+29.tender.items.0,29,unidadadquisicion-de-lectorde-huellas36192,ADQUISICION DE LECTORDE HUELLAS,20,Unidad,3619.2,43210000
+30.tender.items.0,30,servicioconsultoria-por-producto--sistematizacion-de-cinco-talleres-a-nivel-nacional-para-la-elaboracion-de-la-agenda-digital39000,CONSULTORIA POR PRODUCTO -SISTEMATIZACION DE CINCO TALLERES A NIVEL NACIONAL PARA LA ELABORACION DE LA AGENDA DIGITAL,1,SERVICIO,39000,83100000
+31.tender.items.0,31,mensualconsutoria-individual-de-linea-desarrollo-de-sistemas-77425,CONSUTORIA INDIVIDUAL DE LINEA DESARROLLO DE SISTEMAS 7,6,Mensual,7425,83100000
+32.tender.items.0,32,unidadfuente-de-poder-de-tipo-13300,Fuente de poder de tipo 1,6,Unidad,3300,39120000
+32.tender.items.1,32,unidadfuente-de-poder-de-tipo-22245,Fuente de poder de tipo 2,4,Unidad,2245,39120000
+32.tender.items.2,32,unidadfuente-de-poder-de-tipo-32275,Fuente de poder de tipo 3,4,Unidad,2275,39120000
+32.tender.items.3,32,unidadcable-de-red-patchcord-de-tipo-1456,Cable de red patchcord de tipo 1,60,Unidad,45.6,39120000
+32.tender.items.4,32,unidadcable-de-red-patchcord-de-tipo-2602,Cable de red patchcord de tipo 2,30,Unidad,60.2,39120000
+32.tender.items.5,32,unidadcable-de-fibra-patchcord-de-tipo-1106,Cable de fibra patchcord de tipo 1,20,Unidad,106,39120000
+32.tender.items.6,32,unidadcable-de-fibra-patchcord-de-tipo-21135,Cable de fibra patchcord de tipo 2,20,Unidad,113.5,39120000
+32.tender.items.7,32,unidadequipo-ups-de-tipo-1244428,Equipo ups de tipo 1,1,Unidad,24442.8,43210000
+33.tender.items.0,33,globalservicio-de-provision-de-courier-para-la-agetic---gestion-201921850,SERVICIO DE PROVISION DE COURIER PARA LA AGETIC - GESTION 2019,1,GLOBAL,21850,78100000
+34.tender.items.0,34,globalconsultoría-por-producto-documentos-de-análisis-de-los-aportes-de-la-población-para-la-elaboración-de-las-metas-de-la-agenda-digital-en-el-eje-madre-tierra-y-tecnologia24000,CONSULTORÍA POR PRODUCTO DOCUMENTOS DE ANÁLISIS DE LOS APORTES DE LA POBLACIÓN PARA LA ELABORACIÓN DE LAS METAS DE LA AGENDA DIGITAL EN EL EJE MADRE TIERRA Y TECNOLOGIA,1,GLOBAL,24000,80100000
+35.tender.items.0,35,servicioconsultoria-porproducto---documentode-analisis-de-los-aportes-de-la-poblacion-para-la-elaboracion-de-las-metas-de-la-agendadigital-en-el-eje-tecnologias-para-la-vida24000,CONSULTORIA PORPRODUCTO - DOCUMENTODE ANALISIS DE LOS APORTES DE LA POBLACION PARA LA ELABORACION DE LAS METAS DE LA AGENDADIGITAL EN EL EJE TECNOLOGIAS PARA LA VIDA,1,SERVICIO,24000,80110000
+36.tender.items.0,36,mensualconsultoria-individualde-linea-desarrollo-de-sistemas-1311852,CONSULTORIA INDIVIDUALDE LINEA DESARROLLO DE SISTEMAS 13,4,Mensual,11852,80110000
+37.tender.items.0,37,servicioconsultoria-porproducto---documentode-analisis-de-los-aportes-para-la-elaboracion-de-las-metas-de-la-agenda-digital-en-el-eje-de-economia-digital-y-delconocimiento24000,CONSULTORIA PORPRODUCTO - DOCUMENTODE ANALISIS DE LOS APORTES PARA LA ELABORACION DE LAS METAS DE LA AGENDA DIGITAL EN EL EJE DE ECONOMIA DIGITAL Y DELCONOCIMIENTO,1,SERVICIO,24000,83100000
+38.tender.items.0,38,globaladquisicion-de-antenasde-identificacion-deradiofrecuencia117995,ADQUISICION DE ANTENASDE IDENTIFICACION DERADIOFRECUENCIA,1,GLOBAL,117995,39130000
+39.tender.items.0,39,servicioconsultor-individual-delinea---especialista-encoordinación-yseguimiento-paraprograma-de-inclusióndigital-en-losdepartamentos-dechuquisaca-y-potosi36978,CONSULTOR INDIVIDUAL DELINEA - ESPECIALISTA ENCOORDINACIÓN YSEGUIMIENTO PARAPROGRAMA DE INCLUSIÓNDIGITAL EN LOSDEPARTAMENTOS DECHUQUISACA Y POTOSI,1,SERVICIO,36978,80110000
+40.tender.items.0,40,servicioservicio-de-impresionde-documentosaprobados-en-el-ctic23240,SERVICIO DE IMPRESIONDE DOCUMENTOSAPROBADOS EN EL CTIC,1,SERVICIO,23240,82120000
+41.tender.items.0,41,díasconsultoria-individual-de-linea-tecnico-en-diseño-grafico2475,CONSULTORIA INDIVIDUAL DE LINEA TECNICO EN DISEÑO GRAFICO,15,Días,247.5,80110000
+41.tender.items.1,41,mesconsultoria-individual-de-linea-tecnico-en-diseño-grafico7425,CONSULTORIA INDIVIDUAL DE LINEA TECNICO EN DISEÑO GRAFICO,3,Mes,7425,80110000
+42.tender.items.0,42,servicioconsultoria-individualde-linea-tecnico-deapoyo-logistico-para-la-implementacion-delprograma-de-inclusion-digital-en-el-departamento-de-la-paz23166,CONSULTORIA INDIVIDUALDE LINEA TECNICO DEAPOYO LOGISTICO PARA LA IMPLEMENTACION DELPROGRAMA DE INCLUSION DIGITAL EN EL DEPARTAMENTO DE LA PAZ,1,SERVICIO,23166,83100000
+43.tender.items.0,43,servicioconsultoria-individualde-linea-tecnicoinformatico-para-elprograma-de-inclusiondigital23872,CONSULTORIA INDIVIDUALDE LINEA TECNICOINFORMATICO PARA ELPROGRAMA DE INCLUSIONDIGITAL,1,SERVICIO,23872,80100000
+44.tender.items.0,44,servicioconsultoria-individualde-linea---tecnico-parabolivia-a-tu-servicio-2435006,CONSULTORIA INDIVIDUALDE LINEA - TECNICO PARABOLIVIA A TU SERVICIO 2,1,SERVICIO,43500.6,83100000
+45.tender.items.0,45,servicioservicio-de-difusion-despot-y-cuña-parainclusion-digital11750,SERVICIO DE DIFUSION DESPOT Y CUÑA PARAINCLUSION DIGITAL,1,SERVICIO,11750,82100000
+45.tender.items.1,45,servicioservicio-de-difusion-despot-y-cuña-parainclusion-digital2163225,SERVICIO DE DIFUSION DESPOT Y CUÑA PARAINCLUSION DIGITAL,1,SERVICIO,21632.25,82100000
+45.tender.items.2,45,servicioservicio-de-difusion-despot-y-cuña-parainclusion-digital24375,SERVICIO DE DIFUSION DESPOT Y CUÑA PARAINCLUSION DIGITAL,1,SERVICIO,24375,82100000
+45.tender.items.3,45,servicioservicio-de-difusion-despot-y-cuna-parainclusion-digital5200,SERVICIO DE DIFUSION DESPOT Y CUNA PARAINCLUSION DIGITAL,1,SERVICIO,5200,82100000
+45.tender.items.4,45,servicioservicio-de-difusion-despot-y-cuna-parainclusion-digital24375,SERVICIO DE DIFUSION DESPOT Y CUNA PARAINCLUSION DIGITAL,1,SERVICIO,24375,82100000
+45.tender.items.5,45,servicioservicio-de-difusion-despot-y-cuña-parainclusion-digital5600,SERVICIO DE DIFUSION DESPOT Y CUÑA PARAINCLUSION DIGITAL,1,SERVICIO,5600,82100000
+46.tender.items.0,46,unidadadquisicion-de-sillas-giratorias-para-la-agetic178524,ADQUISICION DE SILLAS GIRATORIAS PARA LA AGETIC,20,UNIDAD,1785.24,44100000
+47.tender.items.0,47,equiposervidor-a103145,Servidor a,3,EQUIPO,103145,44100000
+47.tender.items.1,47,equiposervidor-b64880,Servidor b,3,EQUIPO,64880,44100000
+47.tender.items.2,47,equiposervidor-c90510,Servidor c,3,EQUIPO,90510,44100000
+47.tender.items.3,47,equiposervidor-d86290,Servidor d,2,EQUIPO,86290,44100000
+48.tender.items.0,48,servicioconsultoria-individualde-linea-tecnico-enedicion-de-video30888,CONSULTORIA INDIVIDUALDE LINEA TECNICO ENEDICION DE VIDEO,1,SERVICIO,30888,80110000
+49.tender.items.0,49,globaladquisición-de-antenas-de-identificación-por-radiofrecuencia1769925,Adquisición de antenas de identificación por radiofrecuencia,1,GLOBAL,176992.5,39120000
+50.tender.items.0,50,servicioconsultoria-por-producto---documentos-de-analisis-de-los-aportes-de-la-poblacion-para-la-elaboracion-de-las-metas-de-la-agendadigital-en-el-eje-gobierno-abierto24000,CONSULTORIA POR PRODUCTO - DOCUMENTOS DE ANALISIS DE LOS APORTES DE LA POBLACION PARA LA ELABORACION DE LAS METAS DE LA AGENDADIGITAL EN EL EJE GOBIERNO ABIERTO,1,SERVICIO,24000,80110000
+51.tender.items.0,51,servicioservicio-de-publicidaden-facebook48000,SERVICIO DE PUBLICIDADEN FACEBOOK,1,SERVICIO,48000,82100000
+52.tender.items.0,52,unidadcortapicos-de-6-entradas50,Cortapicos de 6 entradas,812,UNIDAD,50,39120000
+52.tender.items.1,52,unidadalargadores-de-corriente-de-3-metros35,Alargadores de corriente de 3 metros,812,UNIDAD,35,39120000
+52.tender.items.2,52,unidadmemorias-usb-de-8-gb-de-capacidad55,Memorias usb de 8 gb de capacidad,406,UNIDAD,55,39120000
+53.tender.items.0,53,servicioservicio-de-vaciado-decontrapisolaboratorio-zona-tic29938,SERVICIO DE VACIADO DECONTRAPISOLABORATORIO ZONA TIC,1,SERVICIO,29938,72100000
+54.tender.items.0,54,servicioconsultoria-individualde-linea---tecnico-logistico-para-la-construccion-de-la-agenda-digital37120,CONSULTORIA INDIVIDUALDE LINEA - TECNICO LOGISTICO PARA LA CONSTRUCCION DE LA AGENDA DIGITAL,1,SERVICIO,37120,83100000
+55.tender.items.0,55,servicioconsultor-individual-delinea-tecnico-encoordinacion-para-laimplementacion-delprograma-de-inclusiondigital-en-eldepartamento-de-santacruz27840,CONSULTOR INDIVIDUAL DELINEA TECNICO ENCOORDINACION PARA LAIMPLEMENTACION DELPROGRAMA DE INCLUSIONDIGITAL EN ELDEPARTAMENTO DE SANTACRUZ,1,Servicio,27840,83100000
+56.tender.items.0,56,servicioconsultoria-individualde-linea---tecnico-engestion-del-programade-inclusion-digital29244,CONSULTORIA INDIVIDUALDE LINEA - TECNICO ENGESTION DEL PROGRAMADE INCLUSION DIGITAL,1,SERVICIO,29244,80110000
+57.tender.items.0,57,servicio-globalconsultor-individual-delinea-tecnico-de-apoyologistico-para-laimplementacion-delprograma-de-inclusiondigital-en-eldepartamento-de-tarija23166,CONSULTOR INDIVIDUAL DELINEA TECNICO DE APOYOLOGISTICO PARA LAIMPLEMENTACION DELPROGRAMA DE INCLUSIONDIGITAL EN ELDEPARTAMENTO DE TARIJA,1,Servicio Global,23166,83100000
+58.tender.items.0,58,servicioconsultor-individual-delinea-especialista-encoordinación-yseguimiento-paraprograma-de-inclusióndigital-en-eldepartamento-decochabamba36978,CONSULTOR INDIVIDUAL DELINEA ESPECIALISTA ENCOORDINACIÓN YSEGUIMIENTO PARAPROGRAMA DE INCLUSIÓNDIGITAL EN ELDEPARTAMENTO DECOCHABAMBA,1,SERVICIO,36978,83100000
+59.tender.items.0,59,piezaadquisicion-de-mesaspara-laboratorio-zonatic---escritorios1500,ADQUISICION DE MESASPARA LABORATORIO ZONATIC - ESCRITORIOS,18,PIEZA,1500,56120000
+59.tender.items.1,59,piezaadquisicion-de-mesaspara-laboratorio-zonatic---mesas-delaboratorio1500,ADQUISICION DE MESASPARA LABORATORIO ZONATIC - MESAS DELABORATORIO,4,PIEZA,1500,56110000
+60.tender.items.0,60,"unidadmemoria-ram-para-servidor-de-tipo-1,7860","Memoria ram para servidor de tipo 1,",13,UNIDAD,7860,44100000
+60.tender.items.1,60,"unidadfuente-de-poder-de-tipo-1,2713","Fuente de poder de tipo 1,",6,UNIDAD,2713,44100000
+60.tender.items.2,60,"unidadfuente-de-poder-de-tipo-2,1949","Fuente de poder de tipo 2,",4,UNIDAD,1949,44100000
+60.tender.items.3,60,"unidadfuente-de-poder-de-tipo-3,2319","Fuente de poder de tipo 3,",4,UNIDAD,2319,44100000
+60.tender.items.4,60,"unidadcable-de-red-patchcord-de-tipo-1,39","Cable de red patchcord de tipo 1,",60,UNIDAD,39,44100000
+60.tender.items.5,60,"unidadcable-de-red-patchcord-de-tipo-2,50","Cable de red patchcord de tipo 2,",30,UNIDAD,50,44100000
+60.tender.items.6,60,"unidadcable-de-fibra-patchcord-de-tipo-1,105","Cable de fibra patchcord de tipo 1,",20,UNIDAD,105,44100000
+60.tender.items.7,60,"unidadcable-de-fibra-patchcord-de-tipo-2,105","Cable de fibra patchcord de tipo 2,",20,UNIDAD,105,44100000
+60.tender.items.8,60,"unidadequipo-ups-de-tipo-1,23640","Equipo ups de tipo 1,",1,UNIDAD,23640,44100000
+60.tender.items.9,60,unidadaire-acondicionado-de-tipo-118000,Aire acondicionado de tipo 1,1,UNIDAD,18000,44100000
+60.tender.items.10,60,unidadautotransformador-de-tipo-19300,Autotransformador de tipo 1,1,UNIDAD,9300,44100000
+61.tender.items.0,61,equipocomputadoras-de-escritoriocon-video-integrado10750,Computadoras de Escritoriocon Video Integrado,6,EQUIPO,10750,43210000
+62.tender.items.0,62,servicioconsultoria-individualde-linea---tecnico-parabolivia-a-tu-servcio-1435006,CONSULTORIA INDIVIDUALDE LINEA - TECNICO PARABOLIVIA A TU SERVCIO 1,1,SERVICIO,43500.6,83100000
+63.tender.items.0,63,servicioconsultor-individual-delinea-tecnico-de-apoyologistico-para-laimplementacion-delprograma-de-inclusiondigital-en-eldepartamento-de-santacruz27840,CONSULTOR INDIVIDUAL DELINEA TECNICO DE APOYOLOGISTICO PARA LAIMPLEMENTACION DELPROGRAMA DE INCLUSIONDIGITAL EN ELDEPARTAMENTO DE SANTACRUZ,1,Servicio,27840,83100000
+64.tender.items.0,64,equipomonitores-de-215-2430,"Monitores de 21.5 \""",8,EQUIPO,2430,43210000
+64.tender.items.1,64,equipocomputadoras-de-escritoriocon-video-integrado11900,Computadoras de Escritoriocon Video Integrado,6,EQUIPO,11900,43210000
+65.tender.items.0,65,servicioconsultor-individualpor-producto-para-laelaboracion-dematerialesaudiovisualestecnopedagogicospara-el-programa-deinclusion-digital41000,CONSULTOR INDIVIDUALPOR PRODUCTO PARA LAELABORACION DEMATERIALESAUDIOVISUALESTECNOPEDAGOGICOSPARA EL PROGRAMA DEINCLUSION DIGITAL,1,Servicio,41000,83100000
+66.tender.items.0,66,servicioconsultoria-porproducto---documento-de-analisis-de-los-aportes-de-la-poblacion-para-la-elaboracion-de-las-metas-de-la-agenda-digital-en-el-eje-genero-inclusion-y-tecnología24000,CONSULTORIA PORPRODUCTO - DOCUMENTO DE ANALISIS DE LOS APORTES DE LA POBLACION PARA LA ELABORACION DE LAS METAS DE LA AGENDA DIGITAL EN EL EJE GENERO INCLUSION Y TECNOLOGÍA,1,SERVICIO,24000,80110000
+67.tender.items.0,67,equipoadquisicion-de-equiposde-computacion-deescritorio-para-laagetic12250,ADQUISICION DE EQUIPOSDE COMPUTACION DEESCRITORIO PARA LAAGETIC,15,EQUIPO,12250,43210000
+68.tender.items.0,68,servicioalquiler-de-vehiculospara-el-ii-congresointernacional-deseguridad-informatica23050,ALQUILER DE VEHICULOSPARA EL II CONGRESOINTERNACIONAL DESEGURIDAD INFORMATICA,1,Servicio,23050,78110000
+69.tender.items.0,69,servicioconsultor-individual-delinea-tecnico-enprocesos-yprocedimientos-445472,CONSULTOR INDIVIDUAL DELINEA TECNICO ENPROCESOS YPROCEDIMIENTOS 4,1,SERVICIO,45472,83100000
+70.tender.items.0,70,servicioconsultoria-individualde-linea-tecnico-enatencion-1223872,CONSULTORIA INDIVIDUALDE LINEA TECNICO ENATENCION 12,1,SERVICIO,23872,80110000
+71.tender.items.0,71,servicio-globalconsultor-individual-delinea-técnico-de-apoyologístico-para-laimplementación-delprograma-de-inclusióndigital-en-eldepartamento-de-pando27840,CONSULTOR INDIVIDUAL DELINEA TÉCNICO DE APOYOLOGÍSTICO PARA LAIMPLEMENTACIÓN DELPROGRAMA DE INCLUSIÓNDIGITAL EN ELDEPARTAMENTO DE PANDO,1,Servicio Global,27840,83100000
+72.tender.items.0,72,servicioservicio-de-cateringpara-el-campamento-dechicas-waskiris--cochabamba20100,SERVICIO DE CATERINGPARA EL CAMPAMENTO DECHICAS WASKIRIS -COCHABAMBA,1,Servicio,20100,90100000
+73.tender.items.0,73,servicioconsultor-individual-delinea-por-productopara-la-elaboracion-dematerialesaudiovisualesrelacionados-al-uso-deprogramas-delsoftware-libre-para-elprograma-de-inclusion-digital41000,CONSULTOR INDIVIDUAL DELINEA POR PRODUCTOPARA LA ELABORACION DEMATERIALESAUDIOVISUALESRELACIONADOS AL USO DEPROGRAMAS DELSOFTWARE LIBRE PARA ELPROGRAMA DE INCLUSION DIGITAL,1,SERVICIO,41000,83100000
+74.tender.items.0,74,unidadesadquisicion-de-discosduros-tipo-sata-paraservidores-de-la-agetic--disco-duro-tipo-22495,ADQUISICION DE DISCOSDUROS TIPO SATA PARASERVIDORES DE LA AGETIC- DISCO DURO TIPO 2,5,Unidades,2495,44110000
+74.tender.items.1,74,unidadadquisicion-de-discosduros-tipo-sata-paraservidores-de-la-agetic--disco-duro-tipo-11480,ADQUISICION DE DISCOSDUROS TIPO SATA PARASERVIDORES DE LA AGETIC- DISCO DURO TIPO 1,6,Unidad,1480,44110000
+75.tender.items.0,75,servicioconsultor-individual-delinea-asistente-tecnicopara-el-programa-deinclusion-digital2606027,CONSULTOR INDIVIDUAL DELINEA ASISTENTE TECNICOPARA EL PROGRAMA DEINCLUSION DIGITAL,1,SERVICIO,26060.27,83100000
+76.tender.items.0,76,servicioconsultor-individual-delinea-tecnico-encoordinacion-para-elprograma-de-inclusiondigital23166,CONSULTOR INDIVIDUAL DELINEA TECNICO ENCOORDINACION PARA ELPROGRAMA DE INCLUSIONDIGITAL,1,SERVICIO,23166,80110000
+77.tender.items.0,77,servicioservicio-de-refrigeriopara-el-ii-congresointernacion-deseguridad-informatica43920,SERVICIO DE REFRIGERIOPARA EL II CONGRESOINTERNACION DESEGURIDAD INFORMATICA,1,Servicio,43920,90100000
+78.tender.items.0,78,servicioconsultor-individual-delinea-especialista-encoordinacion-yseguimiento-paraprograma-de-inclusiondigital-en-eldepartamento-de-la-paz27840,CONSULTOR INDIVIDUAL DELINEA ESPECIALISTA ENCOORDINACION YSEGUIMIENTO PARAPROGRAMA DE INCLUSIONDIGITAL EN ELDEPARTAMENTO DE LA PAZ,1,Servicio,27840,83100000
+79.tender.items.0,79,servicio-globalconsultor-individual-delinea-tecnico-de-apoyologistico-para-laimplementacion-delprograma-de-inclusiondigital-en-eldepartamento-de-pando36978,CONSULTOR INDIVIDUAL DELINEA TECNICO DE APOYOLOGISTICO PARA LAIMPLEMENTACION DELPROGRAMA DE INCLUSIONDIGITAL EN ELDEPARTAMENTO DE PANDO,1,Servicio Global,36978,83100000
+80.tender.items.0,80,servicio-globalconsultor-individual-delinea--desarrollo-desistemas-123371733,CONSULTOR INDIVIDUAL DELINEA- DESARROLLO DESISTEMAS 12,1,Servicio Global,33717.33,83100000
+81.tender.items.0,81,servicioservicio-especializadode-conferencias-deseguridad-informaticapara-el-2do-congresointernacional-deseguridad-informatica20119,SERVICIO ESPECIALIZADODE CONFERENCIAS DESEGURIDAD INFORMATICAPARA EL 2DO CONGRESOINTERNACIONAL DESEGURIDAD INFORMATICA,1,Servicio,20119,80100000
+82.tender.items.0,82,"servicioservicio-de-publicidad-en-radios-juventudes-tic,-estudio-sobre-las-tic-en-adolescentes-y-jovenes-en-bolivia---panamericana18480","SERVICIO DE PUBLICIDAD EN RADIOS JUVENTUDES TIC, ESTUDIO SOBRE LAS TIC EN ADOLESCENTES Y JOVENES EN BOLIVIA - PANAMERICANA",1,Servicio,18480,82100000
+82.tender.items.1,82,"servicioservicio-de-publicidad-en-radios-juventudes-tic,-estudio-sobre-las-tic-en-adolescentes-y-jovenes-en-bolivia---patria-nueva6600","SERVICIO DE PUBLICIDAD EN RADIOS JUVENTUDES TIC, ESTUDIO SOBRE LAS TIC EN ADOLESCENTES Y JOVENES EN BOLIVIA - PATRIA NUEVA",1,Servicio,6600,82100000
+82.tender.items.2,82,"servicioservicio-de-publicidad-en-radios-juventudes-tic,-estudio-sobre-las-tic-en-adolescentes-y-jovenes-en-bolivia---radio-compañera2200","SERVICIO DE PUBLICIDAD EN RADIOS JUVENTUDES TIC, ESTUDIO SOBRE LAS TIC EN ADOLESCENTES Y JOVENES EN BOLIVIA - RADIO COMPAÑERA",1,Servicio,2200,82100000

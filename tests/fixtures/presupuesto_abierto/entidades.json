@@ -1,0 +1,96 @@
+{
+  "entidades": [
+    {
+      "entidad": "Ministerio de Educación",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "programa": "Infraestructura educativa",
+      "partida": "2.01.01.01.01",
+      "presupuesto_inicial": "50000000.00",
+      "presupuesto_modificado": "52000000.00",
+      "presupuesto_vigente": "51000000.00",
+      "ejecucion": "25000000.00"
+    },
+    {
+      "entidad": "Ministerio de Salud y Deportes",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "programa": "Hospitales",
+      "presupuesto_inicial": "80000000",
+      "presupuesto_vigente": "78000000",
+      "ejecucion": "30000000"
+    },
+    {
+      "entidad": "Ministerio de Obras Públicas",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "120000000",
+      "presupuesto_vigente": "115000000",
+      "ejecucion": "40000000"
+    },
+    {
+      "entidad": "Ministerio de Justicia",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "15000000",
+      "presupuesto_vigente": "15000000",
+      "ejecucion": "7000000"
+    },
+    {
+      "entidad": "Ministerio de Defensa",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "90000000",
+      "presupuesto_vigente": "88000000",
+      "ejecucion": "50000000"
+    },
+    {
+      "entidad": "Ministerio de Economía y Finanzas Públicas",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "45000000",
+      "presupuesto_vigente": "45000000",
+      "ejecucion": "20000000"
+    },
+    {
+      "entidad": "Ministerio de Relaciones Exteriores",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "12000000",
+      "presupuesto_vigente": "11000000",
+      "ejecucion": "5000000"
+    },
+    {
+      "entidad": "Ministerio de Medio Ambiente y Agua",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "30000000",
+      "presupuesto_vigente": "28000000",
+      "ejecucion": "10000000"
+    },
+    {
+      "entidad": "Ministerio de Desarrollo Rural",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "60000000",
+      "presupuesto_vigente": "55000000",
+      "ejecucion": "22000000"
+    },
+    {
+      "entidad": "Ministerio de Culturas",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "8000000",
+      "presupuesto_vigente": "8000000",
+      "ejecucion": "3000000"
+    },
+    {
+      "entidad": "Ministerio de Hidrocarburos",
+      "nivel": "nacional",
+      "gestion": 2025,
+      "presupuesto_inicial": "70000000",
+      "presupuesto_vigente": "65000000",
+      "ejecucion": "0"
+    }
+  ]
+}

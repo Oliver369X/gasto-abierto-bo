@@ -1,0 +1,15 @@
+{
+  "months_ok": 225,
+  "months_total": 225,
+  "bytes": 440398979,
+  "lab": {
+    "ok": true,
+    "bytes": 51471667,
+    "cached": false,
+    "path": "D:\\oliver\\aura_exp\\MVP\\gasto-abierto-bo\\tests\\fixtures\\real\\sicoes_history\\lab_todo.csv"
+  },
+  "span": [
+    "200711",
+    "202607"
+  ]
+}

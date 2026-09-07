@@ -1,0 +1,4 @@
+cuce,entity,supplier,description,amount,modality,date,status
+OCDS-DEMO-001,Ministerio de Educación,Constructora Andes S.R.L.,Construcción de aulas,1500000.00,Licitación Pública,2019-06-01,complete
+OCDS-DEMO-002,GAM La Paz,Servicios Integrales SA,Servicio de limpieza,250000.50,Contratación Menor,2019-08-15,complete
+OCDS-DEMO-003,GAD Santa Cruz,Constructora Andes S.R.L.,Obras viales,3200000.00,Licitación Pública,2019-11-20,complete

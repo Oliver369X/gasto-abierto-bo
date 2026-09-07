@@ -1,0 +1,145 @@
+import Link from "next/link";
+import { apiGet, formatMoney } from "@/lib/api";
+
+type YearAgg = {
+  year: number;
+  contracts: number;
+  contract_amount: string;
+  budget_lines: number;
+  budget_current_total: string;
+  budget_executed_total: string;
+};
+
+type Compare = {
+  year_a: number;
+  year_b: number;
+  contracts_a: number;
+  contracts_b: number;
+  contracts_delta_pct?: number;
+  amount_a: string;
+  amount_b: string;
+  amount_delta_pct?: number;
+  budget_current_a: string;
+  budget_current_b: string;
+  budget_delta_pct?: number;
+};
+
+function pct(v?: number) {
+  if (v === undefined || v === null) return "—";
+  return `${v.toFixed(1)}%`;
+}
+
+export default async function HistoricoPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ a?: string; b?: string }>;
+}) {
+  const sp = await searchParams;
+  let years: YearAgg[] = [];
+  let apiDown = false;
+  try {
+    years = await apiGet<YearAgg[]>("/v1/history/years");
+  } catch {
+    apiDown = true;
+  }
+
+  const sorted = [...years].map((y) => y.year).sort((x, y) => y - x);
+  const yearA = Number(sp.a) || sorted[1] || sorted[0] || 2024;
+  const yearB = Number(sp.b) || sorted[0] || 2025;
+
+  let compare: Compare | null = null;
+  try {
+    compare = await apiGet<Compare>(`/v1/history/compare?year_a=${yearA}&year_b=${yearB}`);
+  } catch {
+    compare = null;
+  }
+
+  return (
+    <section className="section">
+      <h2>Histórico</h2>
+      <p className="lead">
+        Serie consolidada por gestión. Compará dos años lado a lado. Solo se suman
+        montos efectivamente reportados — la ausencia de dato nunca cuenta como Bs 0.
+      </p>
+
+      {apiDown && <p className="error-box">No pudimos cargar la serie histórica.</p>}
+
+      <form className="search-bar" action="/historico" method="get">
+        <label>
+          Año A{" "}
+          <input type="number" name="a" defaultValue={yearA} min={2016} max={2030} />
+        </label>
+        <label>
+          Año B{" "}
+          <input type="number" name="b" defaultValue={yearB} min={2016} max={2030} />
+        </label>
+        <button type="submit" className="btn btn-primary">
+          Comparar
+        </button>
+      </form>
+
+      {compare && (
+        <div className="grid-2" style={{ marginBottom: "1.75rem" }}>
+          <article className="panel">
+            <h3>Contratos {compare.year_a} vs {compare.year_b}</h3>
+            <p>
+              {compare.contracts_a} → {compare.contracts_b} · Δ {pct(compare.contracts_delta_pct)}
+            </p>
+          </article>
+          <article className="panel">
+            <h3>Monto contratos</h3>
+            <p>
+              {formatMoney(compare.amount_a)} → {formatMoney(compare.amount_b)} · Δ{" "}
+              {pct(compare.amount_delta_pct)}
+            </p>
+          </article>
+          <article className="panel">
+            <h3>Presupuesto vigente</h3>
+            <p>
+              {formatMoney(compare.budget_current_a)} → {formatMoney(compare.budget_current_b)} · Δ{" "}
+              {pct(compare.budget_delta_pct)}
+            </p>
+          </article>
+        </div>
+      )}
+
+      <div className="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th>Contratos</th>
+              <th>Monto contratos</th>
+              <th>Líneas presupuesto</th>
+              <th>Vigente</th>
+              <th>Ejecutado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {years.map((y) => (
+              <tr key={y.year}>
+                <td>{y.year}</td>
+                <td>{y.contracts}</td>
+                <td>{formatMoney(y.contract_amount)}</td>
+                <td>{y.budget_lines}</td>
+                <td>{formatMoney(y.budget_current_total)}</td>
+                <td>{formatMoney(y.budget_executed_total)}</td>
+                <td>
+                  <Link href={`/explorar?year=${y.year}`}>Filtrar</Link>
+                  {" · "}
+                  <Link href={`/historico?a=${y.year - 1}&b=${y.year}`}>YoY</Link>
+                </td>
+              </tr>
+            ))}
+            {years.length === 0 && (
+              <tr>
+                <td colSpan={7}>Sin serie histórica.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}

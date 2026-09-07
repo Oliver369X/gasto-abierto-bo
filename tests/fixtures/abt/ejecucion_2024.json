@@ -1,0 +1,31 @@
+{
+  "records": [
+    {
+      "year": 2024,
+      "program_project": "Monitoreo de focos de calor y prevención de incendios forestales",
+      "budget_item": "2.01.02.01",
+      "initial_amount": "3500000.00",
+      "modified_amount": "3800000.00",
+      "current_amount": "3800000.00",
+      "executed_amount": "3120000.00"
+    },
+    {
+      "year": 2024,
+      "program_project": "Fiscalización de quemas y control social de bosques",
+      "budget_item": "2.01.02.02",
+      "initial_amount": "5200000.00",
+      "modified_amount": "5200000.00",
+      "current_amount": "5200000.00",
+      "executed_amount": "4890000.00"
+    },
+    {
+      "year": 2023,
+      "program_project": "Equipamiento de brigadas forestales",
+      "budget_item": "2.01.03.01",
+      "initial_amount": "2100000.00",
+      "modified_amount": "2100000.00",
+      "current_amount": "2100000.00",
+      "executed_amount": "1950000.00"
+    }
+  ]
+}

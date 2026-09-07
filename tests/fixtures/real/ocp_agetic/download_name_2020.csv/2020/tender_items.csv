@@ -1,0 +1,11 @@
+_link,_link_main,id,description,quantity,unit_name,unit_value_amount,classification_id
+0.tender.items.0,0,servicioservicio-de-impresionde-material-de-difusoinpromocional-agetic--impresion-cuadernillos895,SERVICIO DE IMPRESIONDE MATERIAL DE DIFUSOINPROMOCIONAL AGETIC -IMPRESION CUADERNILLOS,2,Servicio,8.95,82100000
+0.tender.items.1,0,servicioservicio-de-impresionde-material-de-difusoinpromocional-agetic--impresion-sticker018,SERVICIO DE IMPRESIONDE MATERIAL DE DIFUSOINPROMOCIONAL AGETIC -IMPRESION STICKER,5,Servicio,0.18,82100000
+0.tender.items.2,0,servicioservicio-de-impresionde-material-de-difusoinpromocional-agetic--impresion-flash65,SERVICIO DE IMPRESIONDE MATERIAL DE DIFUSOINPROMOCIONAL AGETIC -IMPRESION FLASH,100,Servicio,65,82100000
+1.tender.items.0,1,servicioservicio-de-provisionde-courier-para-laagetic-gestion-202040000,SERVICIO DE PROVISIONDE COURIER PARA LAAGETIC GESTION 2020,1,Servicio,40000,78100000
+2.tender.items.0,2,servicioservicio-de-internet-de69mbps-para-lasoficinas-de-agetic---gestion-202041748,SERVICIO DE INTERNET DE69MBPS PARA LASOFICINAS DE AGETIC - GESTION 2020,1,Servicio,41748,43200000
+3.tender.items.0,3,servicioservicio-de-internet-de-28mbps-para-centro-de-datos-de-agetic--gestion-202047460,SERVICIO DE INTERNET DE 28MBPS PARA CENTRO DE DATOS DE AGETIC -GESTION 2020,1,Servicio,47460,43200000
+4.tender.items.0,4,servicioservicio-de-provisionde-pasajes-aereosnacionales-y-alexterior---gestion-2020--pasajes-nacionales545000,SERVICIO DE PROVISIONDE PASAJES AEREOSNACIONALES Y ALEXTERIOR - GESTION 2020 -PASAJES NACIONALES,1,Servicio,545000,90120000
+4.tender.items.1,4,servicioservicio-de-provisionde-pasajes-aereosnacionales-y-alexterior---gestion-2020--pasajes60000,SERVICIO DE PROVISIONDE PASAJES AEREOSNACIONALES Y ALEXTERIOR - GESTION 2020 -PASAJES,1,Servicio,60000,90120000
+5.tender.items.0,5,servicioservicio-de-emision-delcertificado-digitalpara-firma-digital25740,SERVICIO DE EMISION DELCERTIFICADO DIGITALPARA FIRMA DIGITAL,1,Servicio,25740,43230000
+6.tender.items.0,6,servicioservicio-de-telefoniamovil-plan-postpagosimple-750---gestion-202045000,SERVICIO DE TELEFONIAMOVIL PLAN POSTPAGOSIMPLE 750 - GESTION 2020,1,Servicio,45000,83100000

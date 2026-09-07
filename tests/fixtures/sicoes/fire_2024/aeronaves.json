@@ -1,0 +1,91 @@
+{
+  "records": [
+    {
+      "record_type": "contract",
+      "cuce": "24-FIRE-AERO-000001-1-1",
+      "entity_name": "Ministerio de Defensa",
+      "supplier_name": "AeroServicios Andinos S.A.",
+      "supplier_nit": "102938475",
+      "object_description": "Alquiler de aeronave para lucha contra incendios forestales — temporada 2024",
+      "modality": "Contratación por Emergencia",
+      "amount": "12500000.00",
+      "contract_date": "2024-07-15",
+      "status": "Adjudicado",
+      "department": "Santa Cruz",
+      "is_synthetic": true,
+      "quality_grade": "E",
+      "warning": "PLACEHOLDER — montos/CUCEs/proveedores NO verificados en SICOES live. MINDEF RPC solo confirma 4 procesos sin montos. No usar como gasto real."
+    },
+    {
+      "record_type": "contract",
+      "cuce": "24-FIRE-AERO-000002-1-1",
+      "entity_name": "Ministerio de Defensa",
+      "supplier_name": "Helicópteros del Oriente Ltda.",
+      "supplier_nit": "198765432",
+      "object_description": "Alquiler de helicóptero con Bambi Bucket para combate de incendios forestales",
+      "modality": "Contratación por Emergencia",
+      "amount": "9800000.00",
+      "contract_date": "2024-08-02",
+      "status": "Adjudicado",
+      "department": "Santa Cruz",
+      "is_synthetic": true,
+      "quality_grade": "E",
+      "warning": "PLACEHOLDER — montos/CUCEs/proveedores NO verificados en SICOES live. MINDEF RPC solo confirma 4 procesos sin montos. No usar como gasto real."
+    },
+    {
+      "record_type": "contract",
+      "cuce": "24-FIRE-AERO-000003-1-1",
+      "entity_name": "Ministerio de Defensa",
+      "supplier_name": "SkyTank Bolivia S.R.L.",
+      "supplier_nit": "156789012",
+      "object_description": "Alquiler de avión cisterna para descarga de agua en incendios forestales",
+      "modality": "Contratación por Desastre",
+      "amount": "15200000.00",
+      "contract_date": "2024-08-20",
+      "status": "Adjudicado",
+      "department": "Beni",
+      "is_synthetic": true,
+      "quality_grade": "E",
+      "warning": "PLACEHOLDER — montos/CUCEs/proveedores NO verificados en SICOES live. MINDEF RPC solo confirma 4 procesos sin montos. No usar como gasto real."
+    },
+    {
+      "record_type": "contract",
+      "cuce": "24-FIRE-AERO-000004-1-1",
+      "entity_name": "Ministerio de Defensa",
+      "supplier_name": "Guardian Air Ops S.A.",
+      "supplier_nit": "167890123",
+      "object_description": "Alquiler de aeronave Sistema Guardian para operaciones aéreas contra incendios",
+      "modality": "Contratación por Emergencia",
+      "amount": "11000000.00",
+      "contract_date": "2024-09-05",
+      "status": "Adjudicado",
+      "department": "Santa Cruz",
+      "is_synthetic": true,
+      "quality_grade": "E",
+      "warning": "PLACEHOLDER — montos/CUCEs/proveedores NO verificados en SICOES live. MINDEF RPC solo confirma 4 procesos sin montos. No usar como gasto real."
+    },
+    {
+      "record_type": "contract",
+      "cuce": "24-EMERG-GEN-000099-1-1",
+      "entity_name": "Ministerio de Defensa",
+      "supplier_name": "Logística Nacional S.R.L.",
+      "object_description": "Contratación por emergencia y desastres — ayuda humanitaria general",
+      "modality": "Emergencia / Desastre",
+      "amount": "5000000.00",
+      "contract_date": "2024-06-10",
+      "status": "Adjudicado",
+      "is_synthetic": true,
+      "quality_grade": "E",
+      "warning": "PLACEHOLDER — montos/CUCEs/proveedores NO verificados en SICOES live. MINDEF RPC solo confirma 4 procesos sin montos. No usar como gasto real."
+    }
+  ],
+  "meta": {
+    "synthetic": true,
+    "reason": "Bridge until LIVE_SCRAPE + PROXY_URL unlocks real SICOES CUCEs",
+    "confirmed_by_mindef_rpc": {
+      "procesos": 4,
+      "sha256": "86a38097ec9854c97386a1f7f5362c7b502c95720be9d5737c40929155809c14",
+      "page": 28
+    }
+  }
+}

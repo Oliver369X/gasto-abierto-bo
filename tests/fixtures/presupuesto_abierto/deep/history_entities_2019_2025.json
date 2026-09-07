@@ -1,0 +1,760 @@
+{
+  "series": [
+    {
+      "entidad": "Ministerio de Educación",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2019,
+      "presupuesto_inicial": "80817281.40",
+      "presupuesto_vigente": "82544312.22",
+      "ejecucion": "57968704.43"
+    },
+    {
+      "entidad": "Ministerio de Salud",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2019,
+      "presupuesto_inicial": "7125115.11",
+      "presupuesto_vigente": "7385727.46",
+      "ejecucion": "6225080.68"
+    },
+    {
+      "entidad": "Ministerio de Obras Públicas",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2019,
+      "presupuesto_inicial": "68735976.78",
+      "presupuesto_vigente": "71268403.23",
+      "ejecucion": "32435279.19"
+    },
+    {
+      "entidad": "Ministerio de Defensa",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2019,
+      "presupuesto_inicial": "59269280.97",
+      "presupuesto_vigente": "64680841.71",
+      "ejecucion": "33433135.34"
+    },
+    {
+      "entidad": "GAD Santa Cruz",
+      "nivel": "departamental",
+      "departamento": "Santa Cruz",
+      "gestion": 2019,
+      "presupuesto_inicial": "109524382.92",
+      "presupuesto_vigente": "119648729.62",
+      "ejecucion": "100331079.29"
+    },
+    {
+      "entidad": "GAD La Paz",
+      "nivel": "departamental",
+      "departamento": "La Paz",
+      "gestion": 2019,
+      "presupuesto_inicial": "107184446.21",
+      "presupuesto_vigente": "116441352.15",
+      "ejecucion": "69283635.74"
+    },
+    {
+      "entidad": "GAD Cochabamba",
+      "nivel": "departamental",
+      "departamento": "Cochabamba",
+      "gestion": 2019,
+      "presupuesto_inicial": "36291195.26",
+      "presupuesto_vigente": "41921699.44",
+      "ejecucion": "18717825.48"
+    },
+    {
+      "entidad": "GAM Santa Cruz de la Sierra",
+      "nivel": "municipal",
+      "departamento": "Santa Cruz",
+      "gestion": 2019,
+      "presupuesto_inicial": "48378174.26",
+      "presupuesto_vigente": "52339185.33",
+      "ejecucion": "39126164.39"
+    },
+    {
+      "entidad": "GAM La Paz",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2019,
+      "presupuesto_inicial": "49217964.12",
+      "presupuesto_vigente": "51052009.30",
+      "ejecucion": "18992280.60"
+    },
+    {
+      "entidad": "GAM Cochabamba",
+      "nivel": "municipal",
+      "departamento": "Cochabamba",
+      "gestion": 2019,
+      "presupuesto_inicial": "13430545.67",
+      "presupuesto_vigente": "15126876.17",
+      "ejecucion": "6346525.69"
+    },
+    {
+      "entidad": "GAM El Alto",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2019,
+      "presupuesto_inicial": "91941431.85",
+      "presupuesto_vigente": "93843011.49",
+      "ejecucion": "79293245.83"
+    },
+    {
+      "entidad": "YPFB",
+      "nivel": "empresa_publica",
+      "departamento": "La Paz",
+      "gestion": 2019,
+      "presupuesto_inicial": "5031804.54",
+      "presupuesto_vigente": "5132372.76",
+      "ejecucion": "3218951.35"
+    },
+    {
+      "entidad": "Ministerio de Educación",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2020,
+      "presupuesto_inicial": "10422030.34",
+      "presupuesto_vigente": "11233469.82",
+      "ejecucion": "8128317.73"
+    },
+    {
+      "entidad": "Ministerio de Salud",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2020,
+      "presupuesto_inicial": "57110344.31",
+      "presupuesto_vigente": "62326706.77",
+      "ejecucion": "23744422.56"
+    },
+    {
+      "entidad": "Ministerio de Obras Públicas",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2020,
+      "presupuesto_inicial": "31056548.49",
+      "presupuesto_vigente": "35711467.40",
+      "ejecucion": "18670579.64"
+    },
+    {
+      "entidad": "Ministerio de Defensa",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2020,
+      "presupuesto_inicial": "98081294.58",
+      "presupuesto_vigente": "106297361.00",
+      "ejecucion": "39045323.68"
+    },
+    {
+      "entidad": "GAD Santa Cruz",
+      "nivel": "departamental",
+      "departamento": "Santa Cruz",
+      "gestion": 2020,
+      "presupuesto_inicial": "75121012.03",
+      "presupuesto_vigente": "77452561.86",
+      "ejecucion": "60093095.55"
+    },
+    {
+      "entidad": "GAD La Paz",
+      "nivel": "departamental",
+      "departamento": "La Paz",
+      "gestion": 2020,
+      "presupuesto_inicial": "34709383.02",
+      "presupuesto_vigente": "40736265.92",
+      "ejecucion": "24229703.35"
+    },
+    {
+      "entidad": "GAD Cochabamba",
+      "nivel": "departamental",
+      "departamento": "Cochabamba",
+      "gestion": 2020,
+      "presupuesto_inicial": "30106904.82",
+      "presupuesto_vigente": "30840575.84",
+      "ejecucion": "12893725.27"
+    },
+    {
+      "entidad": "GAM Santa Cruz de la Sierra",
+      "nivel": "municipal",
+      "departamento": "Santa Cruz",
+      "gestion": 2020,
+      "presupuesto_inicial": "107892472.05",
+      "presupuesto_vigente": "113911985.37",
+      "ejecucion": "50392688.76"
+    },
+    {
+      "entidad": "GAM La Paz",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2020,
+      "presupuesto_inicial": "100331278.99",
+      "presupuesto_vigente": "112255101.89",
+      "ejecucion": "86800918.30"
+    },
+    {
+      "entidad": "GAM Cochabamba",
+      "nivel": "municipal",
+      "departamento": "Cochabamba",
+      "gestion": 2020,
+      "presupuesto_inicial": "48684230.73",
+      "presupuesto_vigente": "52781389.44",
+      "ejecucion": "33428136.03"
+    },
+    {
+      "entidad": "GAM El Alto",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2020,
+      "presupuesto_inicial": "50149075.22",
+      "presupuesto_vigente": "57530444.36",
+      "ejecucion": "26715195.13"
+    },
+    {
+      "entidad": "YPFB",
+      "nivel": "empresa_publica",
+      "departamento": "La Paz",
+      "gestion": 2020,
+      "presupuesto_inicial": "71114995.01",
+      "presupuesto_vigente": "73928423.85",
+      "ejecucion": "31930056.40"
+    },
+    {
+      "entidad": "Ministerio de Educación",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2021,
+      "presupuesto_inicial": "12583915.47",
+      "presupuesto_vigente": "13028159.15",
+      "ejecucion": "11238707.99"
+    },
+    {
+      "entidad": "Ministerio de Salud",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2021,
+      "presupuesto_inicial": "42681860.44",
+      "presupuesto_vigente": "44085652.96",
+      "ejecucion": "22497067.32"
+    },
+    {
+      "entidad": "Ministerio de Obras Públicas",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2021,
+      "presupuesto_inicial": "5077420.62",
+      "presupuesto_vigente": "5295004.83",
+      "ejecucion": "4513915.12"
+    },
+    {
+      "entidad": "Ministerio de Defensa",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2021,
+      "presupuesto_inicial": "68034301.38",
+      "presupuesto_vigente": "71691189.15",
+      "ejecucion": "62310852.77"
+    },
+    {
+      "entidad": "GAD Santa Cruz",
+      "nivel": "departamental",
+      "departamento": "Santa Cruz",
+      "gestion": 2021,
+      "presupuesto_inicial": "51994117.57",
+      "presupuesto_vigente": "56352950.20",
+      "ejecucion": "30963915.93"
+    },
+    {
+      "entidad": "GAD La Paz",
+      "nivel": "departamental",
+      "departamento": "La Paz",
+      "gestion": 2021,
+      "presupuesto_inicial": "84067627.74",
+      "presupuesto_vigente": "92730357.93",
+      "ejecucion": "84357859.41"
+    },
+    {
+      "entidad": "GAD Cochabamba",
+      "nivel": "departamental",
+      "departamento": "Cochabamba",
+      "gestion": 2021,
+      "presupuesto_inicial": "104701381.92",
+      "presupuesto_vigente": "105004193.57",
+      "ejecucion": "51796817.90"
+    },
+    {
+      "entidad": "GAM Santa Cruz de la Sierra",
+      "nivel": "municipal",
+      "departamento": "Santa Cruz",
+      "gestion": 2021,
+      "presupuesto_inicial": "47982443.49",
+      "presupuesto_vigente": "49041647.63",
+      "ejecucion": "29251629.16"
+    },
+    {
+      "entidad": "GAM La Paz",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2021,
+      "presupuesto_inicial": "38302418.02",
+      "presupuesto_vigente": "41590277.63",
+      "ejecucion": "37350485.74"
+    },
+    {
+      "entidad": "GAM Cochabamba",
+      "nivel": "municipal",
+      "departamento": "Cochabamba",
+      "gestion": 2021,
+      "presupuesto_inicial": "48756700.13",
+      "presupuesto_vigente": "48841581.90",
+      "ejecucion": "40315609.59"
+    },
+    {
+      "entidad": "GAM El Alto",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2021,
+      "presupuesto_inicial": "69809714.77",
+      "presupuesto_vigente": "79982185.16",
+      "ejecucion": "74295024.93"
+    },
+    {
+      "entidad": "YPFB",
+      "nivel": "empresa_publica",
+      "departamento": "La Paz",
+      "gestion": 2021,
+      "presupuesto_inicial": "19416885.07",
+      "presupuesto_vigente": "19518321.03",
+      "ejecucion": "10719399.89"
+    },
+    {
+      "entidad": "Ministerio de Educación",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2022,
+      "presupuesto_inicial": "16157427.21",
+      "presupuesto_vigente": "16541929.25",
+      "ejecucion": "6779329.55"
+    },
+    {
+      "entidad": "Ministerio de Salud",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2022,
+      "presupuesto_inicial": "93498220.54",
+      "presupuesto_vigente": "109700792.94",
+      "ejecucion": "47883655.59"
+    },
+    {
+      "entidad": "Ministerio de Obras Públicas",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2022,
+      "presupuesto_inicial": "104683402.38",
+      "presupuesto_vigente": "105157291.71",
+      "ejecucion": "41526293.65"
+    },
+    {
+      "entidad": "Ministerio de Defensa",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2022,
+      "presupuesto_inicial": "84415718.89",
+      "presupuesto_vigente": "94875408.50",
+      "ejecucion": "68685587.11"
+    },
+    {
+      "entidad": "GAD Santa Cruz",
+      "nivel": "departamental",
+      "departamento": "Santa Cruz",
+      "gestion": 2022,
+      "presupuesto_inicial": "43714920.41",
+      "presupuesto_vigente": "50710582.25",
+      "ejecucion": "27745755.18"
+    },
+    {
+      "entidad": "GAD La Paz",
+      "nivel": "departamental",
+      "departamento": "La Paz",
+      "gestion": 2022,
+      "presupuesto_inicial": "76776112.44",
+      "presupuesto_vigente": "82551111.94",
+      "ejecucion": "76152059.77"
+    },
+    {
+      "entidad": "GAD Cochabamba",
+      "nivel": "departamental",
+      "departamento": "Cochabamba",
+      "gestion": 2022,
+      "presupuesto_inicial": "75780439.46",
+      "presupuesto_vigente": "77081905.59",
+      "ejecucion": "49545820.15"
+    },
+    {
+      "entidad": "GAM Santa Cruz de la Sierra",
+      "nivel": "municipal",
+      "departamento": "Santa Cruz",
+      "gestion": 2022,
+      "presupuesto_inicial": "63359866.45",
+      "presupuesto_vigente": "67216841.46",
+      "ejecucion": "32994203.04"
+    },
+    {
+      "entidad": "GAM La Paz",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2022,
+      "presupuesto_inicial": "74758358.33",
+      "presupuesto_vigente": "83705951.06",
+      "ejecucion": "40722256.16"
+    },
+    {
+      "entidad": "GAM Cochabamba",
+      "nivel": "municipal",
+      "departamento": "Cochabamba",
+      "gestion": 2022,
+      "presupuesto_inicial": "15343603.91",
+      "presupuesto_vigente": "15393623.04",
+      "ejecucion": "12410674.72"
+    },
+    {
+      "entidad": "GAM El Alto",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2022,
+      "presupuesto_inicial": "74351079.65",
+      "presupuesto_vigente": "85947445.37",
+      "ejecucion": "38660782.93"
+    },
+    {
+      "entidad": "YPFB",
+      "nivel": "empresa_publica",
+      "departamento": "La Paz",
+      "gestion": 2022,
+      "presupuesto_inicial": "33694055.19",
+      "presupuesto_vigente": "39438599.23",
+      "ejecucion": "21479239.22"
+    },
+    {
+      "entidad": "Ministerio de Educación",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2023,
+      "presupuesto_inicial": "10351514.89",
+      "presupuesto_vigente": "11453711.23",
+      "ejecucion": "6968576.19"
+    },
+    {
+      "entidad": "Ministerio de Salud",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2023,
+      "presupuesto_inicial": "30165066.95",
+      "presupuesto_vigente": "33082704.70",
+      "ejecucion": "25112426.86"
+    },
+    {
+      "entidad": "Ministerio de Obras Públicas",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2023,
+      "presupuesto_inicial": "22525624.78",
+      "presupuesto_vigente": "25706541.91",
+      "ejecucion": "18398045.36"
+    },
+    {
+      "entidad": "Ministerio de Defensa",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2023,
+      "presupuesto_inicial": "46663985.49",
+      "presupuesto_vigente": "48992594.34",
+      "ejecucion": "31776613.91"
+    },
+    {
+      "entidad": "GAD Santa Cruz",
+      "nivel": "departamental",
+      "departamento": "Santa Cruz",
+      "gestion": 2023,
+      "presupuesto_inicial": "63763441.34",
+      "presupuesto_vigente": "72063070.02",
+      "ejecucion": "52803694.16"
+    },
+    {
+      "entidad": "GAD La Paz",
+      "nivel": "departamental",
+      "departamento": "La Paz",
+      "gestion": 2023,
+      "presupuesto_inicial": "54959587.37",
+      "presupuesto_vigente": "57850607.41",
+      "ejecucion": "51449155.33"
+    },
+    {
+      "entidad": "GAD Cochabamba",
+      "nivel": "departamental",
+      "departamento": "Cochabamba",
+      "gestion": 2023,
+      "presupuesto_inicial": "52252651.54",
+      "presupuesto_vigente": "58504124.39",
+      "ejecucion": "39663390.79"
+    },
+    {
+      "entidad": "GAM Santa Cruz de la Sierra",
+      "nivel": "municipal",
+      "departamento": "Santa Cruz",
+      "gestion": 2023,
+      "presupuesto_inicial": "13383269.01",
+      "presupuesto_vigente": "13494118.53",
+      "ejecucion": "12719434.91"
+    },
+    {
+      "entidad": "GAM La Paz",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2023,
+      "presupuesto_inicial": "39178314.87",
+      "presupuesto_vigente": "39402738.65",
+      "ejecucion": "30111104.28"
+    },
+    {
+      "entidad": "GAM Cochabamba",
+      "nivel": "municipal",
+      "departamento": "Cochabamba",
+      "gestion": 2023,
+      "presupuesto_inicial": "51513136.92",
+      "presupuesto_vigente": "57536118.46",
+      "ejecucion": "54637686.97"
+    },
+    {
+      "entidad": "GAM El Alto",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2023,
+      "presupuesto_inicial": "89313471.04",
+      "presupuesto_vigente": "103133577.75",
+      "ejecucion": "59695630.88"
+    },
+    {
+      "entidad": "YPFB",
+      "nivel": "empresa_publica",
+      "departamento": "La Paz",
+      "gestion": 2023,
+      "presupuesto_inicial": "41392217.24",
+      "presupuesto_vigente": "46280303.12",
+      "ejecucion": "35615814.75"
+    },
+    {
+      "entidad": "Ministerio de Educación",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2024,
+      "presupuesto_inicial": "7331258.27",
+      "presupuesto_vigente": "7523053.75",
+      "ejecucion": "4419669.53"
+    },
+    {
+      "entidad": "Ministerio de Salud",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2024,
+      "presupuesto_inicial": "5811217.89",
+      "presupuesto_vigente": "5931266.06",
+      "ejecucion": "4845767.09"
+    },
+    {
+      "entidad": "Ministerio de Obras Públicas",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2024,
+      "presupuesto_inicial": "115396129.80",
+      "presupuesto_vigente": "116964323.94",
+      "ejecucion": "93232647.71"
+    },
+    {
+      "entidad": "Ministerio de Defensa",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2024,
+      "presupuesto_inicial": "99309191.97",
+      "presupuesto_vigente": "100776473.46",
+      "ejecucion": "82177629.86"
+    },
+    {
+      "entidad": "GAD Santa Cruz",
+      "nivel": "departamental",
+      "departamento": "Santa Cruz",
+      "gestion": 2024,
+      "presupuesto_inicial": "30528824.47",
+      "presupuesto_vigente": "31463614.96",
+      "ejecucion": "15146669.93"
+    },
+    {
+      "entidad": "GAD La Paz",
+      "nivel": "departamental",
+      "departamento": "La Paz",
+      "gestion": 2024,
+      "presupuesto_inicial": "23845372.02",
+      "presupuesto_vigente": "26865178.77",
+      "ejecucion": "21582044.49"
+    },
+    {
+      "entidad": "GAD Cochabamba",
+      "nivel": "departamental",
+      "departamento": "Cochabamba",
+      "gestion": 2024,
+      "presupuesto_inicial": "88794662.19",
+      "presupuesto_vigente": "93259139.07",
+      "ejecucion": "40294247.09"
+    },
+    {
+      "entidad": "GAM Santa Cruz de la Sierra",
+      "nivel": "municipal",
+      "departamento": "Santa Cruz",
+      "gestion": 2024,
+      "presupuesto_inicial": "15270036.32",
+      "presupuesto_vigente": "16173851.93",
+      "ejecucion": "6043417.10"
+    },
+    {
+      "entidad": "GAM La Paz",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2024,
+      "presupuesto_inicial": "81815573.64",
+      "presupuesto_vigente": "95690205.66",
+      "ejecucion": "54439759.84"
+    },
+    {
+      "entidad": "GAM Cochabamba",
+      "nivel": "municipal",
+      "departamento": "Cochabamba",
+      "gestion": 2024,
+      "presupuesto_inicial": "19839718.07",
+      "presupuesto_vigente": "20112357.74",
+      "ejecucion": "10981980.37"
+    },
+    {
+      "entidad": "GAM El Alto",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2024,
+      "presupuesto_inicial": "46455205.78",
+      "presupuesto_vigente": "52782855.74",
+      "ejecucion": "43382634.86"
+    },
+    {
+      "entidad": "YPFB",
+      "nivel": "empresa_publica",
+      "departamento": "La Paz",
+      "gestion": 2024,
+      "presupuesto_inicial": "95729796.47",
+      "presupuesto_vigente": "105792968.62",
+      "ejecucion": "68879353.54"
+    },
+    {
+      "entidad": "Ministerio de Educación",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2025,
+      "presupuesto_inicial": "31786496.10",
+      "presupuesto_vigente": "36340645.33",
+      "ejecucion": "32649503.17"
+    },
+    {
+      "entidad": "Ministerio de Salud",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2025,
+      "presupuesto_inicial": "113025913.53",
+      "presupuesto_vigente": "113581598.85",
+      "ejecucion": "59867142.21"
+    },
+    {
+      "entidad": "Ministerio de Obras Públicas",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2025,
+      "presupuesto_inicial": "102009504.02",
+      "presupuesto_vigente": "105095650.32",
+      "ejecucion": "66315232.74"
+    },
+    {
+      "entidad": "Ministerio de Defensa",
+      "nivel": "nacional",
+      "departamento": "La Paz",
+      "gestion": 2025,
+      "presupuesto_inicial": "13155704.06",
+      "presupuesto_vigente": "13659426.50",
+      "ejecucion": "6629859.69"
+    },
+    {
+      "entidad": "GAD Santa Cruz",
+      "nivel": "departamental",
+      "departamento": "Santa Cruz",
+      "gestion": 2025,
+      "presupuesto_inicial": "78734465.87",
+      "presupuesto_vigente": "82777228.34",
+      "ejecucion": "48710003.17"
+    },
+    {
+      "entidad": "GAD La Paz",
+      "nivel": "departamental",
+      "departamento": "La Paz",
+      "gestion": 2025,
+      "presupuesto_inicial": "95470192.78",
+      "presupuesto_vigente": "102260615.40",
+      "ejecucion": "41331871.97"
+    },
+    {
+      "entidad": "GAD Cochabamba",
+      "nivel": "departamental",
+      "departamento": "Cochabamba",
+      "gestion": 2025,
+      "presupuesto_inicial": "44818021.03",
+      "presupuesto_vigente": "50376074.44",
+      "ejecucion": "21367175.29"
+    },
+    {
+      "entidad": "GAM Santa Cruz de la Sierra",
+      "nivel": "municipal",
+      "departamento": "Santa Cruz",
+      "gestion": 2025,
+      "presupuesto_inicial": "45603299.46",
+      "presupuesto_vigente": "47387350.74",
+      "ejecucion": "24039453.52"
+    },
+    {
+      "entidad": "GAM La Paz",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2025,
+      "presupuesto_inicial": "46171140.80",
+      "presupuesto_vigente": "48817932.42",
+      "ejecucion": "27967021.41"
+    },
+    {
+      "entidad": "GAM Cochabamba",
+      "nivel": "municipal",
+      "departamento": "Cochabamba",
+      "gestion": 2025,
+      "presupuesto_inicial": "76057310.43",
+      "presupuesto_vigente": "82606203.87",
+      "ejecucion": "59619220.24"
+    },
+    {
+      "entidad": "GAM El Alto",
+      "nivel": "municipal",
+      "departamento": "La Paz",
+      "gestion": 2025,
+      "presupuesto_inicial": "102027340.94",
+      "presupuesto_vigente": "113464450.65",
+      "ejecucion": "81246142.45"
+    },
+    {
+      "entidad": "YPFB",
+      "nivel": "empresa_publica",
+      "departamento": "La Paz",
+      "gestion": 2025,
+      "presupuesto_inicial": "75133308.04",
+      "presupuesto_vigente": "79480023.77",
+      "ejecucion": "49958005.22"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+services/web/.next/
+services/web/node_modules/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local data / secrets
+*.dump
+*.sql.bak
+.minio-data/
+postgres-data/
+redis-data/
+data/extracted/
+data/raw/
+
+# Playwright
+test-results/
+playwright-report/
+
+# Keep qa-artifacts structure but ignore contents
+qa-artifacts/**
+!qa-artifacts/.gitkeep
+
+# Accidental pip/CLI dumps
+/2.0.36
