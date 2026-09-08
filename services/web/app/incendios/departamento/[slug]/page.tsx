@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { apiGet, formatDate, formatMoney } from "@/lib/api";
+import { apiGet, apiPublicUrl, formatDate, formatMoney } from "@/lib/api";
 import { attributionLabel, cycleLabel } from "@/lib/labels";
 
 type Territory = {
@@ -117,7 +117,7 @@ export default async function DepartamentoIncendiosPage({
             <h3>Datos</h3>
             <p>
               <a
-                href={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8010"}/v1/fire/export.csv?year=${year}&territory=${encodeURIComponent(slug)}`}
+                href={apiPublicUrl(`/v1/fire/export.csv?year=${year}&territory=${encodeURIComponent(slug)}`)}
               >
                 Descargar CSV del departamento
               </a>

@@ -111,19 +111,25 @@ def main() -> None:
         n = load_presupuesto_history(session)
         seed_log("history", f"presupuesto total rows={n}")
 
-        sample_csv = FIXTURES / "presupuesto_abierto" / "sample_export.csv"
-        if sample_csv.exists():
-            seed_log("history", "presupuesto CSV sample_export")
-            result = run_ingest(
-                session,
-                "presupuesto_abierto",
-                fixture_path=str(sample_csv),
-                live=False,
-                skip_storage=skip_storage,
-                skip_alerts=True,
-            )
-            session.commit()
-            seed_log("history", f"presupuesto CSV rows={result.get('records', 0)}")
+        seed_log("history", "backfill entity geo metadata")
+        from common.entity_geo import infer_department, infer_entity_level
+        from schema.models import AdminLevel, Entity
+        from sqlalchemy import select
+
+        level_map = {
+            "nacional": AdminLevel.nacional,
+            "departamental": AdminLevel.departamental,
+            "municipal": AdminLevel.municipal,
+        }
+        for ent in session.scalars(select(Entity)).all():
+            if not ent.department:
+                inferred = infer_department(ent.name)
+                if inferred:
+                    ent.department = inferred
+            inferred_level = infer_entity_level(ent.name)
+            if inferred_level in level_map and ent.level == AdminLevel.nacional and inferred_level != "nacional":
+                ent.level = level_map[inferred_level]
+        session.commit()
 
         seed_log("history", "reconcile cross-source")
         from worker.reconcile import reconcile_all

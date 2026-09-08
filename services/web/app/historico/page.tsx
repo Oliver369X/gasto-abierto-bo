@@ -36,6 +36,11 @@ function pct(v?: number) {
   return `${v.toFixed(1)}%`;
 }
 
+function compareDeltaLabel(v?: number) {
+  if (v === undefined || v === null) return "—";
+  return pct(v);
+}
+
 export default async function HistoricoPage({
   searchParams,
 }: {
@@ -51,8 +56,10 @@ export default async function HistoricoPage({
   }
 
   const sorted = [...years].map((y) => y.year).sort((x, y) => y - x);
-  const yearA = Number(sp.a) || sorted[1] || sorted[0] || 2024;
-  const yearB = Number(sp.b) || sorted[0] || 2025;
+  const withData = years.filter((y) => y.contracts > 0 || y.budget_lines > 0);
+  const dataYears = withData.map((y) => y.year).sort((a, b) => b - a);
+  const yearB = Number(sp.b) || dataYears[0] || sorted[0] || 2025;
+  const yearA = Number(sp.a) || dataYears[1] || dataYears[0] || yearB - 1;
 
   let compare: Compare | null = null;
   let compareError = false;
@@ -100,21 +107,21 @@ export default async function HistoricoPage({
           <article className="panel">
             <h3>Contratos {compare.year_a} vs {compare.year_b}</h3>
             <p>
-              {compare.contracts_a} → {compare.contracts_b} · Δ {pct(compare.contracts_delta_pct)}
+              {compare.contracts_a} → {compare.contracts_b} · Δ {compareDeltaLabel(compare.contracts_delta_pct)}
             </p>
           </article>
           <article className="panel">
             <h3>Monto contratos</h3>
             <p>
               {formatMoney(compare.amount_a)} → {formatMoney(compare.amount_b)} · Δ{" "}
-              {pct(compare.amount_delta_pct)}
+              {compareDeltaLabel(compare.amount_delta_pct)}
             </p>
           </article>
           <article className="panel">
             <h3>Presupuesto vigente</h3>
             <p>
               {formatMoney(compare.budget_current_a)} → {formatMoney(compare.budget_current_b)} · Δ{" "}
-              {pct(compare.budget_delta_pct)}
+              {compareDeltaLabel(compare.budget_delta_pct)}
             </p>
           </article>
         </div>

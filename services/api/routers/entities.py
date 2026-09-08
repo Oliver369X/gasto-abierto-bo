@@ -165,6 +165,8 @@ def history_compare(
     def count_delta_pct(a: int, b: int) -> float | None:
         if a == 0 and b == 0:
             return 0.0
+        if a == 0 or b == 0:
+            return None
         base = max(abs(a), abs(b))
         return float(abs(a - b) / base * 100)
 

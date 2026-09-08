@@ -62,9 +62,14 @@ def main() -> None:
             raise SystemExit("publish: expected >=80% claims with evidence after harden")
         if findings < 20:
             raise SystemExit("publish: expected >=20 audit findings after harden")
-        print("Seed publish OK", flush=True)
     finally:
         session.close()
+
+    seed_log("publish", "fire demo corpus (AURA incendios)")
+    from worker.gasto.seeds import fire_demo
+
+    fire_demo.main()
+    print("Seed publish OK", flush=True)
 
 
 if __name__ == "__main__":

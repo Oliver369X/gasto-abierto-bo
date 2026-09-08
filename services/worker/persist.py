@@ -12,6 +12,7 @@ from common.data_quality import classify_origin
 from common.dates import parse_date_flexible
 from common.cuce import normalize_cuce
 from common.discrepancy import build_discrepancy
+from common.entity_geo import infer_department, infer_entity_level
 from common.fuzzy import canonicalize_name, best_match
 from common.money import parse_money
 from common.scd2 import upsert_versioned
@@ -279,7 +280,18 @@ def _get_or_create_entity_cached(
         ent = cache[canon]
         if department and not ent.department:
             ent.department = department
+        elif not ent.department:
+            inferred = infer_department(name, level)
+            if inferred:
+                ent.department = inferred
+        inferred_level = infer_entity_level(name)
+        if inferred_level and ent.level == AdminLevel.nacional and inferred_level != "nacional":
+            ent.level = _level(inferred_level)
         return ent
+    if not level:
+        level = infer_entity_level(name)
+    if not department:
+        department = infer_department(name, level)
     q = classify_origin(source_id=source_id)
     ent = Entity(
         name=name,

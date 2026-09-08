@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { apiGet, formatDate, formatMoney } from "@/lib/api";
+import { apiGet, apiPublicUrl, formatDate, formatMoney } from "@/lib/api";
 import { attributionLabel, cycleLabel, eventTypeLabel } from "@/lib/labels";
 
 type Ledger = {
@@ -254,7 +254,7 @@ export default async function IncendiosPage({
           </Link>
           <a
             className="btn btn-ghost"
-            href={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8010"}/v1/fire/export.csv?year=${year}`}
+            href={apiPublicUrl(`/v1/fire/export.csv?year=${year}`)}
           >
             Descargar CSV
           </a>
@@ -278,8 +278,10 @@ export default async function IncendiosPage({
       {!ledger && (
         <section className="section" style={{ paddingTop: 0 }}>
           <p className="error-box">
-            No hay datos del ledger para {year}. Levantá el stack y corré el seed:{" "}
-            <code>python -m scripts.cli fire pipeline --phase f1</code>
+            Aún no hay datos del ledger de incendios para {year}. Si administrás este
+            despliegue, cargá el corpus de demostración documentado en{" "}
+            <Link href="/metodologia#incendios">metodología · incendios</Link> y{" "}
+            <Link href="/fuentes">fuentes</Link>.
           </p>
         </section>
       )}

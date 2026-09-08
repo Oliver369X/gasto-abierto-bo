@@ -26,7 +26,7 @@ def register(parser: argparse.ArgumentParser) -> None:
     p_seed.add_argument(
         "--profile",
         required=True,
-        choices=["demo", "history", "deep", "cross", "real", "publish"],
+        choices=["demo", "history", "deep", "cross", "real", "publish", "fire_demo"],
     )
     p_seed.set_defaults(handler=_cmd_seed)
 

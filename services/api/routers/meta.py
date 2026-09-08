@@ -142,17 +142,22 @@ def search(
 
 @router.get("/v1/categories", response_model=list[CategoryOut], tags=["meta"])
 @limiter.limit(f"{RATE}/minute")
-def list_categories(request: Request, db: Session = Depends(get_db)) -> list[CategoryOut]:
-    counts = dict(
-        db.execute(
-            select(Contract.category, func.count(Contract.id))
-            .where(
-                public_contract_filter(Contract),
-                Contract.category.is_not(None),
-            )
-            .group_by(Contract.category)
-        ).all()
+def list_categories(
+    request: Request,
+    db: Session = Depends(get_db),
+    year: Optional[int] = None,
+) -> list[CategoryOut]:
+    stmt = (
+        select(Contract.category, func.count(Contract.id))
+        .where(
+            public_contract_filter(Contract),
+            Contract.category.is_not(None),
+        )
+        .group_by(Contract.category)
     )
+    if year is not None:
+        stmt = stmt.where(func.extract("year", Contract.contract_date) == year)
+    counts = dict(db.execute(stmt).all())
     out: list[CategoryOut] = []
     for cid in CATEGORIES:
         out.append(

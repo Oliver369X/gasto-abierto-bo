@@ -8,3 +8,5 @@ def test_delta_pct():
     ) < 0.01
     assert delta_pct(None, Decimal("1")) is None
     assert delta_pct(Decimal("0"), Decimal("0")) == 0.0
+    assert delta_pct(Decimal("0"), Decimal("100")) is None
+    assert delta_pct(Decimal("50"), Decimal("0")) is None

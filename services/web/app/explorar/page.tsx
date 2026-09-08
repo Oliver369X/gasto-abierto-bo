@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { apiGet, formatMoney, qualityBadgeLabel } from "@/lib/api";
-import { searchTypeLabel } from "@/lib/labels";
+import { entityLevelLabel, searchTypeLabel } from "@/lib/labels";
 import { Pager } from "@/app/components/Pager";
 
 type Contract = {
@@ -54,7 +54,7 @@ export default async function ExplorarPage({
   const jobs: Promise<unknown>[] = [
     apiGet<Contract[]>(`/v1/contracts?${params}`),
     apiGet<Entity[]>(`/v1/entities?${eParams}`),
-    apiGet<Category[]>("/v1/categories"),
+    apiGet<Category[]>(`/v1/categories${year ? `?year=${year}` : ""}`),
   ];
   if (q.length >= 2) {
     jobs.push(apiGet<{ hits: SearchHit[] }>(`/v1/search?q=${encodeURIComponent(q)}&limit=12`));
@@ -166,7 +166,7 @@ export default async function ExplorarPage({
                     <td>
                       <Link href={`/entidad/${e.id}`}>{e.name}</Link>
                     </td>
-                    <td>{e.level}</td>
+                    <td>{entityLevelLabel(e.level)}</td>
                   </tr>
                 ))}
               </tbody>

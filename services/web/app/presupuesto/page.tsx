@@ -79,9 +79,8 @@ export default async function PresupuestoPage({
 
       {apiDown && (
         <p className="error-box">
-          No pudimos cargar datos presupuestarios. Levantá el stack con{" "}
-          <code>docker compose up -d</code> y ejecutá{" "}
-          <code>python -m scripts.cli gasto seed --profile history</code>.
+          No pudimos cargar datos presupuestarios. Verificá que la API esté activa o consultá{" "}
+          <Link href="/fuentes">cómo cargar datos</Link>.
         </p>
       )}
 
@@ -185,11 +184,10 @@ export default async function PresupuestoPage({
       </div>
 
       <p style={{ marginTop: "1.5rem", color: "var(--muted)" }}>
-        Actualizar datos oficiales:{" "}
-        <code>python -m scripts.cli gasto fetch-presupuesto</code> (URLs en{" "}
-        <code>PRESUPUESTO_ABIERTO_DOWNLOAD_URLS</code>) ·{" "}
+        Fuente: Presupuesto Abierto (MEFP).{" "}
         <Link href="/historico">Serie histórica</Link> ·{" "}
-        <Link href="/metodologia">Metodología</Link>
+        <Link href="/metodologia#presupuesto">Metodología</Link> ·{" "}
+        <Link href="/fuentes">Actualización de datos</Link>
       </p>
     </section>
   );

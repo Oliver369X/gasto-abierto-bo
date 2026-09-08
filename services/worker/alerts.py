@@ -162,6 +162,7 @@ def run_alert_rules(session: Session, *, run_id: int | None = None) -> list[Aler
         ).all()
     )
     budgets = [b for b in budgets if is_public_row(b)]
+    seen_zero_exec: set[tuple[int, int]] = set()
     for b in budgets:
         past_q3 = (b.year < today.year) or (b.year == today.year and today.month >= 10)
         if not past_q3:
@@ -169,6 +170,10 @@ def run_alert_rules(session: Session, *, run_id: int | None = None) -> list[Aler
         cur = b.current_amount or Decimal("0")
         exe = b.executed_amount or Decimal("0")
         if cur >= Decimal("1000000") and exe == 0:
+            key = (b.entity_id, b.year)
+            if key in seen_zero_exec:
+                continue
+            seen_zero_exec.add(key)
             en = _name_entity(session, b.entity_id)
             alerts.append(
                 Alert(

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { apiPublicUrl } from "@/lib/api";
 
 type Feature = {
   properties: {
@@ -30,8 +31,7 @@ export default function FireCoverageMap({ year }: { year: number }) {
   useEffect(() => {
     setData(null);
     setError(false);
-    const base = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8010";
-    fetch(`${base}/v1/fire/coverage.geojson?year=${year}`)
+    fetch(apiPublicUrl(`/v1/fire/coverage.geojson?year=${year}`))
       .then((response) => {
         if (!response.ok) throw new Error(`GeoJSON ${response.status}`);
         return response.json();

@@ -14,6 +14,10 @@ def delta_pct(a: Decimal | None, b: Decimal | None) -> float | None:
     """Relative difference |a-b| / max(|a|,|b|) as percent."""
     if a is None or b is None:
         return None
+    if a == 0 and b == 0:
+        return 0.0
+    if a == 0 or b == 0:
+        return None
     base = max(abs(a), abs(b))
     if base == 0:
         return 0.0

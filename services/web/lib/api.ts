@@ -4,10 +4,20 @@ export function apiBase(): string {
     return (
       process.env.API_INTERNAL_URL ||
       process.env.NEXT_PUBLIC_API_URL ||
-      "http://localhost:8010"
+      "http://api:8000"
     );
   }
-  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:8010";
+  return process.env.NEXT_PUBLIC_API_URL || "";
+}
+
+/** Browser-facing API URL (downloads, external links). Uses /api proxy when env unset. */
+export function apiPublicUrl(path: string): string {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  const publicBase = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
+  if (publicBase) {
+    return `${publicBase}${p}`;
+  }
+  return `/api${p}`;
 }
 
 export async function apiGet<T>(path: string): Promise<T> {
@@ -46,9 +56,10 @@ export function formatMoney(v?: string | number | null): string {
 export function qualityBadgeLabel(q?: string | null, isSynthetic?: boolean): string {
   if (isSynthetic || q === "SYNTHETIC" || q === "PLACEHOLDER") return "Sintético";
   if (q === "OFFICIAL_VERIFIED") return "Oficial verificado";
-  if (q === "OFFICIAL_UNVERIFIED") return "Espejo / no verificado";
+  if (q === "OFFICIAL_UNVERIFIED") return "Fuente oficial";
   if (q === "PARTIAL") return "Parcial";
   if (q === "CONFLICTED") return "En conflicto";
   if (q === "INFERRED") return "Inferido";
-  return q || "Sin calidad";
+  if (!q) return "Pendiente";
+  return q;
 }

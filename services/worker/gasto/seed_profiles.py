@@ -12,6 +12,7 @@ PROFILES: dict[str, str] = {
     "cross": "worker.gasto.seeds.cross",
     "real": "worker.gasto.seeds.real",
     "publish": "worker.gasto.seeds.publish",
+    "fire_demo": "worker.gasto.seeds.fire_demo",
 }
 
 

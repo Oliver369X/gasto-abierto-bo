@@ -38,8 +38,10 @@ pip install -e ".[dev]"
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile demo
 # Serie histórica 2019–2025 (presupuesto + contratos + discrepancias):
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile history
-# Product gate G10 (masters, claims, findings, discrepancias):
+# Product gate G10 (masters, claims, findings, discrepancias + incendios AURA):
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile publish
+# Solo ledger incendios (offline):
+docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile fire_demo
 ```
 
 **MinIO opcional (poca RAM):** por defecto `MINIO_ENABLED=0` en `.env`. El stack arranca sin MinIO. Descargas de documentos fallan rápido (503) en lugar de colgar. Para raw lake:

@@ -20,6 +20,13 @@ const RULE: Record<string, string> = {
   fire_large_pool_excluded: "Incendios: fondo grande excluido",
 };
 
+const LEVEL: Record<string, string> = {
+  nacional: "Nacional",
+  departamental: "Departamental",
+  municipal: "Municipal",
+  empresarial: "Empresarial",
+};
+
 const SEVERITY: Record<string, string> = {
   high: "Alta",
   medium: "Media",
@@ -115,6 +122,7 @@ function from(table: Record<string, string>, v?: string | null): string {
   return table[v] ?? table[v.toLowerCase()] ?? humanize(v);
 }
 
+export const entityLevelLabel = (v?: string | null) => from(LEVEL, v);
 export const severityLabel = (v?: string | null) => from(SEVERITY, v);
 export const alertRuleLabel = (v?: string | null) => from(RULE, v);
 export const attributionLabel = (v?: string | null) => from(ATTRIBUTION, v);
