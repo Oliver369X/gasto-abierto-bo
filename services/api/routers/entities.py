@@ -161,12 +161,19 @@ def history_compare(
 ) -> YearCompareOut:
     ca, aa, ba = _year_slice(db, year_a, entity_id)
     cb, ab, bb = _year_slice(db, year_b, entity_id)
+
+    def count_delta_pct(a: int, b: int) -> float | None:
+        if a == 0 and b == 0:
+            return 0.0
+        base = max(abs(a), abs(b))
+        return float(abs(a - b) / base * 100)
+
     return YearCompareOut(
         year_a=year_a,
         year_b=year_b,
         contracts_a=ca,
         contracts_b=cb,
-        contracts_delta_pct=delta_pct(Decimal(ca), Decimal(cb)),
+        contracts_delta_pct=count_delta_pct(ca, cb),
         amount_a=aa,
         amount_b=ab,
         amount_delta_pct=delta_pct(aa, ab),

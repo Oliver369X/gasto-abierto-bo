@@ -21,7 +21,9 @@ jobs:
         run: |
           pytest tests/contract tests/test_common.py tests/test_api_smoke.py \
             tests/test_alerts.py tests/test_history_fixture.py tests/test_fetch_presupuesto.py \
-            tests/test_pipeline_resilience.py -q
+            tests/test_pipeline_resilience.py tests/test_cross_source.py \
+            tests/test_discrepancies_integration.py tests/test_data_quality_g1.py \
+            tests/test_product_gate_g10.py tests/test_fire_classify.py -q
       - name: Verify (offline parts)
         env:
           SKIP_DOCKER: "1"

@@ -276,7 +276,10 @@ def _get_or_create_entity_cached(
 ) -> Entity:
     canon = canonicalize_name(name)
     if canon in cache:
-        return cache[canon]
+        ent = cache[canon]
+        if department and not ent.department:
+            ent.department = department
+        return ent
     q = classify_origin(source_id=source_id)
     ent = Entity(
         name=name,

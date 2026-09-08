@@ -114,6 +114,10 @@ fi
   if echo "$budgets" | grep -q 'lines'; then ok "S13:budgets-totals"; else ko "S13:budgets-totals" "empty — seed history profile"; fi
   history=$(curl -sf "$API/v1/history/years" || true)
   if echo "$history" | grep -q 'year'; then ok "S14:history-years"; else ko "S14:history-years" "empty"; fi
+  discs=$(curl -sf "$API/v1/discrepancies?limit=1" || true)
+  if echo "$discs" | grep -q 'concept'; then ok "S15:discrepancies"; else ko "S15:discrepancies" "empty — seed publish or history+reconcile"; fi
+  gate=$(curl -sf "$API/v1/product-gate" || true)
+  if echo "$gate" | grep -q '"pass":true'; then ok "S16:product-gate"; else ko "S16:product-gate" "fail — run: gasto seed --profile publish"; fi
 fi
 
 # S5 / S6 / presupuesto fixtures

@@ -470,6 +470,42 @@ def backfill_audit_findings(session: Session) -> int:
                 )
             )
             n += 1
+    # Materialize structured findings from cross-source discrepancies when sparse.
+    existing = session.scalar(select(func.count()).select_from(AuditFinding)) or 0
+    if existing < 20:
+        report = session.scalars(select(AuditReport).limit(1)).first()
+        if not report:
+            report = AuditReport(
+                title="Reconciliación cross-source (auto)",
+                year=2024,
+                url="internal://reconcile",
+                findings_summary="Hallazgos derivados de discrepancias entre fuentes.",
+                source_id="harden",
+            )
+            session.add(report)
+            session.flush()
+        discs = list(
+            session.scalars(
+                select(Discrepancy).order_by(Discrepancy.created_at.desc()).limit(40)
+            ).all()
+        )
+        for d in discs:
+            if existing + n >= 20:
+                break
+            session.add(
+                AuditFinding(
+                    audit_report_id=report.id,
+                    title=f"Discrepancia {d.concept[:80]}",
+                    description=(
+                        f"Cruce {d.source_a} vs {d.source_b}: "
+                        f"{d.amount_a} vs {d.amount_b} (refs {d.ref_a}/{d.ref_b})"
+                    ),
+                    severity="medium",
+                    entity_id=d.entity_id,
+                    evidence={"concept": d.concept, "source": "discrepancy_backfill"},
+                )
+            )
+            n += 1
     session.commit()
     return n
 

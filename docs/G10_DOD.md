@@ -7,6 +7,9 @@
 docker compose exec api alembic -c packages/schema/alembic.ini upgrade head
 # o desde host con DATABASE_URL
 
+# Seed publishable (product-gate pass offline)
+docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile publish
+
 # Tests calidad
 cd gasto-abierto-bo
 pytest tests/test_data_quality_g1.py tests/test_product_gate_g10.py -q

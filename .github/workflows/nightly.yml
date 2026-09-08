@@ -5,7 +5,7 @@ on:
     inputs:
       source:
         description: "Source id or 'all'"
-        default: "agetic"
+        default: "sicoes"
         required: true
   schedule:
     - cron: "0 8 * * 1"
@@ -13,7 +13,6 @@ on:
 jobs:
   live:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,27 +20,33 @@ jobs:
           python-version: "3.12"
       - name: Install
         run: pip install -e ".[dev]"
-      - name: Compose
+      - name: Compose (core stack, no MinIO required)
+        env:
+          API_HEALTH_URL: ${{ vars.API_HEALTH_URL }}
+          API_STATS_URL: ${{ vars.API_STATS_URL }}
         run: |
           cp .env.example .env
           echo "LIVE_SCRAPE=1" >> .env
-          docker compose up -d --build postgres redis minio minio-init api
-          for i in $(seq 1 40); do curl -sf http://localhost:8010/v1/health && break; sleep 5; done
-      - name: Ingest live sample
+          echo "MINIO_ENABLED=0" >> .env
+          docker compose up -d --build
+          for i in $(seq 1 40); do curl -sf "${API_HEALTH_URL:-http://127.0.0.1:8010/v1/health}" && break; sleep 5; done  # pragma: allowlist secret
+      - name: Ingest live sample (requires PROXY_URL secret in repo settings)
         env:
-          DATABASE_URL: postgresql+psycopg://gasto:gasto_dev_change_me@localhost:5434/gasto_abierto
           LIVE_SCRAPE: "1"
+          PROXY_URL: ${{ secrets.PROXY_URL }}
           PYTHONPATH: packages:services
-          MINIO_ENDPOINT: localhost:9010
-          MINIO_SECURE: "0"
         run: |
-          SOURCE="${{ github.event.inputs.source || 'agetic' }}"
-          if [ "$SOURCE" = "all" ]; then
-            python scripts/ingest.py --all --sync --live || true
-          else
-            python scripts/ingest.py --source "$SOURCE" --sync --live || true
+          if [ -z "$PROXY_URL" ]; then
+            echo "SKIP live ingest — PROXY_URL secret not configured"
+            exit 0
           fi
-          curl -sf http://localhost:8010/v1/stats
+          SOURCE="${{ github.event.inputs.source || 'sicoes' }}"
+          if [ "$SOURCE" = "all" ]; then
+            docker compose run --rm --entrypoint python worker -m scripts.cli gasto ingest --all --sync --live || true
+          else
+            docker compose run --rm --entrypoint python worker -m scripts.cli gasto ingest --source "$SOURCE" --sync --live || true
+          fi
+          curl -sf "${API_STATS_URL:-http://127.0.0.1:8010/v1/stats}" || true  # pragma: allowlist secret
       - name: Teardown
         if: always()
         run: docker compose down -v

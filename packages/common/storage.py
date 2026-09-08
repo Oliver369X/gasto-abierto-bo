@@ -3,11 +3,16 @@ from __future__ import annotations
 import hashlib
 import io
 import os
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeout
 from functools import lru_cache
 from typing import Optional
 
 from minio import Minio
 from minio.error import S3Error
+
+
+def _connect_timeout_seconds() -> float:
+    return float(os.getenv("MINIO_CONNECT_TIMEOUT_SECONDS", "5"))
 
 
 class ObjectStore:
@@ -30,6 +35,7 @@ class ObjectStore:
         self.secure = secure
         self._client: Minio | None = None
         self.enabled = os.getenv("MINIO_ENABLED", "1") != "0"
+        self._disabled_reason: str | None = None
 
     @property
     def client(self) -> Minio:
@@ -42,15 +48,25 @@ class ObjectStore:
             )
         return self._client
 
+    def _disable(self, reason: str) -> None:
+        self.enabled = False
+        self._disabled_reason = reason
+
+    def _ensure_bucket_impl(self) -> None:
+        if not self.client.bucket_exists(self.bucket):
+            self.client.make_bucket(self.bucket)
+
     def ensure_bucket(self) -> None:
         if not self.enabled:
             return
+        timeout = _connect_timeout_seconds()
         try:
-            if not self.client.bucket_exists(self.bucket):
-                self.client.make_bucket(self.bucket)
-        except Exception:
-            # Offline / CI without MinIO
-            self.enabled = False
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                pool.submit(self._ensure_bucket_impl).result(timeout=timeout)
+        except FuturesTimeout:
+            self._disable(f"MinIO no respondió en {timeout}s ({self.endpoint})")
+        except Exception as exc:  # noqa: BLE001
+            self._disable(f"MinIO no disponible: {exc}")
 
     def put_bytes(
         self,
@@ -79,8 +95,8 @@ class ObjectStore:
             return key
         except S3Error:
             return None
-        except Exception:
-            self.enabled = False
+        except Exception as exc:  # noqa: BLE001
+            self._disable(str(exc))
             return None
 
     def sha256(self, data: bytes) -> str:
@@ -89,29 +105,52 @@ class ObjectStore:
     def get_bytes(self, key: str) -> tuple[Optional[bytes], Optional[str]]:
         if not self.enabled or not key:
             return None, None
+        timeout = _connect_timeout_seconds()
         try:
-            resp = self.client.get_object(self.bucket, key)
-            try:
-                data = resp.read()
-                ctype = resp.headers.get("Content-Type")
-            finally:
-                resp.close()
-                resp.release_conn()
-            return data, ctype
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                return pool.submit(self._get_bytes_impl, key).result(timeout=timeout)
+        except FuturesTimeout:
+            self._disable(f"lectura MinIO timeout ({timeout}s)")
+            return None, None
         except Exception:
             return None, None
+
+    def _get_bytes_impl(self, key: str) -> tuple[Optional[bytes], Optional[str]]:
+        resp = self.client.get_object(self.bucket, key)
+        try:
+            data = resp.read()
+            ctype = resp.headers.get("Content-Type")
+        finally:
+            resp.close()
+            resp.release_conn()
+        return data, ctype
 
     def presigned_get(self, key: str, expires_seconds: int = 3600) -> Optional[str]:
         if not self.enabled or not key:
             return None
+        timeout = _connect_timeout_seconds()
         try:
-            from datetime import timedelta
-
-            return self.client.presigned_get_object(
-                self.bucket, key, expires=timedelta(seconds=expires_seconds)
-            )
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                return pool.submit(self._presigned_get_impl, key, expires_seconds).result(
+                    timeout=timeout
+                )
+        except FuturesTimeout:
+            self._disable(f"presign MinIO timeout ({timeout}s)")
+            return None
         except Exception:
             return None
+
+    def _presigned_get_impl(self, key: str, expires_seconds: int) -> Optional[str]:
+        from datetime import timedelta
+
+        return self.client.presigned_get_object(
+            self.bucket, key, expires=timedelta(seconds=expires_seconds)
+        )
+
+    def status_message(self) -> str:
+        if self.enabled:
+            return "ok"
+        return self._disabled_reason or "MinIO deshabilitado (MINIO_ENABLED=0)"
 
 
 @lru_cache(maxsize=1)

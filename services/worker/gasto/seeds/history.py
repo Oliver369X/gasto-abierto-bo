@@ -63,6 +63,7 @@ def load_presupuesto_history(session) -> int:
                         "entidad": row["entidad"],
                         "nivel": row["nivel"],
                         "gestion": row["gestion"],
+                        "departamento": row.get("departamento"),
                         "presupuesto_inicial": row["presupuesto_inicial"],
                         "presupuesto_vigente": row["presupuesto_vigente"],
                         "ejecucion": row["ejecucion"],
@@ -109,6 +110,27 @@ def main() -> None:
 
         n = load_presupuesto_history(session)
         seed_log("history", f"presupuesto total rows={n}")
+
+        sample_csv = FIXTURES / "presupuesto_abierto" / "sample_export.csv"
+        if sample_csv.exists():
+            seed_log("history", "presupuesto CSV sample_export")
+            result = run_ingest(
+                session,
+                "presupuesto_abierto",
+                fixture_path=str(sample_csv),
+                live=False,
+                skip_storage=skip_storage,
+                skip_alerts=True,
+            )
+            session.commit()
+            seed_log("history", f"presupuesto CSV rows={result.get('records', 0)}")
+
+        seed_log("history", "reconcile cross-source")
+        from worker.reconcile import reconcile_all
+
+        recon = reconcile_all(session)
+        session.commit()
+        seed_log("history", f"reconcile={recon}")
 
         from worker.alerts import run_alert_rules
 

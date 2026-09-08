@@ -616,8 +616,13 @@ def create_fire_router(get_db, limiter, rate: str) -> APIRouter:
             "Ratios solo usan montos atribuidos del ledger (no el pool emergencia/desastre completo).",
             "Coste por operación/incendio requiere alineación numerador-denominador; se calcula solo con gasto de respuesta directo.",
         ]
-        preventive_ratio = (prev / total) if total else None
-        reactive_ratio = (resp / total) if total else None
+        if not rows:
+            notes.append(
+                "Sin datos de incendios para esta gestión — ejecutá: "
+                "python -m scripts.cli fire pipeline --phase all"
+            )
+        preventive_ratio = (prev / total) if total else Decimal("0")
+        reactive_ratio = (resp / total) if total else Decimal("0")
 
         # Top 5 suppliers share of attributed amount
         by_sup: dict[int, Decimal] = {}
@@ -629,7 +634,7 @@ def create_fire_router(get_db, limiter, rate: str) -> APIRouter:
             )
         top5 = sum(sorted(by_sup.values(), reverse=True)[:5], Decimal("0"))
         all_sup = sum(by_sup.values(), Decimal("0"))
-        top5_share = (top5 / all_sup) if all_sup else None
+        top5_share = (top5 / all_sup) if all_sup else Decimal("0")
 
         ops = db.scalars(
             select(OperationalOutput).where(
@@ -660,13 +665,13 @@ def create_fire_router(get_db, limiter, rate: str) -> APIRouter:
 
         return FireMetricsOut(
             year=year,
-            preventive_ratio=preventive_ratio.quantize(Decimal("0.0001")) if preventive_ratio is not None else None,
-            reactive_ratio=reactive_ratio.quantize(Decimal("0.0001")) if reactive_ratio is not None else None,
-            top5_supplier_share=top5_share.quantize(Decimal("0.0001")) if top5_share is not None else None,
+            preventive_ratio=preventive_ratio.quantize(Decimal("0.0001")),
+            reactive_ratio=reactive_ratio.quantize(Decimal("0.0001")),
+            top5_supplier_share=top5_share.quantize(Decimal("0.0001")),
             cost_per_operation=cost_op,
             cost_per_fire_attended=cost_fire,
-            operations_count=ops.value_numeric if ops else None,
-            fires_mitigated=fires.value_numeric if fires else None,
+            operations_count=ops.value_numeric if ops else 0,
+            fires_mitigated=fires.value_numeric if fires else 0,
             notes=notes,
         )
 

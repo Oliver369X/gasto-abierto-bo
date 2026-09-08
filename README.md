@@ -36,8 +36,17 @@ pip install -e ".[dev]"
 
 ```bash
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile demo
-# Serie histórica 2019–2025 (presupuesto + contratos):
+# Serie histórica 2019–2025 (presupuesto + contratos + discrepancias):
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile history
+# Product gate G10 (masters, claims, findings, discrepancias):
+docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile publish
+```
+
+**MinIO opcional (poca RAM):** por defecto `MINIO_ENABLED=0` en `.env`. El stack arranca sin MinIO. Descargas de documentos fallan rápido (503) en lugar de colgar. Para raw lake:
+
+```bash
+docker compose --profile storage up -d
+# y en .env: MINIO_ENABLED=1
 ```
 
 **Docker con poca RAM (~512MB):** evitá seed history dentro del contenedor API. Usá el host:
@@ -71,6 +80,21 @@ PRESUPUESTO_ABIERTO_DOWNLOAD_URLS=https://abierto.economiayfinanzas.gob.bo/presu
 ```
 
 Parquet: `pip install -e ".[parquet]"` antes de ingestar archivos `.parquet`.
+
+### SICOES en vivo (requiere proxy)
+
+Por defecto `LIVE_SCRAPE=0` — el worker re-ingesta fixtures offline. Para scrape en vivo:
+
+```bash
+# .env
+LIVE_SCRAPE=1
+PROXY_URL=http://host.docker.internal:7890   # obligatorio si REQUIRE_PROXY_FOR_LIVE=1
+
+docker compose run --rm --entrypoint python worker \
+  -m scripts.cli gasto ingest --source sicoes --sync --live
+```
+
+Sin `PROXY_URL` el ingest falla de forma explícita (`assert_live_proxy_ok`). Nightly CI usa `PROXY_URL` del secret del repo.
 
 ### Contratos (datos.gob.bo / OCP)
 

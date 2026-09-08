@@ -152,11 +152,20 @@ def main() -> None:
             "gad_scz": "portal_sample.html",
             "gam_scz": "rendicion_text.txt",
         }
+        from worker.gasto.seeds._helpers import seed_skip_storage
+
+        skip_storage = seed_skip_storage()
         for source_id, fname in fixture_map.items():
             path = FIXTURES / source_id / fname
             if not path.exists():
                 continue
-            run_ingest(session, source_id, fixture_path=str(path))
+            run_ingest(
+                session,
+                source_id,
+                fixture_path=str(path),
+                skip_storage=skip_storage,
+                skip_alerts=True,
+            )
             session.commit()
 
         print("Seed OK")

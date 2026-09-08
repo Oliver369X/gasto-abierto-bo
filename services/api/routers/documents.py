@@ -41,14 +41,32 @@ def download_document(request: Request, document_id: int, db: Session = Depends(
     if not row.minio_key:
         if row.url and row.url.startswith("http"):
             return RedirectResponse(row.url)
-        raise not_found("Documento", detail="No hay objeto raw almacenado para este documento")
+        raise HTTPException(
+            503,
+            "No hay objeto raw almacenado. Si MinIO está apagado, configurá MINIO_ENABLED=0 "
+            "o levantá el servicio minio.",
+        )
     store = get_store()
+    if not store.enabled:
+        if row.url and row.url.startswith("http"):
+            return RedirectResponse(row.url)
+        raise HTTPException(
+            503,
+            f"Almacén de objetos no disponible ({store.status_message()}). "
+            "Descarga directa no disponible sin URL primaria.",
+        )
     url = store.presigned_get(row.minio_key)
     if url:
         return RedirectResponse(url)
     data, ctype = store.get_bytes(row.minio_key)
     if data is None:
-        raise HTTPException(503, "Almacén de objetos no disponible")
+        if row.url and row.url.startswith("http"):
+            return RedirectResponse(row.url)
+        raise HTTPException(
+            503,
+            f"Almacén de objetos no disponible ({store.status_message()}). "
+            "Reintentá con MinIO activo o MINIO_ENABLED=1.",
+        )
     return StreamingResponse(
         iter([data]),
         media_type=ctype or row.mime or "application/octet-stream",
