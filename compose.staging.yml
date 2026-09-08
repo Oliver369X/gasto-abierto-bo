@@ -1,0 +1,30 @@
+# Staging Compose overlay — memory limits for worker ingest jobs.
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f compose.staging.yml up -d --build
+#
+# Tune WORKER_MEMORY_LIMIT / WORKER_MEMORY_RESERVATION in .env if the VPS is smaller.
+
+services:
+  worker:
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: ${WORKER_MEMORY_LIMIT:-2g}
+        reservations:
+          cpus: "0.5"
+          memory: ${WORKER_MEMORY_RESERVATION:-512m}
+    environment:
+      # Cap concurrent ARQ jobs on staging (presupuesto parquet parse is RAM-heavy).
+      ARQ_MAX_JOBS: ${ARQ_MAX_JOBS:-2}
+      # Fail fast on OOM instead of silent swap thrash.
+      MALLOC_ARENA_MAX: "2"
+
+  api:
+    deploy:
+      resources:
+        limits:
+          memory: ${API_MEMORY_LIMIT:-1g}
+        reservations:
+          memory: ${API_MEMORY_RESERVATION:-256m}

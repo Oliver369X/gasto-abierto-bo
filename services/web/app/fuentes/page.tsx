@@ -1,4 +1,4 @@
-import { apiBase, apiGet, formatDateTime } from "@/lib/api";
+import { apiGet, apiPublicUrl, formatDateTime } from "@/lib/api";
 import { runStatusLabel } from "@/lib/labels";
 
 type Source = {
@@ -46,8 +46,6 @@ export default async function FuentesPage() {
   const sources = sourcesR.status === "fulfilled" ? sourcesR.value : null;
   const runs = runsR.status === "fulfilled" ? runsR.value : null;
   const docs = docsR.status === "fulfilled" ? docsR.value : null;
-
-  const api = apiBase();
 
   return (
     <section className="section">
@@ -158,7 +156,7 @@ export default async function FuentesPage() {
                     <code>{d.sha256 ? d.sha256.slice(0, 12) : "—"}</code>
                   </td>
                   <td>
-                    <a className="btn btn-ghost" href={`${api}/v1/documents/${d.id}/download`}>
+                    <a className="btn btn-ghost" href={apiPublicUrl(`/v1/documents/${d.id}/download`)}>
                       Descargar
                     </a>
                   </td>

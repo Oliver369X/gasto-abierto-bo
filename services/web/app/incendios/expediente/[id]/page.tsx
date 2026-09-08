@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { apiBase, apiGet, formatMoney } from "@/lib/api";
+import { apiGet, apiPublicUrl, formatMoney } from "@/lib/api";
 import {
   attributionLabel,
   cycleLabel,
@@ -85,7 +85,6 @@ export default async function ExpedientePage({
   }
 
   const ev = exp.evidence || {};
-  const api = apiBase();
   const territoryHref = exp.beneficiary_territory_slug
     ? exp.beneficiary_territory_level === "municipio"
       ? `/incendios/municipio/${exp.beneficiary_territory_slug}?year=${exp.year}`
@@ -156,7 +155,7 @@ export default async function ExpedientePage({
             {exp.document_id ? (
               <>
                 {" · "}
-                <a href={`${api}/v1/documents/${exp.document_id}/download`}>documento original</a>
+                <a href={apiPublicUrl(`/v1/documents/${exp.document_id}/download`)}>documento original</a>
               </>
             ) : null}
           </p>

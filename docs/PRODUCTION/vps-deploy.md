@@ -86,9 +86,10 @@ bash scripts/verify_mvp.sh
 
 ```bash
 make staging-check   # health + product-gate + budgets/totals
+make go-live-check   # URLs públicas + presupuesto env + product-gate
 ```
 
-Checklist manual completo: [`staging-go-no-go.md`](staging-go-no-go.md).
+Checklist manual completo: [`staging-go-no-go.md`](staging-go-no-go.md). Go-live: [`go-live.md`](go-live.md).
 
 ## 8. Coexistencia con otros stacks
 

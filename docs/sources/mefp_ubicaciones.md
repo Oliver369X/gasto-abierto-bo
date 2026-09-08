@@ -5,8 +5,8 @@ El clasificador en `packages/common/mefp_geo.py` usa `packages/common/data/mefp_
 ## Estado actual
 
 - Archivo: `mefp_ubicaciones.json` (`count`, `target_total: 352`)
-- Wave 5: set curado departamental + municipal (~160 entradas); tests exigen `count >= 100`
-- Scripts incrementales: `scripts/ops/expand_mefp_wave4.py`, `scripts/ops/expand_mefp_wave5.py`
+- Wave 5: set curado departamental + municipal (~160 entradas); Wave 6: **224** ubicaciones; tests exigen `count >= 200`
+- Scripts incrementales: `scripts/ops/expand_mefp_wave4.py`, `scripts/ops/expand_mefp_wave5.py`, `scripts/ops/expand_mefp_wave6.py`
 
 ## Fuente oficial para completar 352
 

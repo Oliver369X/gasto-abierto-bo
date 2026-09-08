@@ -22,7 +22,7 @@ def test_classify_ubicacion_municipal():
 def test_mefp_incremental_coverage():
     count = ubicacion_count()
     target = target_ubicacion_count()
-    assert count >= 100
+    assert count >= 200
     assert target == 352
     assert count < target
 
@@ -47,6 +47,14 @@ def test_mefp_wave5_municipal_sample():
     assert hit is not None
     assert hit["department"] == "Santa Cruz"
     assert hit["name"] == "San Javier"
+
+
+def test_mefp_wave6_municipal_sample():
+    hit = classify_ubicacion("GAM Okinawa")
+    assert hit is not None
+    assert hit["department"] == "Santa Cruz"
+    assert hit["name"] == "Okinawa"
+    assert infer_department_mefp("GAM Atocha", None) == "Potosí"
 
 
 def test_mefp_unique_codes():

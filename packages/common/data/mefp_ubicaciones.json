@@ -1,8 +1,8 @@
 {
-  "version": "2025-wave5-incremental",
+  "version": "2025-wave6-incremental",
   "target_total": 352,
-  "count": 166,
-  "note": "Wave 5 incremental set (166 ubicaciones). Merge official MEFP GeoPackage export to reach 352 — see docs/sources/mefp_ubicaciones.md.",
+  "count": 224,
+  "note": "Wave 6 incremental set (224 ubicaciones). Merge official MEFP GeoPackage export to reach 352 — see docs/sources/mefp_ubicaciones.md.",
   "ubicaciones": [
     {
       "code": "D01",
@@ -1742,6 +1742,599 @@
       "aliases": [
         "Cairoma",
         "cairoma"
+      ]
+    },
+    {
+      "code": "M158",
+      "name": "Ancoraimes",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Ancoraimes",
+        "ancoraimes",
+        "gam ancoraimes"
+      ]
+    },
+    {
+      "code": "M159",
+      "name": "Apolo",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Apolo",
+        "apolo"
+      ]
+    },
+    {
+      "code": "M160",
+      "name": "Calamarca",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Calamarca",
+        "calamarca"
+      ]
+    },
+    {
+      "code": "M161",
+      "name": "Catacora",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Catacora",
+        "catacora"
+      ]
+    },
+    {
+      "code": "M162",
+      "name": "Charaña",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Charaña",
+        "charana",
+        "charaña"
+      ]
+    },
+    {
+      "code": "M163",
+      "name": "Ixiamas",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Ixiamas",
+        "ixiamas"
+      ]
+    },
+    {
+      "code": "M164",
+      "name": "Tipuani",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Tipuani",
+        "tipuani"
+      ]
+    },
+    {
+      "code": "M165",
+      "name": "Umala",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Umala",
+        "umala"
+      ]
+    },
+    {
+      "code": "M166",
+      "name": "Waldo Ballivián",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Waldo Ballivián",
+        "waldo ballivian",
+        "waldo ballivián"
+      ]
+    },
+    {
+      "code": "M167",
+      "name": "Teoponte",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Teoponte",
+        "teoponte"
+      ]
+    },
+    {
+      "code": "M168",
+      "name": "Okinawa",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "Okinawa",
+        "okinawa"
+      ]
+    },
+    {
+      "code": "M169",
+      "name": "Puerto Busch",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "Puerto Busch",
+        "puerto busch"
+      ]
+    },
+    {
+      "code": "M170",
+      "name": "El Carmen Rivero Tórrez",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "El Carmen Rivero Tórrez",
+        "el carmen rivero torrez"
+      ]
+    },
+    {
+      "code": "M171",
+      "name": "Cuatro Cañadas",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "Cuatro Cañadas",
+        "cuatro canadas",
+        "cuatro cañadas"
+      ]
+    },
+    {
+      "code": "M172",
+      "name": "San Pedro",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "San Pedro",
+        "san pedro",
+        "gam san pedro"
+      ]
+    },
+    {
+      "code": "M173",
+      "name": "San Rafael de Velasco",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "San Rafael de Velasco",
+        "san rafael de velasco"
+      ]
+    },
+    {
+      "code": "M174",
+      "name": "San Antonio de Parapetí",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "San Antonio de Parapetí",
+        "san antonio de parapeti"
+      ]
+    },
+    {
+      "code": "M175",
+      "name": "Postrervalle",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "Postrervalle",
+        "postrervalle"
+      ]
+    },
+    {
+      "code": "M176",
+      "name": "Colomi",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Colomi",
+        "colomi"
+      ]
+    },
+    {
+      "code": "M177",
+      "name": "Morochata",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Morochata",
+        "morochata"
+      ]
+    },
+    {
+      "code": "M178",
+      "name": "Chimoré",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Chimoré",
+        "chimore",
+        "chimoré"
+      ]
+    },
+    {
+      "code": "M179",
+      "name": "Totora",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Totora",
+        "totora"
+      ]
+    },
+    {
+      "code": "M180",
+      "name": "Caripuyo",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Caripuyo",
+        "caripuyo"
+      ]
+    },
+    {
+      "code": "M181",
+      "name": "Chipaya",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Chipaya",
+        "chipaya"
+      ]
+    },
+    {
+      "code": "M182",
+      "name": "Corque",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Corque",
+        "corque"
+      ]
+    },
+    {
+      "code": "M183",
+      "name": "General Saavedra",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "General Saavedra",
+        "general saavedra"
+      ]
+    },
+    {
+      "code": "M184",
+      "name": "Nor Carangas",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Nor Carangas",
+        "nor carangas"
+      ]
+    },
+    {
+      "code": "M185",
+      "name": "Pampa Aullagas",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Pampa Aullagas",
+        "pampa aullagas"
+      ]
+    },
+    {
+      "code": "M186",
+      "name": "Quillacas",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Quillacas",
+        "quillacas"
+      ]
+    },
+    {
+      "code": "M187",
+      "name": "Sabaya",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Sabaya",
+        "sabaya"
+      ]
+    },
+    {
+      "code": "M188",
+      "name": "Santiago de Huari",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Santiago de Huari",
+        "santiago de huari"
+      ]
+    },
+    {
+      "code": "M189",
+      "name": "Atocha",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Atocha",
+        "atocha"
+      ]
+    },
+    {
+      "code": "M190",
+      "name": "Chayanta",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Chayanta",
+        "chayanta"
+      ]
+    },
+    {
+      "code": "M191",
+      "name": "Colchani",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Colchani",
+        "colchani"
+      ]
+    },
+    {
+      "code": "M192",
+      "name": "Llica",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Llica",
+        "llica"
+      ]
+    },
+    {
+      "code": "M193",
+      "name": "Nor Chichas",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Nor Chichas",
+        "nor chichas"
+      ]
+    },
+    {
+      "code": "M194",
+      "name": "San Pablo de Lípez",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "San Pablo de Lípez",
+        "san pablo de lopez",
+        "san pablo de lípez"
+      ]
+    },
+    {
+      "code": "M195",
+      "name": "Vitichi",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Vitichi",
+        "vitichi"
+      ]
+    },
+    {
+      "code": "M196",
+      "name": "Alcalá",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Alcalá",
+        "alcala",
+        "alcalá"
+      ]
+    },
+    {
+      "code": "M197",
+      "name": "Culpina",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Culpina",
+        "culpina"
+      ]
+    },
+    {
+      "code": "M198",
+      "name": "Huacareta",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Huacareta",
+        "huacareta"
+      ]
+    },
+    {
+      "code": "M199",
+      "name": "Macharetí",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Macharetí",
+        "machareti",
+        "macharetí"
+      ]
+    },
+    {
+      "code": "M200",
+      "name": "Mojocoya",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Mojocoya",
+        "mojocoya"
+      ]
+    },
+    {
+      "code": "M201",
+      "name": "Poroma",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Poroma",
+        "poroma"
+      ]
+    },
+    {
+      "code": "M202",
+      "name": "Ravelo",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Ravelo",
+        "ravelo"
+      ]
+    },
+    {
+      "code": "M203",
+      "name": "San Lucas",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "San Lucas",
+        "san lucas"
+      ]
+    },
+    {
+      "code": "M204",
+      "name": "Vocas",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Vocas",
+        "vocas"
+      ]
+    },
+    {
+      "code": "M205",
+      "name": "Avilés",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": [
+        "Avilés",
+        "aviles",
+        "avilés"
+      ]
+    },
+    {
+      "code": "M206",
+      "name": "Barrancas",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": [
+        "Barrancas",
+        "barrancas"
+      ]
+    },
+    {
+      "code": "M207",
+      "name": "Emborozu",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": [
+        "Emborozu",
+        "emborozu"
+      ]
+    },
+    {
+      "code": "M208",
+      "name": "La Tablada",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": [
+        "La Tablada",
+        "la tablada"
+      ]
+    },
+    {
+      "code": "M209",
+      "name": "Cachuela Esperanza",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "Cachuela Esperanza",
+        "cachuela esperanza"
+      ]
+    },
+    {
+      "code": "M210",
+      "name": "Río Verde",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "Río Verde",
+        "rio verde",
+        "río verde"
+      ]
+    },
+    {
+      "code": "M211",
+      "name": "San Joaquín",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "San Joaquín",
+        "san joaquin",
+        "san joaquín"
+      ]
+    },
+    {
+      "code": "M212",
+      "name": "San Nicolás",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "San Nicolás",
+        "san nicolas",
+        "san nicolás"
+      ]
+    },
+    {
+      "code": "M213",
+      "name": "Santa Rosa del Yacuma",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "Santa Rosa del Yacuma",
+        "santa rosa del yacuma"
+      ]
+    },
+    {
+      "code": "M214",
+      "name": "Evangelista",
+      "department": "Pando",
+      "level": "municipal",
+      "aliases": [
+        "Evangelista",
+        "evangelista"
+      ]
+    },
+    {
+      "code": "M215",
+      "name": "Santa Rosa de Abuna",
+      "department": "Pando",
+      "level": "municipal",
+      "aliases": [
+        "Santa Rosa de Abuna",
+        "santa rosa de abuna"
       ]
     }
   ]

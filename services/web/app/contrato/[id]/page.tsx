@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { apiBase, apiGet, formatDate, formatMoney, qualityBadgeLabel } from "@/lib/api";
+import { apiGet, apiPublicUrl, formatDate, formatMoney, qualityBadgeLabel } from "@/lib/api";
 
 type DocRef = { minio_key?: string; sha256?: string; url?: string };
 
@@ -88,8 +88,6 @@ export default async function ContratoPage({
   const linkedDocs = allDocs.filter((d) => d.ingestion_run_id === c.ingestion_run_id);
   const claims = claimsR.status === "fulfilled" ? claimsR.value : [];
   const evidence = evidenceR.status === "fulfilled" ? evidenceR.value : [];
-
-  const api = apiBase();
 
   return (
     <section className="section">
@@ -187,7 +185,7 @@ export default async function ContratoPage({
                   </>
                 ) : null}
               </span>
-              <a className="btn btn-ghost" href={`${api}/v1/documents/${d.id}/download`}>
+              <a className="btn btn-ghost" href={apiPublicUrl(`/v1/documents/${d.id}/download`)}>
                 Descargar
               </a>
             </li>

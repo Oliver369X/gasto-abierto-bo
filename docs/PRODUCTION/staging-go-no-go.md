@@ -10,6 +10,12 @@ make staging-check
 # API custom: STAGING_API_URL=https://api.staging.ejemplo.bo make staging-check
 ```
 
+**Go-live (apertura pública):** tras URLs de producción en `.env` — ver [`go-live.md`](go-live.md):
+
+```bash
+make go-live-check
+```
+
 Verifica `GET /v1/health`, `GET /v1/product-gate` (`pass: true`), `GET /v1/budgets/totals` (`lines > 0`). Si `LIVE_SCRAPE=1` en `.env`, exige `proxy_configured: true` en health.
 
 Despliegue VPS / producción: [`vps-deploy.md`](vps-deploy.md) y [`.env.production.example`](../../.env.production.example).
@@ -32,11 +38,12 @@ Despliegue VPS / producción: [`vps-deploy.md`](vps-deploy.md) y [`.env.producti
 | # | Check | Comando | GO |
 |---|-------|---------|-----|
 | 2.1 | Contract tests | `pytest tests/contract tests/test_common.py -q` | ☐ |
-| 2.2 | MEFP geo ≥100 ubicaciones | `pytest tests/test_mefp_geo.py -q` | ☐ |
+| 2.2 | MEFP geo ≥200 ubicaciones | `pytest tests/test_mefp_geo.py -q` | ☐ |
 | 2.3 | SICOES offline | `pytest tests/test_sicoes_resilience.py -q` | ☐ |
 | 2.4 | Presupuesto corpus | `pytest tests/test_fetch_presupuesto.py -q` | ☐ |
 | 2.5 | MVP verify | `bash scripts/verify_mvp.sh` (S1–S16) | ☐ |
 | 2.6 | Staging HTTP smoke | `make staging-check` | ☐ |
+| 2.7 | Go-live env + API gate | `make go-live-check` (solo pre-apertura) | ☐ |
 
 ## 3. Seeds staging
 
@@ -86,7 +93,7 @@ LIVE_SCRAPE=1 PROXY_URL=... \
 
 ## 5. Diferido explícito (NO bloquea staging demo)
 
-Ver `docs/wave4-deferred.md`: auth prod, cliente TS, charts, FIRMS live map, Excel/Drive, MEFP 352 completo (fuente: `docs/sources/mefp_ubicaciones.md`).
+Ver `docs/wave6-deferred.md`: auth prod, cliente TS, charts, FIRMS live map, Excel/Drive, MEFP 352 completo (fuente: `docs/sources/mefp_ubicaciones.md`).
 
 ## Decisión
 
