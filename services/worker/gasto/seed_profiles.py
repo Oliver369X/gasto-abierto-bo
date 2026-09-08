@@ -24,7 +24,7 @@ def _load_main(module_name: str) -> Callable[[], None]:
     return fn
 
 
-def run_seed_cli(profile: str) -> dict:
+def run_seed_cli(profile: str, extra_argv: list[str] | None = None) -> dict:
     from worker.gasto.seeds._helpers import run_with_timeout, seed_log
 
     key = (profile or "").strip().lower()
@@ -35,7 +35,13 @@ def run_seed_cli(profile: str) -> dict:
     module_name = PROFILES[key]
     main = _load_main(module_name)
     seed_log(key, "start")
-    run_with_timeout(main, label=f"seed:{key}")
+    saved_argv = list(sys.argv)
+    if extra_argv:
+        sys.argv = [saved_argv[0] if saved_argv else "gasto"] + list(extra_argv)
+    try:
+        run_with_timeout(main, label=f"seed:{key}")
+    finally:
+        sys.argv = saved_argv
     seed_log(key, "complete")
     return {"ok": True, "profile": key, "module": module_name}
 

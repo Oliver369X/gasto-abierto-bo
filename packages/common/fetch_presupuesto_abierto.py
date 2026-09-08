@@ -184,11 +184,18 @@ def fetch_presupuesto(
     urls: Iterable[str] | None = None,
     force: bool = False,
     allow_fixture_fallback: bool = True,
+    live: bool | None = None,
 ) -> list[Path]:
     """Download configured URLs into dest. Returns successfully written paths."""
     out_dir = dest or DEFAULT_OUT
     out_dir.mkdir(parents=True, exist_ok=True)
     target_urls = list(urls) if urls is not None else list_download_urls()
+    if live is None:
+        live = os.getenv("LIVE_SCRAPE", "0") == "1"
+    if live and any(u.startswith(("http://", "https://")) for u in target_urls):
+        from common.http_client import assert_live_proxy_ok
+
+        assert_live_proxy_ok()
     wrote: list[Path] = []
     meta: dict = {"downloads": [], "dest": str(out_dir), "fixture_fallback": False}
     with _client() as c:

@@ -17,12 +17,12 @@ def main() -> None:
         raise SystemExit("fire_demo: missing scripts/_legacy/seed_fire_2024.py")
     sys.path.insert(0, str(ROOT / "packages"))
     sys.path.insert(0, str(ROOT / "services"))
-    # Reuse battle-tested offline fire corpus (fixtures only).
     import runpy
 
-    saved_argv = sys.argv
+    saved_argv = list(sys.argv)
     try:
-        sys.argv = [str(legacy)]
+        # Forward CLI flags (e.g. --force) from gasto seed --profile fire_demo.
+        sys.argv = [str(legacy)] + saved_argv[1:]
         runpy.run_path(str(legacy), run_name="__main__")
     finally:
         sys.argv = saved_argv

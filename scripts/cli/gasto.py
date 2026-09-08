@@ -28,6 +28,11 @@ def register(parser: argparse.ArgumentParser) -> None:
         required=True,
         choices=["demo", "history", "deep", "cross", "real", "publish", "fire_demo"],
     )
+    p_seed.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-seed destructive profiles (fire_demo) even if data exists",
+    )
     p_seed.set_defaults(handler=_cmd_seed)
 
     p_harden = sub.add_parser("harden", help="Backfill masters/claims/findings")
@@ -95,7 +100,8 @@ def _cmd_ingest(args: argparse.Namespace) -> int:
 def _cmd_seed(args: argparse.Namespace) -> int:
     from worker.gasto.seed_profiles import run_seed_cli
 
-    result = run_seed_cli(args.profile)
+    extra = ["--force"] if getattr(args, "force", False) else []
+    result = run_seed_cli(args.profile, extra_argv=extra)
     print(json.dumps(result, ensure_ascii=False, indent=2, default=str))
     return 0 if result.get("ok", True) else 1
 
@@ -150,7 +156,8 @@ def _cmd_fetch_presupuesto(args: argparse.Namespace) -> int:
             return 1
         return 0
     dest = ROOT / "tests" / "fixtures" / "real" / "presupuesto_abierto"
-    paths = fetch_presupuesto(dest, force=args.force)
+    live = os.getenv("LIVE_SCRAPE") == "1"
+    paths = fetch_presupuesto(dest, force=args.force, live=live)
     print(json.dumps({"wrote": [str(p) for p in paths]}, indent=2, ensure_ascii=False))
     return 0
 

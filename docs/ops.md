@@ -58,6 +58,28 @@ Sin `PROXY_URL`/`HTTPS_PROXY`, cualquier fetch live lanza error a propósito.
 
 Offline fixtures + `seed_history` **no** necesitan proxy.
 
+## Seeds en arranque (opcional)
+
+Por defecto el API solo ejecuta `gasto seed --profile demo` al levantar Docker.
+
+| Variable | Efecto |
+|----------|--------|
+| `BOOT_FULL_SEED=1` | Además corre `history` + `cross` (histórico multi-año) |
+| `BOOT_PUBLISH_SEED=1` | Corre `publish` (product-gate G10 + corpus incendios) — lento |
+
+Recomendado en producción: correr `publish` manualmente tras el primer deploy:
+
+```bash
+docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile publish
+bash scripts/verify_mvp.sh  # incluye S16 product-gate
+```
+
+Para re-sembrar incendios sin repetir todo publish:
+
+```bash
+docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile fire_demo --force
+```
+
 ## Tests (solo Docker o venv)
 
 ```powershell

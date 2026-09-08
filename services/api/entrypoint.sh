@@ -14,5 +14,11 @@ if [ "${BOOT_FULL_SEED:-0}" = "1" ]; then
 else
   echo "Skipping heavy boot seeds (set BOOT_FULL_SEED=1 to enable)"
 fi
+if [ "${BOOT_PUBLISH_SEED:-0}" = "1" ]; then
+  echo "BOOT_PUBLISH_SEED=1 — running publish seed (product-gate + incendios)..."
+  python -m scripts.cli gasto seed --profile publish || true
+else
+  echo "Skipping publish seed (set BOOT_PUBLISH_SEED=1 for product-gate + incendios on boot)"
+fi
 echo "Starting API..."
 exec uvicorn api.main:app --host 0.0.0.0 --port 8000

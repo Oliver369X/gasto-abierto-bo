@@ -1,0 +1,297 @@
+{
+  "version": "2025-wave2-incremental",
+  "target_total": 352,
+  "count": 27,
+  "note": "Phase 1 curated set. Merge official MEFP ubicaciones export to reach 352.",
+  "ubicaciones": [
+    {
+      "code": "D01",
+      "name": "La Paz",
+      "department": "La Paz",
+      "level": "departamental",
+      "aliases": [
+        "La Paz",
+        "la paz",
+        "lapaz"
+      ]
+    },
+    {
+      "code": "D02",
+      "name": "Santa Cruz",
+      "department": "Santa Cruz",
+      "level": "departamental",
+      "aliases": [
+        "Santa Cruz",
+        "santa cruz",
+        "scz"
+      ]
+    },
+    {
+      "code": "D03",
+      "name": "Cochabamba",
+      "department": "Cochabamba",
+      "level": "departamental",
+      "aliases": [
+        "Cochabamba",
+        "cochabamba",
+        "cbb"
+      ]
+    },
+    {
+      "code": "D04",
+      "name": "Oruro",
+      "department": "Oruro",
+      "level": "departamental",
+      "aliases": [
+        "Oruro",
+        "oruro"
+      ]
+    },
+    {
+      "code": "D05",
+      "name": "Potosí",
+      "department": "Potosí",
+      "level": "departamental",
+      "aliases": [
+        "Potosí",
+        "potosi",
+        "potosí"
+      ]
+    },
+    {
+      "code": "D06",
+      "name": "Chuquisaca",
+      "department": "Chuquisaca",
+      "level": "departamental",
+      "aliases": [
+        "Chuquisaca",
+        "chuquisaca",
+        "sucre"
+      ]
+    },
+    {
+      "code": "D07",
+      "name": "Tarija",
+      "department": "Tarija",
+      "level": "departamental",
+      "aliases": [
+        "Tarija",
+        "tarija"
+      ]
+    },
+    {
+      "code": "D08",
+      "name": "Beni",
+      "department": "Beni",
+      "level": "departamental",
+      "aliases": [
+        "Beni",
+        "beni",
+        "trinidad"
+      ]
+    },
+    {
+      "code": "D09",
+      "name": "Pando",
+      "department": "Pando",
+      "level": "departamental",
+      "aliases": [
+        "Pando",
+        "pando",
+        "cobija"
+      ]
+    },
+    {
+      "code": "M001",
+      "name": "La Paz",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "La Paz",
+        "gam la paz",
+        "alcaldia de la paz",
+        "municipio la paz"
+      ]
+    },
+    {
+      "code": "M002",
+      "name": "El Alto",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "El Alto",
+        "gam el alto",
+        "el alto"
+      ]
+    },
+    {
+      "code": "M003",
+      "name": "Santa Cruz de la Sierra",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "Santa Cruz de la Sierra",
+        "gam santa cruz",
+        "gam santa cruz de la sierra",
+        "santa cruz de la sierra"
+      ]
+    },
+    {
+      "code": "M004",
+      "name": "Montero",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "Montero",
+        "gam montero",
+        "montero"
+      ]
+    },
+    {
+      "code": "M005",
+      "name": "Warnes",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "Warnes",
+        "warnes"
+      ]
+    },
+    {
+      "code": "M006",
+      "name": "Cochabamba",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Cochabamba",
+        "gam cochabamba",
+        "municipio cochabamba"
+      ]
+    },
+    {
+      "code": "M007",
+      "name": "Quillacollo",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Quillacollo",
+        "quillacollo"
+      ]
+    },
+    {
+      "code": "M008",
+      "name": "Sucre",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Sucre",
+        "gam sucre",
+        "sucre"
+      ]
+    },
+    {
+      "code": "M009",
+      "name": "Oruro",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Oruro",
+        "gam oruro"
+      ]
+    },
+    {
+      "code": "M010",
+      "name": "Potosí",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Potosí",
+        "gam potosi",
+        "potosí"
+      ]
+    },
+    {
+      "code": "M011",
+      "name": "Tarija",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": [
+        "Tarija",
+        "gam tarija"
+      ]
+    },
+    {
+      "code": "M012",
+      "name": "Trinidad",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "Trinidad",
+        "gam trinidad",
+        "trinidad"
+      ]
+    },
+    {
+      "code": "M013",
+      "name": "Riberalta",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "Riberalta",
+        "riberalta"
+      ]
+    },
+    {
+      "code": "M014",
+      "name": "Cobija",
+      "department": "Pando",
+      "level": "municipal",
+      "aliases": [
+        "Cobija",
+        "gam cobija",
+        "cobija"
+      ]
+    },
+    {
+      "code": "M015",
+      "name": "Yacuiba",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": [
+        "Yacuiba",
+        "yacuiba"
+      ]
+    },
+    {
+      "code": "M016",
+      "name": "Viacha",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Viacha",
+        "viacha"
+      ]
+    },
+    {
+      "code": "M017",
+      "name": "Sacaba",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Sacaba",
+        "sacaba"
+      ]
+    },
+    {
+      "code": "M018",
+      "name": "Yunchará",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": [
+        "Yunchará",
+        "yunchara",
+        "yunchará"
+      ]
+    }
+  ]
+}

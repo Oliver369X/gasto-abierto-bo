@@ -26,27 +26,44 @@ jobs:
           API_STATS_URL: ${{ vars.API_STATS_URL }}
         run: |
           cp .env.example .env
-          echo "LIVE_SCRAPE=1" >> .env
           echo "MINIO_ENABLED=0" >> .env
           docker compose up -d --build
-          for i in $(seq 1 40); do curl -sf "${API_HEALTH_URL:-http://127.0.0.1:8010/v1/health}" && break; sleep 5; done  # pragma: allowlist secret
-      - name: Ingest live sample (requires PROXY_URL secret in repo settings)
+          for i in $(seq 1 40); do curl -sf "${API_HEALTH_URL:-http://localhost:8010/v1/health}" && break; sleep 5; done  # pragma: allowlist secret
+      - name: Offline fixture ingest (always)
+        env:
+          PYTHONPATH: packages:services
+        run: |
+          docker compose run --rm --entrypoint python worker -m scripts.cli gasto ingest --source sicoes --sync
+          docker compose run --rm --entrypoint python worker -m scripts.cli gasto ingest --source presupuesto_abierto --sync
+      - name: Live ingest sample (requires PROXY_URL secret)
         env:
           LIVE_SCRAPE: "1"
           PROXY_URL: ${{ secrets.PROXY_URL }}
           PYTHONPATH: packages:services
         run: |
           if [ -z "$PROXY_URL" ]; then
-            echo "SKIP live ingest — PROXY_URL secret not configured"
+            echo "SKIP live ingest — PROXY_URL secret not configured (fixture ingest already ran)"
             exit 0
           fi
+          echo "LIVE_SCRAPE=1" >> .env
+          docker compose up -d worker
           SOURCE="${{ github.event.inputs.source || 'sicoes' }}"
           if [ "$SOURCE" = "all" ]; then
             docker compose run --rm --entrypoint python worker -m scripts.cli gasto ingest --all --sync --live || true
           else
             docker compose run --rm --entrypoint python worker -m scripts.cli gasto ingest --source "$SOURCE" --sync --live || true
           fi
-          curl -sf "${API_STATS_URL:-http://127.0.0.1:8010/v1/stats}" || true  # pragma: allowlist secret
+          curl -sf "${API_STATS_URL:-http://localhost:8010/v1/stats}" || true  # pragma: allowlist secret
+      - name: Fire unit suite (offline)
+        env:
+          PYTHONPATH: packages:services
+        run: |
+          pytest tests/test_fire_classify.py tests/test_fire_classify_golden.py \
+            tests/test_fire_ledger_f1.py tests/test_fire_phase_scripts.py \
+            tests/test_fire_rollup.py tests/test_fire_alerts_f13.py \
+            tests/test_fire_capability.py tests/test_fire_gaceta_adapters.py \
+            tests/test_fire_geo_bbox.py tests/test_fire_sernap_extract.py \
+            tests/contract/test_fire_expand.py -q
       - name: Teardown
         if: always()
         run: docker compose down -v

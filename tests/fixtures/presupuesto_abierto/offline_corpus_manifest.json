@@ -1,0 +1,36 @@
+{
+  "version": "2025-wave2",
+  "description": "Offline Presupuesto Abierto corpus bundled for CI and demo without live network.",
+  "sources": [
+    {
+      "path": "tests/fixtures/presupuesto_abierto/entidades.json",
+      "kind": "json",
+      "entities": 10,
+      "year": 2025
+    },
+    {
+      "path": "tests/fixtures/presupuesto_abierto/sample_export.csv",
+      "kind": "csv",
+      "rows": 12,
+      "years": [2024, 2025]
+    },
+    {
+      "path": "tests/fixtures/presupuesto_abierto/history_2019_2025.json",
+      "kind": "json_series",
+      "rows": 35,
+      "years": [2019, 2020, 2021, 2022, 2023, 2024, 2025],
+      "aligned_with": "tests/fixtures/agetic/contracts_history_2019_2025.csv"
+    },
+    {
+      "path": "tests/fixtures/presupuesto_abierto/deep/history_entities_2019_2025.json",
+      "kind": "json_series",
+      "profile": "publish"
+    }
+  ],
+  "live_refresh": {
+    "env": "PRESUPUESTO_ABIERTO_DOWNLOAD_URLS",
+    "cli": "gasto fetch-presupuesto",
+    "dest": "tests/fixtures/real/presupuesto_abierto/",
+    "requires": "LIVE_SCRAPE=1 + PROXY_URL when downloading remote URLs"
+  }
+}

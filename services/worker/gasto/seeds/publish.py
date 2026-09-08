@@ -68,7 +68,23 @@ def main() -> None:
     seed_log("publish", "fire demo corpus (AURA incendios)")
     from worker.gasto.seeds import fire_demo
 
-    fire_demo.main()
+    try:
+        fire_demo.main()
+    except SystemExit as exc:
+        raise SystemExit(f"publish: fire_demo failed ({exc})") from exc
+
+    # Post-check: ledger should have expenditures for demo year.
+    session = Session()
+    try:
+        from schema.models import FireExpenditure
+
+        fire_rows = session.scalar(select(func.count()).select_from(FireExpenditure)) or 0
+        if fire_rows < 1:
+            raise SystemExit("publish: fire_demo produced zero fire_expenditure rows")
+        seed_log("publish", f"fire_expenditures={fire_rows}")
+    finally:
+        session.close()
+
     print("Seed publish OK", flush=True)
 
 

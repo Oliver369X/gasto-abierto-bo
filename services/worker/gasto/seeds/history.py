@@ -113,6 +113,7 @@ def main() -> None:
 
         seed_log("history", "backfill entity geo metadata")
         from common.entity_geo import infer_department, infer_entity_level
+        from common.mefp_geo import classify_ubicacion
         from schema.models import AdminLevel, Entity
         from sqlalchemy import select
 
@@ -122,8 +123,12 @@ def main() -> None:
             "municipal": AdminLevel.municipal,
         }
         for ent in session.scalars(select(Entity)).all():
+            ubicacion = None
+            hit = classify_ubicacion(ent.name)
+            if hit:
+                ubicacion = hit.get("department")
             if not ent.department:
-                inferred = infer_department(ent.name)
+                inferred = infer_department(ent.name, ubicacion=ubicacion)
                 if inferred:
                     ent.department = inferred
             inferred_level = infer_entity_level(ent.name)

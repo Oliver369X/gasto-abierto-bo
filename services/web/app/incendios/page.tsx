@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { apiGet, apiPublicUrl, formatDate, formatMoney } from "@/lib/api";
 import { attributionLabel, cycleLabel, eventTypeLabel } from "@/lib/labels";
+import { rejectedSections } from "@/lib/settled";
 
 type Ledger = {
   year: number;
@@ -231,6 +232,39 @@ export default async function IncendiosPage({
   const payers = payersR.status === "fulfilled" ? payersR.value : [];
   const capabilities = capabilitiesR.status === "fulfilled" ? capabilitiesR.value : null;
 
+  const partialFailures = rejectedSections(
+    [
+      ledgerR,
+      expendituresR,
+      operationsR,
+      metricsR,
+      historyR,
+      declarationsR,
+      satelliteR,
+      compareR,
+      donationsR,
+      coverageR,
+      cyclesR,
+      payersR,
+      capabilitiesR,
+    ],
+    [
+      "resumen del ledger",
+      "gastos",
+      "operaciones",
+      "métricas",
+      "historia",
+      "declaraciones",
+      "satélite",
+      "comparación",
+      "donaciones",
+      "cobertura",
+      "ciclos presupuestarios",
+      "pagadores",
+      "capacidades",
+    ],
+  );
+
   const visibleExpenditures = showIllustrative
     ? expenditures
     : expenditures.filter((e) => !e.is_synthetic && e.ledger_bucket !== "sintetico");
@@ -274,6 +308,15 @@ export default async function IncendiosPage({
           ))}
         </div>
       </section>
+
+      {partialFailures.length > 0 && (
+        <section className="section" style={{ paddingTop: 0 }}>
+          <p className="notice">
+            Algunas secciones no cargaron ({partialFailures.join(", ")}). El resto de la página
+            sigue disponible.
+          </p>
+        </section>
+      )}
 
       {!ledger && (
         <section className="section" style={{ paddingTop: 0 }}>

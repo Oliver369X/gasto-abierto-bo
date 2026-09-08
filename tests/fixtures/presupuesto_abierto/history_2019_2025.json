@@ -21,6 +21,22 @@
     {"gestion": 2024, "entidad": "Ministerio de Salud y Deportes", "nivel": "nacional", "departamento": "La Paz", "presupuesto_inicial": "75000000", "presupuesto_vigente": "74000000", "ejecucion": "28000000"},
     {"gestion": 2025, "entidad": "Ministerio de Salud y Deportes", "nivel": "nacional", "departamento": "La Paz", "presupuesto_inicial": "78000000", "presupuesto_vigente": "77000000", "ejecucion": "29000000"},
     {"gestion": 2024, "entidad": "Gobernación de Cochabamba", "nivel": "departamental", "departamento": "Cochabamba", "presupuesto_inicial": "30000000", "presupuesto_vigente": "29500000", "ejecucion": "11000000"},
-    {"gestion": 2025, "entidad": "Gobernación de Cochabamba", "nivel": "departamental", "departamento": "Cochabamba", "presupuesto_inicial": "31000000", "presupuesto_vigente": "30500000", "ejecucion": "12000000"}
+    {"gestion": 2025, "entidad": "Gobernación de Cochabamba", "nivel": "departamental", "departamento": "Cochabamba", "presupuesto_inicial": "31000000", "presupuesto_vigente": "30500000", "ejecucion": "12000000"},
+    {"gestion": 2019, "entidad": "GAM La Paz", "nivel": "municipal", "departamento": "La Paz", "presupuesto_inicial": "1800000000", "presupuesto_vigente": "1750000000", "ejecucion": "1200000000"},
+    {"gestion": 2020, "entidad": "GAM La Paz", "nivel": "municipal", "departamento": "La Paz", "presupuesto_inicial": "1900000000", "presupuesto_vigente": "1850000000", "ejecucion": "1250000000"},
+    {"gestion": 2021, "entidad": "GAM La Paz", "nivel": "municipal", "departamento": "La Paz", "presupuesto_inicial": "2000000000", "presupuesto_vigente": "1950000000", "ejecucion": "1300000000"},
+    {"gestion": 2022, "entidad": "GAM La Paz", "nivel": "municipal", "departamento": "La Paz", "presupuesto_inicial": "2100000000", "presupuesto_vigente": "2050000000", "ejecucion": "1350000000"},
+    {"gestion": 2023, "entidad": "GAM La Paz", "nivel": "municipal", "departamento": "La Paz", "presupuesto_inicial": "2200000000", "presupuesto_vigente": "2150000000", "ejecucion": "1400000000"},
+    {"gestion": 2024, "entidad": "GAM La Paz", "nivel": "municipal", "departamento": "La Paz", "presupuesto_inicial": "2300000000", "presupuesto_vigente": "2250000000", "ejecucion": "1450000000"},
+    {"gestion": 2025, "entidad": "GAM La Paz", "nivel": "municipal", "departamento": "La Paz", "presupuesto_inicial": "2400000000", "presupuesto_vigente": "2350000000", "ejecucion": "900000000"},
+    {"gestion": 2021, "entidad": "GAM Cochabamba", "nivel": "municipal", "departamento": "Cochabamba", "presupuesto_inicial": "950000000", "presupuesto_vigente": "930000000", "ejecucion": "620000000"},
+    {"gestion": 2022, "entidad": "GAM Cochabamba", "nivel": "municipal", "departamento": "Cochabamba", "presupuesto_inicial": "980000000", "presupuesto_vigente": "960000000", "ejecucion": "640000000"},
+    {"gestion": 2023, "entidad": "GAM Cochabamba", "nivel": "municipal", "departamento": "Cochabamba", "presupuesto_inicial": "1000000000", "presupuesto_vigente": "990000000", "ejecucion": "660000000"},
+    {"gestion": 2019, "entidad": "Ministerio de Salud", "nivel": "nacional", "departamento": "La Paz", "presupuesto_inicial": "65000000", "presupuesto_vigente": "64000000", "ejecucion": "42000000"},
+    {"gestion": 2020, "entidad": "Ministerio de Salud", "nivel": "nacional", "departamento": "La Paz", "presupuesto_inicial": "70000000", "presupuesto_vigente": "69000000", "ejecucion": "45000000"},
+    {"gestion": 2023, "entidad": "Ministerio de Salud", "nivel": "nacional", "departamento": "La Paz", "presupuesto_inicial": "76000000", "presupuesto_vigente": "75000000", "ejecucion": "48000000"},
+    {"gestion": 2025, "entidad": "Ministerio de Salud", "nivel": "nacional", "departamento": "La Paz", "presupuesto_inicial": "80000000", "presupuesto_vigente": "78000000", "ejecucion": "30000000"},
+    {"gestion": 2021, "entidad": "Ministerio de Obras Públicas", "nivel": "nacional", "departamento": "La Paz", "presupuesto_inicial": "110000000", "presupuesto_vigente": "108000000", "ejecucion": "52000000"},
+    {"gestion": 2024, "entidad": "Ministerio de Obras Públicas", "nivel": "nacional", "departamento": "La Paz", "presupuesto_inicial": "118000000", "presupuesto_vigente": "115000000", "ejecucion": "40000000"}
   ]
 }

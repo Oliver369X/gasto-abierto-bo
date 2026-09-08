@@ -19,11 +19,15 @@
 ### Refrescar datos
 
 ```bash
-# Ver URLs descubiertas (sin proxy)
+# Ver URLs descubiertas (sin proxy; solo listado)
 python -m scripts.cli gasto fetch-presupuesto --list-only
 
-# Descargar (fallback a fixtures locales si falla la red)
+# Descargar offline (copia fixtures locales si falla la red)
 python -m scripts.cli gasto fetch-presupuesto
+
+# Descargar en vivo (requiere LIVE_SCRAPE=1 + PROXY_URL)
+LIVE_SCRAPE=1 PROXY_URL=http://host.docker.internal:7890 \
+  python -m scripts.cli gasto fetch-presupuesto
 
 # Opcional: fijar URLs manualmente
 export PRESUPUESTO_ABIERTO_DOWNLOAD_URLS="https://abierto.economiayfinanzas.gob.bo/presupuesto/descargas/gasto/ultimo/gasto.parquet"
@@ -31,6 +35,8 @@ export PRESUPUESTO_ABIERTO_DOWNLOAD_URLS="https://abierto.economiayfinanzas.gob.
 # Ingestar al stack Docker
 docker compose run --rm --entrypoint python api -m scripts.cli gasto ingest --source presupuesto_abierto --sync
 ```
+
+Corpus offline empaquetado: `tests/fixtures/presupuesto_abierto/offline_corpus_manifest.json`.
 
 Parquet requiere dependencia opcional: `pip install 'gasto-abierto-bo[parquet]'`.
 

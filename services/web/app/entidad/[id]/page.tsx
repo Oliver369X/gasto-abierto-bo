@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { apiGet, formatDate, formatMoney, qualityBadgeLabel } from "@/lib/api";
 import { activityKindLabel, severityLabel } from "@/lib/labels";
+import { rejectedSections } from "@/lib/settled";
 
 type Budget = {
   id: number;
@@ -94,6 +95,11 @@ export default async function EntidadPage({
   const alerts = alertsR.status === "fulfilled" ? alertsR.value : [];
   const history = historyR.status === "fulfilled" ? historyR.value : [];
 
+  const partialFailures = rejectedSections(
+    [contractsR, budgetsR, activityR, alertsR, historyR],
+    ["contratos", "presupuesto", "actividad", "alertas", "histórico"],
+  );
+
   let master: Master | null = null;
   let aliases: string[] = [];
   if (entity.entity_master_id) {
@@ -118,6 +124,13 @@ export default async function EntidadPage({
           También aparece como: {Array.from(new Set(aliases)).slice(0, 6).join(" · ")}
         </p>
       ) : null}
+
+      {partialFailures.length > 0 && (
+        <p className="notice">
+          No pudimos cargar: {partialFailures.join(", ")}. Los demás datos de la entidad siguen
+          visibles.
+        </p>
+      )}
 
       {alerts.length > 0 && (
         <>

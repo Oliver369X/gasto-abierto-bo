@@ -1,6 +1,8 @@
 """Infer administrative level and department from public entity names."""
 from __future__ import annotations
 
+from common.mefp_geo import infer_department_mefp
+
 
 def infer_entity_level(name: str | None) -> str:
     n = (name or "").lower()
@@ -11,7 +13,15 @@ def infer_entity_level(name: str | None) -> str:
     return "nacional"
 
 
-def infer_department(name: str | None, level: str | None = None) -> str | None:
+def infer_department(
+    name: str | None,
+    level: str | None = None,
+    *,
+    ubicacion: str | None = None,
+) -> str | None:
+    mefp = infer_department_mefp(name, ubicacion)
+    if mefp:
+        return mefp
     n = (name or "").lower()
     for needle, dept in (
         ("santa cruz", "Santa Cruz"),

@@ -7,6 +7,7 @@ from arq import cron
 from arq.connections import RedisSettings
 from sqlalchemy.orm import sessionmaker
 
+from common.http_client import proxy_status, resolve_proxy_url
 from schema.db import make_engine
 from worker.pipeline import run_ingest
 
@@ -115,10 +116,45 @@ async def ingest_all_mvp(ctx) -> dict:
     return {"sources": results}
 
 
+async def ingest_sicoes_scheduled(ctx) -> dict:
+    """Nightly SICOES ingest: live when proxy configured, else offline fixtures."""
+    live = os.getenv("LIVE_SCRAPE", "0") == "1"
+    proxy = resolve_proxy_url()
+    require_proxy = os.getenv("REQUIRE_PROXY_FOR_LIVE", "1") == "1"
+    mode = "fixture"
+    if live and (proxy or not require_proxy):
+        mode = "live"
+    elif live and require_proxy and not proxy:
+        mode = "fixture_no_proxy"
+    result = await ingest_source(ctx, "sicoes")
+    return {"mode": mode, "proxy": proxy_status(), "result": result}
+
+
+async def ingest_presupuesto_scheduled(ctx) -> dict:
+    """Weekly presupuesto refresh: live URLs when configured, else fixtures."""
+    live = os.getenv("LIVE_SCRAPE", "0") == "1"
+    proxy = resolve_proxy_url()
+    require_proxy = os.getenv("REQUIRE_PROXY_FOR_LIVE", "1") == "1"
+    mode = "fixture"
+    if live and (proxy or not require_proxy):
+        mode = "live"
+    result = await ingest_source(ctx, "presupuesto_abierto")
+    return {"mode": mode, "result": result}
+
+
 class WorkerSettings:
-    functions = [ingest_source, generate_alerts, ingest_all_mvp, classify_fire]
+    functions = [
+        ingest_source,
+        generate_alerts,
+        ingest_all_mvp,
+        classify_fire,
+        ingest_sicoes_scheduled,
+        ingest_presupuesto_scheduled,
+    ]
     redis_settings = RedisSettings.from_dsn(REDIS_URL)
     cron_jobs = [
         cron(generate_alerts, hour={6}, minute={0}),
         cron(ingest_all_mvp, hour={3}, minute={30}, weekday={0, 2, 4}),
+        cron(ingest_sicoes_scheduled, hour={4}, minute={0}, weekday={1}),
+        cron(ingest_presupuesto_scheduled, hour={4}, minute={30}, weekday={1}),
     ]
