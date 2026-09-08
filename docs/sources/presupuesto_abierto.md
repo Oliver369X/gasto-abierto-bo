@@ -38,6 +38,32 @@ docker compose run --rm --entrypoint python api -m scripts.cli gasto ingest --so
 
 Corpus offline empaquetado: `tests/fixtures/presupuesto_abierto/offline_corpus_manifest.json`.
 
+### Refresco oficial (~8M filas)
+
+El export nacional completo de Presupuesto Abierto supera **~8 millones de filas** (todas las entidades × partidas × gestiones). No va en el repo; se descarga y se ingesta en el entorno de producción/staging.
+
+**Operación recomendada (sin secretos en git):**
+
+```bash
+# 1) Descubrir URLs Parquet/CSV actuales (sin proxy para listado)
+python -m scripts.cli gasto fetch-presupuesto --list-only
+
+# 2) Descargar a disco local (requiere red; proxy si el portal bloquea)
+LIVE_SCRAPE=1 PROXY_URL=http://host.docker.internal:7890 \
+  python -m scripts.cli gasto fetch-presupuesto --force
+# → tests/fixtures/real/presupuesto_abierto/  (o ruta montada en prod)
+
+# 3) Ingesta por lotes (Docker worker, SEED_BATCH_SIZE / memoria)
+docker compose run --rm --entrypoint python api \
+  -e SEED_BATCH_SIZE=500 -e SEED_SKIP_STORAGE=1 \
+  -m scripts.cli gasto ingest --source presupuesto_abierto --sync
+
+# 4) Cron semanal (ya definido en worker): ingest_presupuesto_scheduled
+#    LIVE_SCRAPE=1 + PROXY_URL en producción; fixtures en CI.
+```
+
+**Validación post-refresh:** `GET /v1/budgets/totals`, `GET /v1/history/years`, y smoke `bash scripts/verify_mvp.sh`.
+
 Parquet requiere dependencia opcional: `pip install 'gasto-abierto-bo[parquet]'`.
 
 ### Columnas soportadas (aliases)

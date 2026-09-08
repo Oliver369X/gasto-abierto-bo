@@ -22,6 +22,19 @@ def test_classify_ubicacion_municipal():
 def test_mefp_incremental_coverage():
     count = ubicacion_count()
     target = target_ubicacion_count()
-    assert count >= 20
+    assert count >= 50
     assert target == 352
     assert count < target
+
+
+def test_mefp_fire_municipalities():
+    """Santa Cruz fire-affected municipios from seed corpus."""
+    hit = classify_ubicacion("Gobierno Autónomo Municipal de San Matías")
+    assert hit is not None
+    assert hit["department"] == "Santa Cruz"
+    assert hit["level"] == "municipal"
+
+
+def test_infer_department_mefp_expanded():
+    assert infer_department_mefp("GAM Guayaramerín", None) == "Beni"
+    assert infer_department_mefp(None, "Villazón") == "Potosí"

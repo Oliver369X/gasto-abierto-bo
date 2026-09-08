@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import importlib
+import inspect
 import sys
 from typing import Callable
 
@@ -35,13 +36,10 @@ def run_seed_cli(profile: str, extra_argv: list[str] | None = None) -> dict:
     module_name = PROFILES[key]
     main = _load_main(module_name)
     seed_log(key, "start")
-    saved_argv = list(sys.argv)
-    if extra_argv:
-        sys.argv = [saved_argv[0] if saved_argv else "gasto"] + list(extra_argv)
-    try:
-        run_with_timeout(main, label=f"seed:{key}")
-    finally:
-        sys.argv = saved_argv
+    force = bool(extra_argv and "--force" in extra_argv)
+    sig = inspect.signature(main)
+    kwargs = {"force": force} if "force" in sig.parameters else {}
+    run_with_timeout(lambda: main(**kwargs), label=f"seed:{key}")
     seed_log(key, "complete")
     return {"ok": True, "profile": key, "module": module_name}
 

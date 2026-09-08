@@ -1,5 +1,5 @@
 {
-  "version": "2025-wave2",
+  "version": "2025-wave3",
   "description": "Offline Presupuesto Abierto corpus bundled for CI and demo without live network.",
   "sources": [
     {
@@ -17,7 +17,8 @@
     {
       "path": "tests/fixtures/presupuesto_abierto/history_2019_2025.json",
       "kind": "json_series",
-      "rows": 35,
+      "rows": 63,
+      "entities": 9,
       "years": [2019, 2020, 2021, 2022, 2023, 2024, 2025],
       "aligned_with": "tests/fixtures/agetic/contracts_history_2019_2025.csv"
     },

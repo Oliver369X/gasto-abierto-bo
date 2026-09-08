@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import os
 import re
 from pathlib import Path
@@ -11,6 +12,35 @@ from common.cuce import normalize_cuce
 from common.dates import parse_date_flexible
 from common.money import parse_money
 from worker.adapters.base import Cursor, RawItem, StagingRecord
+from worker.adapters.sicoes_html import (
+    SicoesStructureChanged,
+    inspect_list_html,
+)
+
+log = logging.getLogger(__name__)
+
+_DEFAULT_FIXTURE = (
+    Path(__file__).resolve().parents[3] / "tests" / "fixtures" / "sicoes" / "procesos_sample.html"
+)
+
+
+def _offline_fallback_enabled() -> bool:
+    return os.getenv("SICOES_OFFLINE_FALLBACK", "1").strip().lower() in ("1", "true", "yes")
+
+
+def _fixture_fallback_path() -> Path | None:
+    override = os.getenv("SICOES_FIXTURE_FALLBACK", "").strip()
+    if override:
+        path = Path(override)
+        return path if path.exists() else None
+    return _DEFAULT_FIXTURE if _DEFAULT_FIXTURE.exists() else None
+
+
+def load_offline_fixture() -> bytes:
+    path = _fixture_fallback_path()
+    if not path:
+        raise FileNotFoundError("SICOES offline fixture not found")
+    return path.read_bytes()
 
 # Spanish ficha labels → field keys
 _CUCE_LABEL_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
@@ -145,15 +175,35 @@ class SicoesAdapter:
         if item.uri.startswith("file://"):
             with open(item.uri[7:], "rb") as f:
                 return f.read()
-        from worker.adapters.sicoes_fetch import fetch_page
+        from worker.adapters.sicoes_fetch import FetchError, fetch_page
 
-        return fetch_page(item.uri)
+        try:
+            return fetch_page(item.uri)
+        except FetchError as exc:
+            if _offline_fallback_enabled():
+                log.warning("SICOES live fetch failed (%s); using offline fixture", exc)
+                return load_offline_fixture()
+            raise
 
     def parse(self, raw: bytes) -> list[StagingRecord]:
         # CSV fixtures used for deep/cross-source seeds
         text_head = raw[:200].lstrip()
         if text_head.startswith(b"cuce,") or b"\ncuce," in raw[:500].lower():
             return self._parse_csv(raw)
+
+        inspection = inspect_list_html(raw)
+        if not inspection.parseable:
+            log.warning(
+                "SICOES HTML structure issue [%s]: %s",
+                inspection.marker,
+                inspection.reason,
+            )
+            if _offline_fallback_enabled():
+                fallback = _fixture_fallback_path()
+                if fallback and fallback.read_bytes() != raw:
+                    log.warning("SICOES parse fallback → %s", fallback)
+                    return self.parse(fallback.read_bytes())
+            raise SicoesStructureChanged(inspection)
 
         soup = BeautifulSoup(raw, "lxml")
         table = soup.select_one("table.resultados") or soup.select_one("table")

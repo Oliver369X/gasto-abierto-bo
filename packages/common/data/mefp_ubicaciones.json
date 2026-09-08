@@ -1,8 +1,8 @@
 {
-  "version": "2025-wave2-incremental",
+  "version": "2025-wave3-incremental",
   "target_total": 352,
-  "count": 27,
-  "note": "Phase 1 curated set. Merge official MEFP ubicaciones export to reach 352.",
+  "count": 60,
+  "note": "Wave 3 incremental set (9 dept + 51 municipal). Merge official MEFP ubicaciones export to reach 352.",
   "ubicaciones": [
     {
       "code": "D01",
@@ -292,6 +292,237 @@
         "yunchara",
         "yunchará"
       ]
+    },
+    {
+      "code": "M019",
+      "name": "Concepción",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["Concepción", "concepcion", "gam concepcion", "gobierno autonomo municipal de concepcion"]
+    },
+    {
+      "code": "M020",
+      "name": "San Ignacio de Velasco",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["San Ignacio de Velasco", "san ignacio de velasco", "gam san ignacio"]
+    },
+    {
+      "code": "M021",
+      "name": "San Matías",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["San Matías", "san matias", "gam san matias"]
+    },
+    {
+      "code": "M022",
+      "name": "Roboré",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["Roboré", "robore", "gam robore"]
+    },
+    {
+      "code": "M023",
+      "name": "San José de Chiquitos",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["San José de Chiquitos", "san jose de chiquitos", "gam san jose de chiquitos"]
+    },
+    {
+      "code": "M024",
+      "name": "Puerto Suárez",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["Puerto Suárez", "puerto suarez", "gam puerto suarez"]
+    },
+    {
+      "code": "M025",
+      "name": "Camiri",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["Camiri", "camiri", "gam camiri"]
+    },
+    {
+      "code": "M026",
+      "name": "Cotoca",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["Cotoca", "cotoca", "gam cotoca"]
+    },
+    {
+      "code": "M027",
+      "name": "San Julián",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["San Julián", "san julian", "gam san julian"]
+    },
+    {
+      "code": "M028",
+      "name": "Ascensión de Guarayos",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": ["Ascensión de Guarayos", "ascension de guarayos"]
+    },
+    {
+      "code": "M029",
+      "name": "Achocalla",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": ["Achocalla", "achocalla", "gam achocalla"]
+    },
+    {
+      "code": "M030",
+      "name": "Patacamaya",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": ["Patacamaya", "patacamaya"]
+    },
+    {
+      "code": "M031",
+      "name": "Caranavi",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": ["Caranavi", "caranavi", "gam caranavi"]
+    },
+    {
+      "code": "M032",
+      "name": "Coroico",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": ["Coroico", "coroico", "gam coroico"]
+    },
+    {
+      "code": "M033",
+      "name": "Colcapirhua",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": ["Colcapirhua", "colcapirhua", "gam colcapirhua"]
+    },
+    {
+      "code": "M034",
+      "name": "Tiquipaya",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": ["Tiquipaya", "tiquipaya", "gam tiquipaya"]
+    },
+    {
+      "code": "M035",
+      "name": "Punata",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": ["Punata", "punata", "gam punata"]
+    },
+    {
+      "code": "M036",
+      "name": "Mizque",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": ["Mizque", "mizque", "gam mizque"]
+    },
+    {
+      "code": "M037",
+      "name": "Puerto Villarroel",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": ["Puerto Villarroel", "puerto villarroel"]
+    },
+    {
+      "code": "M038",
+      "name": "Guayaramerín",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": ["Guayaramerín", "guayaramerin", "gam guayaramerin"]
+    },
+    {
+      "code": "M039",
+      "name": "San Borja",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": ["San Borja", "san borja", "gam san borja"]
+    },
+    {
+      "code": "M040",
+      "name": "San Ignacio de Moxos",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": ["San Ignacio de Moxos", "san ignacio de moxos"]
+    },
+    {
+      "code": "M041",
+      "name": "Magdalena",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": ["Magdalena", "magdalena", "gam magdalena"]
+    },
+    {
+      "code": "M042",
+      "name": "Puerto Rico",
+      "department": "Pando",
+      "level": "municipal",
+      "aliases": ["Puerto Rico", "puerto rico", "gam puerto rico"]
+    },
+    {
+      "code": "M043",
+      "name": "Porvenir",
+      "department": "Pando",
+      "level": "municipal",
+      "aliases": ["Porvenir", "porvenir", "gam porvenir"]
+    },
+    {
+      "code": "M044",
+      "name": "Villazón",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": ["Villazón", "villazon", "gam villazon"]
+    },
+    {
+      "code": "M045",
+      "name": "Uyuni",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": ["Uyuni", "uyuni", "gam uyuni"]
+    },
+    {
+      "code": "M046",
+      "name": "Villamontes",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": ["Villamontes", "villamontes", "gam villamontes"]
+    },
+    {
+      "code": "M047",
+      "name": "Bermejo",
+      "department": "Tarija",
+      "level": "municipal",
+      "aliases": ["Bermejo", "bermejo", "gam bermejo"]
+    },
+    {
+      "code": "M048",
+      "name": "Huanuni",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": ["Huanuni", "huanuni", "gam huanuni"]
+    },
+    {
+      "code": "M049",
+      "name": "Challapata",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": ["Challapata", "challapata"]
+    },
+    {
+      "code": "M050",
+      "name": "Monteagudo",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": ["Monteagudo", "monteagudo", "gam monteagudo"]
+    },
+    {
+      "code": "M051",
+      "name": "Camargo",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": ["Camargo", "camargo", "gam camargo"]
     }
   ]
 }

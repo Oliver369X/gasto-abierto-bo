@@ -69,7 +69,7 @@ def main() -> None:
     from worker.gasto.seeds import fire_demo
 
     try:
-        fire_demo.main()
+        fire_demo.main(force=False)
     except SystemExit as exc:
         raise SystemExit(f"publish: fire_demo failed ({exc})") from exc
 
