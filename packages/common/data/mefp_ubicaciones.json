@@ -1,8 +1,8 @@
 {
-  "version": "2025-wave6-incremental",
+  "version": "2025-wave7-incremental",
   "target_total": 352,
-  "count": 224,
-  "note": "Wave 6 incremental set (224 ubicaciones). Merge official MEFP GeoPackage export to reach 352 — see docs/sources/mefp_ubicaciones.md.",
+  "count": 280,
+  "note": "Wave 7 incremental set (280 ubicaciones; gap 72 to GeoPackage 352). Merge official MEFP GeoPackage export for remaining municipios — see docs/sources/mefp_ubicaciones.md.",
   "ubicaciones": [
     {
       "code": "D01",
@@ -2335,6 +2335,578 @@
       "aliases": [
         "Santa Rosa de Abuna",
         "santa rosa de abuna"
+      ]
+    },
+    {
+      "code": "M216",
+      "name": "La Asunta",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "La Asunta",
+        "la asunta",
+        "gam la asunta"
+      ]
+    },
+    {
+      "code": "M217",
+      "name": "San Buenaventura",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "San Buenaventura",
+        "san buenaventura"
+      ]
+    },
+    {
+      "code": "M218",
+      "name": "General José Manuel Pando",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "General José Manuel Pando",
+        "general jose manuel pando",
+        "gam pando"
+      ]
+    },
+    {
+      "code": "M219",
+      "name": "Puerto Acosta",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Puerto Acosta",
+        "puerto acosta"
+      ]
+    },
+    {
+      "code": "M220",
+      "name": "Santiago de Huata",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Santiago de Huata",
+        "santiago de huata"
+      ]
+    },
+    {
+      "code": "M221",
+      "name": "Tacacoma",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Tacacoma",
+        "tacacoma"
+      ]
+    },
+    {
+      "code": "M222",
+      "name": "Guanay",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Guanay",
+        "guanay"
+      ]
+    },
+    {
+      "code": "M223",
+      "name": "Mapiri",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Mapiri",
+        "mapiri"
+      ]
+    },
+    {
+      "code": "M224",
+      "name": "Yaco",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Yaco",
+        "yaco"
+      ]
+    },
+    {
+      "code": "M225",
+      "name": "Nazacara de Pacajes",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Nazacara de Pacajes",
+        "nazacara de pacajes",
+        "nazacara"
+      ]
+    },
+    {
+      "code": "M226",
+      "name": "Corocoro",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Corocoro",
+        "corocoro"
+      ]
+    },
+    {
+      "code": "M227",
+      "name": "Caquiaviri",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Caquiaviri",
+        "caquiaviri"
+      ]
+    },
+    {
+      "code": "M228",
+      "name": "Colquencha",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Colquencha",
+        "colquencha"
+      ]
+    },
+    {
+      "code": "M229",
+      "name": "Jesús de Machaca",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Jesús de Machaca",
+        "jesus de machaca"
+      ]
+    },
+    {
+      "code": "M230",
+      "name": "Pelechuco",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Pelechuco",
+        "pelechuco"
+      ]
+    },
+    {
+      "code": "M231",
+      "name": "Quiabaya",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Quiabaya",
+        "quiabaya"
+      ]
+    },
+    {
+      "code": "M232",
+      "name": "Sica Sica",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Sica Sica",
+        "sica sica"
+      ]
+    },
+    {
+      "code": "M233",
+      "name": "Wari",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Wari",
+        "wari"
+      ]
+    },
+    {
+      "code": "M234",
+      "name": "Chacarilla",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Chacarilla",
+        "chacarilla"
+      ]
+    },
+    {
+      "code": "M235",
+      "name": "Collana",
+      "department": "La Paz",
+      "level": "municipal",
+      "aliases": [
+        "Collana",
+        "collana"
+      ]
+    },
+    {
+      "code": "M236",
+      "name": "La Guardia",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "La Guardia",
+        "la guardia",
+        "gam la guardia"
+      ]
+    },
+    {
+      "code": "M237",
+      "name": "Paurito",
+      "department": "Santa Cruz",
+      "level": "municipal",
+      "aliases": [
+        "Paurito",
+        "paurito"
+      ]
+    },
+    {
+      "code": "M238",
+      "name": "Rosario de Yacuma",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "Rosario de Yacuma",
+        "rosario de yacuma"
+      ]
+    },
+    {
+      "code": "M239",
+      "name": "Sacabamba",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Sacabamba",
+        "sacabamba"
+      ]
+    },
+    {
+      "code": "M240",
+      "name": "Shinahota",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Shinahota",
+        "shinahota"
+      ]
+    },
+    {
+      "code": "M241",
+      "name": "Tiraque",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Tiraque",
+        "tiraque"
+      ]
+    },
+    {
+      "code": "M242",
+      "name": "Vacas",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Vacas",
+        "vacas"
+      ]
+    },
+    {
+      "code": "M243",
+      "name": "Pocona",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Pocona",
+        "pocona"
+      ]
+    },
+    {
+      "code": "M244",
+      "name": "Anzaldo",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Anzaldo",
+        "anzaldo"
+      ]
+    },
+    {
+      "code": "M245",
+      "name": "Arque",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Arque",
+        "arque"
+      ]
+    },
+    {
+      "code": "M246",
+      "name": "Bolívar",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Bolívar",
+        "bolivar",
+        "bolívar"
+      ]
+    },
+    {
+      "code": "M247",
+      "name": "Arani",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Arani",
+        "arani"
+      ]
+    },
+    {
+      "code": "M248",
+      "name": "Ayopaya",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "Ayopaya",
+        "ayopaya"
+      ]
+    },
+    {
+      "code": "M249",
+      "name": "España",
+      "department": "Cochabamba",
+      "level": "municipal",
+      "aliases": [
+        "España",
+        "espana",
+        "españa"
+      ]
+    },
+    {
+      "code": "M250",
+      "name": "La Rivera",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "La Rivera",
+        "la rivera"
+      ]
+    },
+    {
+      "code": "M251",
+      "name": "Pantaleón Dalence",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Pantaleón Dalence",
+        "pantaleon dalence",
+        "pantaleón dalence"
+      ]
+    },
+    {
+      "code": "M252",
+      "name": "Sebastián Pagador",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Sebastián Pagador",
+        "sebastian pagador",
+        "sebastián pagador"
+      ]
+    },
+    {
+      "code": "M253",
+      "name": "Turco",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Turco",
+        "turco"
+      ]
+    },
+    {
+      "code": "M254",
+      "name": "Urmiri",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Urmiri",
+        "urmiri"
+      ]
+    },
+    {
+      "code": "M255",
+      "name": "El Choro",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "El Choro",
+        "el choro"
+      ]
+    },
+    {
+      "code": "M256",
+      "name": "Esse Ejau",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Esse Ejau",
+        "esse ejau"
+      ]
+    },
+    {
+      "code": "M257",
+      "name": "San Pedro de Totora",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "San Pedro de Totora",
+        "san pedro de totora"
+      ]
+    },
+    {
+      "code": "M258",
+      "name": "Ladislao Cabrera",
+      "department": "Oruro",
+      "level": "municipal",
+      "aliases": [
+        "Ladislao Cabrera",
+        "ladislao cabrera"
+      ]
+    },
+    {
+      "code": "M259",
+      "name": "San Pedro de Macha",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "San Pedro de Macha",
+        "san pedro de macha"
+      ]
+    },
+    {
+      "code": "M260",
+      "name": "Tinguipaya",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Tinguipaya",
+        "tinguipaya"
+      ]
+    },
+    {
+      "code": "M261",
+      "name": "Yocalla",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Yocalla",
+        "yocalla"
+      ]
+    },
+    {
+      "code": "M262",
+      "name": "Puna",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Puna",
+        "puna"
+      ]
+    },
+    {
+      "code": "M263",
+      "name": "Tomave",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "Tomave",
+        "tomave"
+      ]
+    },
+    {
+      "code": "M264",
+      "name": "San Pedro de Buena Vista",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "San Pedro de Buena Vista",
+        "san pedro de buena vista"
+      ]
+    },
+    {
+      "code": "M265",
+      "name": "San Agustín",
+      "department": "Potosí",
+      "level": "municipal",
+      "aliases": [
+        "San Agustín",
+        "san agustin",
+        "san agustín"
+      ]
+    },
+    {
+      "code": "M266",
+      "name": "Villa Vaca Guzmán",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Villa Vaca Guzmán",
+        "villa vaca guzman",
+        "villa vaca guzmán"
+      ]
+    },
+    {
+      "code": "M267",
+      "name": "El Villar",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "El Villar",
+        "el villar"
+      ]
+    },
+    {
+      "code": "M268",
+      "name": "Las Carreras",
+      "department": "Chuquisaca",
+      "level": "municipal",
+      "aliases": [
+        "Las Carreras",
+        "las carreras"
+      ]
+    },
+    {
+      "code": "M269",
+      "name": "San Ignacio",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "San Ignacio",
+        "san ignacio",
+        "gam san ignacio"
+      ]
+    },
+    {
+      "code": "M270",
+      "name": "Santa Rosa",
+      "department": "Beni",
+      "level": "municipal",
+      "aliases": [
+        "Santa Rosa",
+        "santa rosa",
+        "gam santa rosa"
+      ]
+    },
+    {
+      "code": "M271",
+      "name": "Puerto Gonzalo Moreno",
+      "department": "Pando",
+      "level": "municipal",
+      "aliases": [
+        "Puerto Gonzalo Moreno",
+        "puerto gonzalo moreno"
       ]
     }
   ]

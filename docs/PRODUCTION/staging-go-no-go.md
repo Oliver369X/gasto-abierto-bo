@@ -38,7 +38,7 @@ Despliegue VPS / producción: [`vps-deploy.md`](vps-deploy.md) y [`.env.producti
 | # | Check | Comando | GO |
 |---|-------|---------|-----|
 | 2.1 | Contract tests | `pytest tests/contract tests/test_common.py -q` | ☐ |
-| 2.2 | MEFP geo ≥200 ubicaciones | `pytest tests/test_mefp_geo.py -q` | ☐ |
+| 2.2 | MEFP geo ≥280 ubicaciones | `pytest tests/test_mefp_geo.py -q` | ☐ |
 | 2.3 | SICOES offline | `pytest tests/test_sicoes_resilience.py -q` | ☐ |
 | 2.4 | Presupuesto corpus | `pytest tests/test_fetch_presupuesto.py -q` | ☐ |
 | 2.5 | MVP verify | `bash scripts/verify_mvp.sh` (S1–S16) | ☐ |
@@ -50,16 +50,13 @@ Despliegue VPS / producción: [`vps-deploy.md`](vps-deploy.md) y [`.env.producti
 Ejecutar tras `docker compose up -d`:
 
 ```bash
-# Demo mínimo (boot default)
+# Recomendado: history + presupuesto_corpus + fire_demo + harden en un comando
+docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile staging
+
+# Alternativa granular:
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile demo
-
-# Histórico multi-año (presupuesto + contratos alineados)
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile history
-
-# Presupuesto offline cuando PRESUPUESTO_ABIERTO_DOWNLOAD_URLS vacío
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile presupuesto_corpus
-
-# Product-gate G10 + incendios demo
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile publish
 ```
 

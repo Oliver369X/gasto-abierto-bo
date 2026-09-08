@@ -5,8 +5,19 @@ El clasificador en `packages/common/mefp_geo.py` usa `packages/common/data/mefp_
 ## Estado actual
 
 - Archivo: `mefp_ubicaciones.json` (`count`, `target_total: 352`)
-- Wave 5: set curado departamental + municipal (~160 entradas); Wave 6: **224** ubicaciones; tests exigen `count >= 200`
-- Scripts incrementales: `scripts/ops/expand_mefp_wave4.py`, `scripts/ops/expand_mefp_wave5.py`, `scripts/ops/expand_mefp_wave6.py`
+- Wave 6: **224** ubicaciones; Wave 7: **280** ubicaciones (gap **72** al catálogo GeoPackage)
+- Tests exigen `count >= 280`
+- Scripts incrementales: `scripts/ops/expand_mefp_wave4.py` … `expand_mefp_wave7.py`
+
+## Brecha restante hacia 352
+
+| Métrica | Valor |
+|---------|-------|
+| En repo (Wave 7) | 280 ubicaciones (9 departamentales + 271 municipales) |
+| Objetivo MEFP | 352 |
+| **Gap** | **72** ubicaciones sin merge manual curado |
+
+Los 72 faltantes requieren el export oficial (GeoPackage/CSV) del portal Presupuesto Abierto — no se inventan nombres en repo para evitar falsos positivos en clasificación.
 
 ## Fuente oficial para completar 352
 

@@ -15,6 +15,7 @@ PROFILES: dict[str, str] = {
     "publish": "worker.gasto.seeds.publish",
     "fire_demo": "worker.gasto.seeds.fire_demo",
     "presupuesto_corpus": "worker.gasto.seeds.presupuesto_corpus",
+    "staging": "worker.gasto.seeds.staging",
 }
 
 

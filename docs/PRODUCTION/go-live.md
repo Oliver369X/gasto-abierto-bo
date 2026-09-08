@@ -1,24 +1,28 @@
 # Go-live — Gasto Abierto (Diego)
 
-One-pager operativo para abrir tráfico público. Base branch: `main` ← merge desde staging validado.
+One-pager operativo para abrir tráfico público. Base branch: `main` ← merge desde staging validado. Orden de olas: [`merge-order.md`](merge-order.md).
 
-## Orden de merge / deploy
+## Checklist Diego (orden exacto)
 
-1. **Código** — merge PR Wave 6 (staging-readiness + blockers) a `main`.
-2. **Infra** — VPS con Docker Compose + TLS (reverse proxy → `WEB_HOST_PORT` / `API_HOST_PORT`).  # pragma: allowlist secret
-3. **Env** — copiar [`.env.production.example`](../../.env.production.example) → `.env` en servidor (vault para DB/passwords).
-4. **Stack** — `docker compose -f docker-compose.yml -f compose.staging.yml up -d --build` (ver [`staging-worker.md`](staging-worker.md)).
-5. **Seeds** — perfiles en orden (§ Seeds abajo).
-6. **Staging check** — `make staging-check` (HTTP smoke interno).
-7. **Go-live check** — `make go-live-check` (URLs públicas + presupuesto + product-gate).
-8. **DNS / TLS** — apuntar dominios; reconstruir `web` si cambia `NEXT_PUBLIC_API_URL`.
-9. **Abrir tráfico** — solo si ambos checks pasan.
+| # | Paso | Comando / acción | GO |
+|---|------|------------------|-----|
+| 1 | **Merge código** | Squash-merge PR Wave 6 → Wave 7 a `main` (ver [`merge-order.md`](merge-order.md)) | ☐ |
+| 2 | **Infra VPS** | Docker Compose + TLS (reverse proxy → `WEB_HOST_PORT` / `API_HOST_PORT`) | ☐ | <!-- pragma: allowlist secret -->
+| 3 | **Env producción** | Copiar [`.env.production.example`](../../.env.production.example) → `.env` en servidor (vault para DB/passwords) | ☐ |
+| 4 | **Stack** | `docker compose -f docker-compose.yml -f compose.staging.yml up -d --build` (ver [`staging-worker.md`](staging-worker.md)) | ☐ |
+| 5 | **Seed staging** | `docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile staging` | ☐ |
+| 6 | **Staging check** | `make staging-check` (HTTP smoke interno) | ☐ |
+| 7 | **Go-live check** | `make go-live-check` (URLs públicas + presupuesto + product-gate) | ☐ |
+| 8 | **DNS / TLS** | Apuntar dominios; reconstruir `web` si cambia `NEXT_PUBLIC_API_URL` | ☐ |
+| 9 | **Abrir tráfico** | Solo si pasos 6 y 7 OK | ☐ |
+
+**Caja local (no prod):** `make go-live-check --allow-demo-urls` permite hosts de ejemplo (`api.gasto.ejemplo.bo`).
 
 ## Variables críticas (`.env`)
 
 | Variable | Producción |
 |----------|------------|
-| `NEXT_PUBLIC_API_URL` | `https://api.tudominio.bo` (nunca loopback / localhost) |  # pragma: allowlist secret
+| `NEXT_PUBLIC_API_URL` | `https://api.tudominio.bo` (nunca loopback / [REDACTED]) |  <!-- pragma: allowlist secret -->
 | `CORS_ORIGINS` | `https://tudominio.bo` |
 | `PRESUPUESTO_ABIERTO_DOWNLOAD_URLS` | URL Parquet oficial (ver README) |
 | `LIVE_SCRAPE` | `0` al abrir; `1` solo con `PROXY_URL` |
@@ -33,9 +37,19 @@ PRESUPUESTO_ABIERTO_DOWNLOAD_URLS=https://abierto.economiayfinanzas.gob.bo/presu
 
 Sin secretos en git. Sin Excel / Google Drive.
 
-## Seeds (publish)
+## Seeds
+
+### Staging (recomendado — un comando)
 
 Tras `docker compose up -d`:
+
+```bash
+docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile staging
+```
+
+Ejecuta en orden: `history` → `presupuesto_corpus` → `fire_demo` → `harden`.
+
+### Perfiles individuales (alternativa)
 
 ```bash
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile demo
@@ -44,7 +58,7 @@ docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --prof
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile publish
 ```
 
-`publish` habilita **product-gate G10** e incendios demo. No usar `BOOT_PUBLISH_SEED=1` en prod salvo bootstrap controlado.
+`publish` incluye deep corpus + G10; `staging` es más ligero para VPS staging.
 
 ## Checks automatizados
 
@@ -62,17 +76,18 @@ Verifica: `/v1/health`, `/v1/product-gate` (`pass: true`), `/v1/budgets/totals` 
 ```bash
 make go-live-check
 # API custom: GO_LIVE_API_URL=https://api.tudominio.bo make go-live-check
+# Caja local:  make go-live-check --allow-demo-urls
 ```
 
 **Falla si:**
 
-- `NEXT_PUBLIC_API_URL` apunta a loopback (localhost / 127.0.0.1)  # pragma: allowlist secret
+- `NEXT_PUBLIC_API_URL` apunta a loopback ([REDACTED] / [REDACTED]) sin `--allow-demo-urls`  <!-- pragma: allowlist secret -->
 - `LIVE_SCRAPE=1` sin proxy configurado
 - `PRESUPUESTO_ABIERTO_DOWNLOAD_URLS` (y legacy `PRESUPUESTO_ABIERTO_URLS`) vacíos
 - `GET /v1/product-gate` → `pass != true`
 - `GET /v1/budgets/totals` → `lines == 0`
 
-Checklist manual ampliado: [`staging-go-no-go.md`](staging-go-no-go.md).
+Mensajes de error en español en consola. Checklist manual ampliado: [`staging-go-no-go.md`](staging-go-no-go.md).
 
 ## Rollback rápido
 
@@ -82,4 +97,4 @@ Checklist manual ampliado: [`staging-go-no-go.md`](staging-go-no-go.md).
 
 ## Diferido (no bloquea go-live demo)
 
-Solo P2 real — ver [`docs/wave6-deferred.md`](../wave6-deferred.md).
+Solo P2 real — ver [`docs/wave7-deferred.md`](../wave7-deferred.md) y [`docs/wave6-deferred.md`](../wave6-deferred.md).

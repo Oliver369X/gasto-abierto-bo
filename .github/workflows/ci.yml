@@ -31,7 +31,14 @@ jobs:
             tests/test_fire_geo_bbox.py tests/test_fire_sernap_extract.py \
             tests/test_fire_api.py tests/test_sicoes_resilience.py tests/test_fire_demo_argv.py \
             tests/test_env_validate.py tests/test_presupuesto_corpus_seed.py \
+            tests/test_staging_seed.py \
             tests/test_go_live_check.py tests/test_web_download_urls.py -q
+      - name: Go-live + MEFP + web URL regression
+        env:
+          PYTHONPATH: packages:services
+        run: |
+          pytest tests/test_go_live_check.py tests/test_mefp_geo.py \
+            tests/test_web_download_urls.py tests/test_staging_seed.py -q
       - name: Verify (offline parts)
         env:
           SKIP_DOCKER: "1"

@@ -7,7 +7,8 @@ Guía para el worker ARQ en **staging VPS** antes del go-live público. Compleme
 | Perfil | Cuándo | Servicios | RAM worker sugerida |
 |--------|--------|-----------|---------------------|
 | **demo** | Smoke post-deploy | `demo` seed, cron deshabilitado manualmente | 512 MiB |
-| **publish** | Pre go-live | `publish` + `fire_demo` (product-gate G10) | 1–2 GiB |
+| **staging** | Pre go-live (recomendado) | `history` + `presupuesto_corpus` + `fire_demo` + `harden` | 1–2 GiB |
+| **publish** | Product-gate G10 completo | `publish` + deep corpus | 1–2 GiB |
 | **live-ingest** | Refresh semanal | `presupuesto_abierto` parquet + SICOES live | 2–4 GiB |
 
 El parseo de Parquet de Presupuesto Abierto y los jobs ARQ concurrentes son los principales consumidores de RAM.
@@ -41,6 +42,11 @@ En Docker Compose v2 sin Swarm, `deploy.resources` se aplica en modo **standalon
 Orden (mismo que go-live, sin tráfico externo):
 
 ```bash
+# Un comando (recomendado):
+docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile staging
+make staging-check
+
+# Alternativa granular:
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile demo
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile history
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile presupuesto_corpus

@@ -3,7 +3,7 @@
 Wave 4 ships 100+ curated departments + municipalities aligned with fixtures and
 contract history. Expand by merging the official GeoPackage/CSV ubicaciones export
 from https://abierto.economiayfinanzas.gob.bo/descargas into
-packages/common/data/mefp_ubicaciones.json (see scripts/ops/expand_mefp_wave6.py
+packages/common/data/mefp_ubicaciones.json (see scripts/ops/expand_mefp_wave7.py
 and docs/sources/mefp_ubicaciones.md).
 """
 from __future__ import annotations

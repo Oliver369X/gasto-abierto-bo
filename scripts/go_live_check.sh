@@ -4,6 +4,27 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+ALLOW_DEMO=0
+EXTRA_PY_ARGS=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --allow-demo-urls)
+      ALLOW_DEMO=1
+      EXTRA_PY_ARGS+=(--allow-demo-urls)
+      shift
+      ;;
+    -h|--help)
+      echo "Uso: $0 [--allow-demo-urls]"
+      echo "  --allow-demo-urls  Permite URLs de ejemplo en caja local (no usar en prod)"
+      exit 0
+      ;;
+    *)
+      echo "Opción desconocida: $1" >&2
+      exit 2
+      ;;
+  esac
+done
+
 if [[ -f .env ]]; then
   # shellcheck disable=SC1091
   set -a
@@ -15,7 +36,7 @@ if [[ -f .env ]]; then
 fi
 
 API_HOST_PORT="${API_HOST_PORT:-8010}"
-API="${GO_LIVE_API_URL:-${STAGING_API_URL:-${API_URL:-http://127.0.0.1:${API_HOST_PORT}}}}"  # pragma: allowlist secret
+API="${GO_LIVE_API_URL:-${STAGING_API_URL:-${API_URL:-http://[REDACTED]:${API_HOST_PORT}}}}"  # pragma: allowlist secret
 
 PASS=0
 FAIL=0
@@ -23,11 +44,14 @@ ok() { echo "OK  $1"; PASS=$((PASS + 1)); }
 ko() { echo "FAIL $1 — $2"; FAIL=$((FAIL + 1)); }
 
 echo "Go-live check → env + $API"
+if [[ "$ALLOW_DEMO" -eq 1 ]]; then
+  echo "(modo local: --allow-demo-urls activo)"
+fi
 
-if PYTHONPATH=packages:services python -m common.go_live_validate; then
+if PYTHONPATH=packages:services python -m common.go_live_validate "${EXTRA_PY_ARGS[@]}"; then
   ok "env (NEXT_PUBLIC_API_URL, LIVE_SCRAPE/proxy, PRESUPUESTO URLs)"
 else
-  ko "env" "see errors above — fix .env before go-live"
+  ko "env" "revisá los errores arriba — corregí .env antes del go-live"
 fi
 
 health=$(curl -sf "$API/v1/health" 2>/dev/null || true)
@@ -37,18 +61,18 @@ if echo "$health" | grep -q '"status":"ok"'; then
     if echo "$health" | grep -q '"proxy_configured":true'; then
       ok "proxy (LIVE_SCRAPE=1)"
     else
-      ko "proxy" "LIVE_SCRAPE=1 but proxy_configured=false — set PROXY_URL"
+      ko "proxy" "LIVE_SCRAPE=1 pero proxy_configured=false — configurá PROXY_URL"
     fi
   fi
 else
-  ko "GET /v1/health" "unreachable or status!=ok"
+  ko "GET /v1/health" "API inalcanzable o status!=ok — ¿stack arriba?"
 fi
 
 gate=$(curl -sf "$API/v1/product-gate" 2>/dev/null || true)
 if echo "$gate" | grep -q '"pass":true'; then
   ok "GET /v1/product-gate"
 else
-  ko "GET /v1/product-gate" 'pass!=true — run: gasto seed --profile publish'
+  ko "GET /v1/product-gate" 'pass!=true — ejecutá: gasto seed --profile staging (o publish)'
 fi
 
 budgets=$(curl -sf "$API/v1/budgets/totals" 2>/dev/null || true)
@@ -57,10 +81,10 @@ if echo "$budgets" | grep -q '"lines"'; then
   if [[ "${lines:-0}" -gt 0 ]]; then
     ok "GET /v1/budgets/totals (lines=${lines})"
   else
-    ko "GET /v1/budgets/totals" "lines=0 — seed history or presupuesto_corpus"
+    ko "GET /v1/budgets/totals" "lines=0 — ejecutá: gasto seed --profile staging (o history)"
   fi
 else
-  ko "GET /v1/budgets/totals" "missing lines field"
+  ko "GET /v1/budgets/totals" "campo lines ausente o respuesta inválida"
 fi
 
 echo "----"
