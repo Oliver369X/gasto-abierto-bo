@@ -13,8 +13,9 @@
 1. **Descargas oficiales** CSV/Parquet desde `/descargas` — no scraping del portal SPA.
 2. Si `PRESUPUESTO_ABIERTO_DOWNLOAD_URLS` está vacío, el CLI **descubre URLs** desde la página oficial (Parquet «Para desarrolladores» + enlaces directos).
 3. CLI: `python -m scripts.cli gasto fetch-presupuesto` → `tests/fixtures/real/presupuesto_abierto/` (o copia fixtures locales si la red falla).
-4. Ingesta: `python -m scripts.cli gasto ingest --source presupuesto_abierto --sync` (usa fixtures empaquetados si no hay URLs).
-5. Fallback histórico: JSON en `tests/fixtures/presupuesto_abierto/` y datasets CKAN vía adapter `agetic`.
+4. **URLs vacías (CI/staging):** `python -m scripts.cli gasto seed --profile presupuesto_corpus` — usa manifest offline.
+5. Ingesta: `python -m scripts.cli gasto ingest --source presupuesto_abierto --sync` (usa fixtures empaquetados si no hay URLs).
+6. Fallback histórico: JSON en `tests/fixtures/presupuesto_abierto/` y datasets CKAN vía adapter `agetic`.
 
 ### Refrescar datos
 
@@ -36,7 +37,18 @@ export PRESUPUESTO_ABIERTO_DOWNLOAD_URLS="https://abierto.economiayfinanzas.gob.
 docker compose run --rm --entrypoint python api -m scripts.cli gasto ingest --source presupuesto_abierto --sync
 ```
 
-Corpus offline empaquetado: `tests/fixtures/presupuesto_abierto/offline_corpus_manifest.json`.
+Corpus offline empaquetado: `tests/fixtures/presupuesto_abierto/offline_corpus_manifest.json` (incluye `regional_entities.csv` Wave 4).
+
+### Seed offline (`presupuesto_corpus`)
+
+Cuando `PRESUPUESTO_ABIERTO_DOWNLOAD_URLS` está vacío:
+
+```bash
+docker compose run --rm --entrypoint python api \
+  -m scripts.cli gasto seed --profile presupuesto_corpus
+```
+
+El profile falla si hay URLs configuradas (usa `ingest --live` en su lugar). Manifest: `offline_corpus_manifest.json`.
 
 ### Refresco oficial (~8M filas)
 

@@ -24,8 +24,9 @@ class FetchError(RuntimeError):
 def fetch_page(url: str) -> bytes:
     """Fetch a page with Playwright (live scrape), optionally via PROXY_URL.
 
-    One retry on failure so a transient timeout does not kill the whole ingest.
-    Raises ``FetchError`` so callers can fall back to offline fixtures.
+    Retries with backoff on failure so a transient timeout does not kill the whole ingest.
+    Validates non-empty HTML before returning. Raises ``FetchError`` so callers can fall
+    back to offline fixtures.
     """
     assert_live_proxy_ok()
     _limiter.wait()
@@ -35,6 +36,7 @@ def fetch_page(url: str) -> bytes:
 
     timeout_ms = int(os.getenv("PLAYWRIGHT_TIMEOUT_MS", "60000"))
     retries = int(os.getenv("PLAYWRIGHT_RETRIES", "2"))
+    min_bytes = int(os.getenv("SICOES_FETCH_MIN_BYTES", "256"))
     proxy = playwright_proxy_config()
     last_exc: Exception | None = None
 
@@ -48,8 +50,16 @@ def fetch_page(url: str) -> bytes:
                     html = page.content()
                 finally:
                     browser.close()
-            return html.encode("utf-8")
-        except (PlaywrightTimeout, PlaywrightError, OSError) as exc:
+            raw = html.encode("utf-8")
+            if len(raw) < min_bytes:
+                raise ValueError(f"response too small ({len(raw)} bytes)")
+            lowered = html.lower()
+            if "mantenimiento" in lowered or "servicio no disponible" in lowered:
+                raise ValueError("portal maintenance page")
+            if "captcha" in lowered or "recaptcha" in lowered:
+                raise ValueError("captcha or bot-wall detected")
+            return raw
+        except (PlaywrightTimeout, PlaywrightError, OSError, ValueError) as exc:
             last_exc = exc
             kind = "timeout" if isinstance(exc, PlaywrightTimeout) else "error"
             log.warning(
@@ -61,11 +71,13 @@ def fetch_page(url: str) -> bytes:
                 exc,
             )
             if attempt < retries - 1:
-                time.sleep(1.5 * (attempt + 1))
+                backoff = float(os.getenv("SICOES_RETRY_BACKOFF_SEC", "1.5"))
+                time.sleep(backoff * (attempt + 1))
         except Exception as exc:  # noqa: BLE001
             last_exc = exc
             log.warning("playwright fetch attempt %s failed for %s: %s", attempt + 1, url, exc)
             if attempt < retries - 1:
-                time.sleep(1.5 * (attempt + 1))
+                backoff = float(os.getenv("SICOES_RETRY_BACKOFF_SEC", "1.5"))
+                time.sleep(backoff * (attempt + 1))
     assert last_exc is not None
     raise FetchError(url, last_exc, max(1, retries))

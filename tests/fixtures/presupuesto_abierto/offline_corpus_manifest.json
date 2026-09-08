@@ -1,6 +1,6 @@
 {
-  "version": "2025-wave3",
-  "description": "Offline Presupuesto Abierto corpus bundled for CI and demo without live network.",
+  "version": "2025-wave4",
+  "description": "Offline Presupuesto Abierto corpus bundled for CI, staging, and demo without live network.",
   "sources": [
     {
       "path": "tests/fixtures/presupuesto_abierto/entidades.json",
@@ -13,6 +13,13 @@
       "kind": "csv",
       "rows": 12,
       "years": [2024, 2025]
+    },
+    {
+      "path": "tests/fixtures/presupuesto_abierto/regional_entities.csv",
+      "kind": "csv",
+      "rows": 12,
+      "years": [2024, 2025],
+      "note": "Wave 4 municipal GAM rows for MEFP geo classifier smoke"
     },
     {
       "path": "tests/fixtures/presupuesto_abierto/history_2019_2025.json",
@@ -28,10 +35,13 @@
       "profile": "publish"
     }
   ],
+  "seed_profile": "presupuesto_corpus",
   "live_refresh": {
     "env": "PRESUPUESTO_ABIERTO_DOWNLOAD_URLS",
-    "cli": "gasto fetch-presupuesto",
+    "cli_list": "gasto fetch-presupuesto --list-only",
+    "cli_download": "gasto fetch-presupuesto",
     "dest": "tests/fixtures/real/presupuesto_abierto/",
-    "requires": "LIVE_SCRAPE=1 + PROXY_URL when downloading remote URLs"
+    "requires": "LIVE_SCRAPE=1 + PROXY_URL when downloading remote URLs",
+    "when_urls_empty": "gasto seed --profile presupuesto_corpus (uses this manifest)"
   }
 }

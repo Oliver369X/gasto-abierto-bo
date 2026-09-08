@@ -8,6 +8,9 @@ from common.fetch_presupuesto_abierto import (
     copy_fixture_fallback,
     discover_download_urls,
     list_download_urls,
+    list_offline_corpus_paths,
+    load_offline_manifest,
+    offline_corpus_ready,
 )
 
 
@@ -39,3 +42,13 @@ def test_copy_fixture_fallback(tmp_path: Path):
     assert wrote
     names = {p.name for p in wrote}
     assert "entidades.json" in names or "sample_export.csv" in names
+    assert "regional_entities.csv" in names
+
+
+def test_offline_corpus_manifest_paths_exist():
+    manifest = load_offline_manifest()
+    assert manifest.get("version")
+    paths = list_offline_corpus_paths()
+    assert offline_corpus_ready()
+    assert len(paths) >= 4
+    assert any(p.name == "regional_entities.csv" for p in paths)

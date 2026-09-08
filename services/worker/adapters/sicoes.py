@@ -333,9 +333,13 @@ class SicoesAdapter:
             f"https://www.sicoes.gob.bo/portal/contrataciones/consulta/"
             f"busqueda_avance.php?cuce={cuce}"
         )
-        from worker.adapters.sicoes_fetch import fetch_page
+        from worker.adapters.sicoes_fetch import FetchError, fetch_page
 
-        raw = fetch_page(url)
+        try:
+            raw = fetch_page(url)
+        except FetchError as exc:
+            log.warning("SICOES CUCE ficha fetch failed (%s); skipping live detail", exc)
+            return None
         html = raw.decode("utf-8", errors="replace")
         detail = parse_cuce_html(html, cuce=cuce)
         detail["url"] = url

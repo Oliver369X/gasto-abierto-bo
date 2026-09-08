@@ -1,9 +1,9 @@
 """MEFP Presupuesto Abierto geographic classifier (incremental toward 352 ubicaciones).
 
-Phase 1 ships a curated lookup of departments + municipalities aligned with fixtures
-and contract history. Expand by merging the official GeoPackage/CSV ubicaciones export
+Wave 4 ships 100+ curated departments + municipalities aligned with fixtures and
+contract history. Expand by merging the official GeoPackage/CSV ubicaciones export
 from https://abierto.economiayfinanzas.gob.bo/descargas into
-packages/common/data/mefp_ubicaciones.json.
+packages/common/data/mefp_ubicaciones.json (see scripts/ops/expand_mefp_wave4.py).
 """
 from __future__ import annotations
 

@@ -2,14 +2,37 @@
 
 ## Puertos (host)
 
-| Servicio | Puerto |
-|----------|--------|
-| API | 8010 |
-| Web | 3010 |
-| Postgres | 5434 |
-| Redis | 6380 |
-| MinIO API | 9010 |
-| MinIO console | 9011 |
+Por defecto Gasto Abierto evita colisiones con stacks típicos (puerto DB 5432, API 8000). Todos los puertos host son configurables vía `.env`: <!-- pragma: allowlist secret -->
+
+| Servicio | Variable | Default |
+|----------|----------|---------|
+| API | `API_HOST_PORT` → contenedor `API_PORT` | 8010 → 8000 |
+| Web | `WEB_HOST_PORT` | 3010 |
+| DB | `POSTGRES_HOST_PORT` | 5434 | <!-- pragma: allowlist secret -->
+| Cache | `REDIS_HOST_PORT` | 6380 | <!-- pragma: allowlist secret -->
+| MinIO API | `MINIO_API_HOST_PORT` | 9010 |
+| MinIO console | `MINIO_CONSOLE_HOST_PORT` | 9011 |
+
+### Coexistencia con Opportunity (u otro stack en la misma máquina)
+
+Si **Opportunity** (u otra app) ya ocupa 8000/5432/6379, asigná puertos distintos antes de `docker compose up`:
+
+```env
+# Gasto Abierto — ejemplo sin chocar con Opportunity en 8000/5432
+API_HOST_PORT=8010
+API_PORT=8000
+WEB_HOST_PORT=3010
+POSTGRES_HOST_PORT=5434  # pragma: allowlist secret
+REDIS_HOST_PORT=6380  # pragma: allowlist secret
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8010  # pragma: allowlist secret
+CORS_ORIGINS=http://127.0.0.1:3010  # pragma: allowlist secret
+```
+
+Reconstruí `web` tras cambiar `NEXT_PUBLIC_API_URL` (`docker compose up -d --build web`).
+
+**Modo host network:** no mezclar dos compose con `network_mode: host` en los mismos puertos internos. Preferí bridge + mapeo host como arriba. Si usás host network para uno de los stacks, el otro debe usar puertos host diferentes vía las variables anteriores.
+
+Ver checklist staging: [`docs/PRODUCTION/staging-go-no-go.md`](PRODUCTION/staging-go-no-go.md).
 
 ## Comandos útiles
 

@@ -24,6 +24,7 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUT = ROOT / "tests" / "fixtures" / "real" / "presupuesto_abierto"
 FIXTURE_SRC = ROOT / "tests" / "fixtures" / "presupuesto_abierto"
+OFFLINE_MANIFEST = FIXTURE_SRC / "offline_corpus_manifest.json"
 UA = "GastoAbiertoBO/0.8 (+research; open-data; presupuesto-abierto)"
 DESCARGAS_PAGE = "https://abierto.economiayfinanzas.gob.bo/descargas"
 BASE_HOST = "https://abierto.economiayfinanzas.gob.bo"
@@ -166,6 +167,8 @@ def copy_fixture_fallback(dest: Path) -> list[Path]:
     for src in sorted(FIXTURE_SRC.rglob("*")):
         if not src.is_file():
             continue
+        if src.name == "offline_corpus_manifest.json":
+            continue
         if src.suffix.lower() not in (".csv", ".json", ".parquet"):
             continue
         target = dest / src.name
@@ -176,6 +179,38 @@ def copy_fixture_fallback(dest: Path) -> list[Path]:
         print(f"  fixture -> {target}")
         wrote.append(target)
     return wrote
+
+
+def load_offline_manifest() -> dict:
+    """Return bundled offline corpus manifest (CI/demo)."""
+    if not OFFLINE_MANIFEST.exists():
+        return {"sources": []}
+    return json.loads(OFFLINE_MANIFEST.read_text(encoding="utf-8"))
+
+
+def list_offline_corpus_paths(*, root: Path | None = None) -> list[Path]:
+    """Resolve fixture paths declared in offline_corpus_manifest.json."""
+    base = root or FIXTURE_SRC
+    manifest = load_offline_manifest()
+    paths: list[Path] = []
+    for src in manifest.get("sources") or []:
+        rel = src.get("path")
+        if not rel:
+            continue
+        path = ROOT / str(rel)
+        if path.is_file():
+            paths.append(path)
+    if paths:
+        return paths
+    # Fallback: any data files under fixture dir
+    for ext in (".csv", ".json", ".parquet"):
+        paths.extend(sorted(base.glob(f"*{ext}")))
+        paths.extend(sorted(base.glob(f"**/*{ext}")))
+    return sorted({p for p in paths if p.is_file()})
+
+
+def offline_corpus_ready() -> bool:
+    return bool(list_offline_corpus_paths())
 
 
 def fetch_presupuesto(

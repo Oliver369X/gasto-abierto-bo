@@ -26,7 +26,7 @@ def register(parser: argparse.ArgumentParser) -> None:
     p_seed.add_argument(
         "--profile",
         required=True,
-        choices=["demo", "history", "deep", "cross", "real", "publish", "fire_demo"],
+        choices=["demo", "history", "deep", "cross", "real", "publish", "fire_demo", "presupuesto_corpus"],
     )
     p_seed.add_argument(
         "--force",

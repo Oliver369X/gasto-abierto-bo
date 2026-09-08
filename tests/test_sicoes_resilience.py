@@ -56,7 +56,26 @@ def test_structure_change_raises_when_fallback_disabled():
     assert raised
 
 
-def test_sync_ingest_offline_sicoes_green():
+def test_fetch_empty_body_falls_back_to_fixture():
+    adapter = SicoesAdapter()
+    item = adapter.discover(Cursor(payload={"live": True}))[0]
+    with patch(
+        "worker.adapters.sicoes_fetch.fetch_page",
+        side_effect=FetchError(item.uri, ValueError("response too small (12 bytes)"), 2),
+    ):
+        raw = adapter.fetch(item)
+    records = adapter.parse(raw)
+    assert len(records) >= 2
+
+
+def test_fetch_cuce_detail_soft_fails_without_crash():
+    adapter = SicoesAdapter()
+    with patch.dict("os.environ", {"PROXY_URL": "http://proxy.test:7890"}):
+        with patch(
+            "worker.adapters.sicoes_fetch.fetch_page",
+            side_effect=FetchError("http://test", TimeoutError("timeout"), 2),
+        ):
+            assert adapter.fetch_cuce_detail("TEST-CUCE-001") is None
     """Mirror CI ingest path — no network, fixture only."""
     import os
 

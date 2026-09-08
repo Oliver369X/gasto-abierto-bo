@@ -22,7 +22,7 @@ def test_classify_ubicacion_municipal():
 def test_mefp_incremental_coverage():
     count = ubicacion_count()
     target = target_ubicacion_count()
-    assert count >= 50
+    assert count >= 100
     assert target == 352
     assert count < target
 
@@ -38,3 +38,12 @@ def test_mefp_fire_municipalities():
 def test_infer_department_mefp_expanded():
     assert infer_department_mefp("GAM Guayaramerín", None) == "Beni"
     assert infer_department_mefp(None, "Villazón") == "Potosí"
+    assert infer_department_mefp("GAM Vallegrande", None) == "Santa Cruz"
+    assert infer_department_mefp(None, "Tarabuco") == "Chuquisaca"
+
+
+def test_mefp_unique_codes():
+    from common.mefp_geo import load_ubicaciones
+
+    codes = [u["code"] for u in load_ubicaciones()]
+    assert len(codes) == len(set(codes))

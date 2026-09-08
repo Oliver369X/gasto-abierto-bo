@@ -29,7 +29,8 @@ jobs:
             tests/test_fire_rollup.py tests/test_fire_alerts_f13.py \
             tests/test_fire_capability.py tests/test_fire_gaceta_adapters.py \
             tests/test_fire_geo_bbox.py tests/test_fire_sernap_extract.py \
-            tests/test_fire_api.py tests/test_sicoes_resilience.py tests/test_fire_demo_argv.py -q
+            tests/test_fire_api.py tests/test_sicoes_resilience.py tests/test_fire_demo_argv.py \
+            tests/test_presupuesto_corpus_seed.py -q
       - name: Verify (offline parts)
         env:
           SKIP_DOCKER: "1"
