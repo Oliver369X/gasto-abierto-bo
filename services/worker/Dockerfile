@@ -20,4 +20,7 @@ ENV PYTHONPATH=/app/packages:/app/services
 ENV DATABASE_URL=postgresql+psycopg://gasto:gasto_dev_change_me@postgres:5432/gasto_abierto
 ENV REDIS_URL=redis://redis:6379/0
 
-CMD ["arq", "worker.main.WorkerSettings"]
+COPY services/worker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

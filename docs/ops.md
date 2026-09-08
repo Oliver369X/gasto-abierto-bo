@@ -32,7 +32,7 @@ Reconstruí `web` tras cambiar `NEXT_PUBLIC_API_URL` (`docker compose up -d --bu
 
 **Modo host network:** no mezclar dos compose con `network_mode: host` en los mismos puertos internos. Preferí bridge + mapeo host como arriba. Si usás host network para uno de los stacks, el otro debe usar puertos host diferentes vía las variables anteriores.
 
-Ver checklist staging: [`docs/PRODUCTION/staging-go-no-go.md`](PRODUCTION/staging-go-no-go.md).
+Ver checklist staging: [`docs/PRODUCTION/staging-go-no-go.md`](PRODUCTION/staging-go-no-go.md). Despliegue VPS: [`docs/PRODUCTION/vps-deploy.md`](PRODUCTION/vps-deploy.md).
 
 ## Comandos útiles
 

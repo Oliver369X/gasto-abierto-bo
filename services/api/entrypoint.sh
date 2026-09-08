@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 export PYTHONPATH="/app/packages:/app/services:/app${PYTHONPATH:+:$PYTHONPATH}"
+echo "Validating runtime env..."
+python -c "from common.env_validate import validate_runtime_env; validate_runtime_env()"
 echo "Running migrations..."
 alembic upgrade head
 echo "Seeding demo data..."
@@ -20,5 +22,7 @@ if [ "${BOOT_PUBLISH_SEED:-0}" = "1" ]; then
 else
   echo "Skipping publish seed (set BOOT_PUBLISH_SEED=1 for product-gate + incendios on boot)"
 fi
-echo "Starting API..."
-exec uvicorn api.main:app --host 0.0.0.0 --port 8000
+API_HOST="${API_HOST:-0.0.0.0}"
+API_PORT="${API_PORT:-8000}"
+echo "Starting API on ${API_HOST}:${API_PORT}..."
+exec uvicorn api.main:app --host "$API_HOST" --port "$API_PORT"

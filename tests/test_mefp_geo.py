@@ -42,6 +42,13 @@ def test_infer_department_mefp_expanded():
     assert infer_department_mefp(None, "Tarabuco") == "Chuquisaca"
 
 
+def test_mefp_wave5_municipal_sample():
+    hit = classify_ubicacion("GAM San Javier")
+    assert hit is not None
+    assert hit["department"] == "Santa Cruz"
+    assert hit["name"] == "San Javier"
+
+
 def test_mefp_unique_codes():
     from common.mefp_geo import load_ubicaciones
 

@@ -70,6 +70,9 @@ services:
       MINIO_ENDPOINT: minio:9000
       MINIO_SECURE: "0"
       MINIO_ENABLED: ${MINIO_ENABLED:-0}
+      API_HOST: ${API_HOST:-0.0.0.0}
+      API_PORT: ${API_PORT:-8000}
+      LIVE_SCRAPE: ${LIVE_SCRAPE:-0}
       REQUIRE_PROXY_FOR_LIVE: ${REQUIRE_PROXY_FOR_LIVE:-1}
       PROXY_URL: ${PROXY_URL:-}
       HTTPS_PROXY: ${HTTPS_PROXY:-}
@@ -82,7 +85,7 @@ services:
       redis:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/v1/health"]
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:$${API_PORT:-8000}/v1/health"]  # pragma: allowlist secret
       interval: 10s
       timeout: 5s
       retries: 30
