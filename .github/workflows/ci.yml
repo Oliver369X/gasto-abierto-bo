@@ -24,9 +24,25 @@ jobs:
           SKIP_DOCKER: "1"
         run: bash scripts/verify_mvp.sh
 
+  web-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install web deps
+        working-directory: services/web
+        run: npm install
+      - name: next build
+        working-directory: services/web
+        env:
+          NEXT_PUBLIC_API_URL: http://api.example:8010
+        run: npm run build
+
   docker-smoke:
     runs-on: ubuntu-latest
-    needs: test
+    needs: [test, web-build]
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/checkout@v4

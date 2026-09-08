@@ -11,6 +11,44 @@ skip_docker="${SKIP_DOCKER:-0}"
 ok() { echo "PASS $1"; PASS=$((PASS+1)); }
 ko() { echo "FAIL $1 — $2"; FAIL=$((FAIL+1)); }
 
+wait_url() {
+  local url="$1"
+  local label="$2"
+  local max="${3:-60}"
+  local sleep_s="${4:-5}"
+  for _ in $(seq 1 "$max"); do
+    if curl -sf "$url" >/dev/null 2>&1; then
+      return 0
+    fi
+    sleep "$sleep_s"
+  done
+  return 1
+}
+
+maybe_start_stack() {
+  if [[ "${VERIFY_START_SERVICES:-0}" != "1" ]]; then
+    return 0
+  fi
+  if ! command -v docker >/dev/null 2>&1; then
+    echo "VERIFY_START_SERVICES=1 but docker not found — skipping compose up"
+    return 0
+  fi
+  if [[ ! -f docker-compose.yml ]]; then
+    return 0
+  fi
+  echo "VERIFY_START_SERVICES=1 — ensuring docker compose stack is up..."
+  if [[ ! -f .env ]]; then
+    cp .env.example .env
+  fi
+  docker compose up -d --build
+}
+
+# Optional: host-side history seed when Docker RAM is tight (see scripts/host_seed_history.sh)
+if [[ "${LOW_DOCKER_RAM:-0}" == "1" ]] && [[ "${HOST_SEED_HISTORY:-0}" == "1" ]]; then
+  echo "LOW_DOCKER_RAM=1 — running host history seed before verify..."
+  bash scripts/host_seed_history.sh || ko "S3:host-seed-history" "host seed failed"
+fi
+
 # S11 OSS hygiene
 for f in LICENSE CONTRIBUTING.md CODE_OF_CONDUCT.md .env.example README.md; do
   if [[ -f "$f" ]]; then ok "S11:$f"; else ko "S11:$f" "missing"; fi
@@ -23,7 +61,14 @@ for s in agetic sicoes presupuesto_abierto cge gad_scz gam_scz; do
 done
 
 # S4 contract tests offline
-if command -v python >/dev/null 2>&1; then
+if command -v python3 >/dev/null 2>&1; then
+  export PYTHONPATH="$ROOT/packages:$ROOT/services${PYTHONPATH:+:$PYTHONPATH}"
+  if python3 -m pytest tests/contract tests/test_common.py -q --tb=line; then
+    ok "S4:contract-tests"
+  else
+    ko "S4:contract-tests" "pytest failed"
+  fi
+elif command -v python >/dev/null 2>&1; then
   export PYTHONPATH="$ROOT/packages:$ROOT/services${PYTHONPATH:+:$PYTHONPATH}"
   if python -m pytest tests/contract tests/test_common.py -q --tb=line; then
     ok "S4:contract-tests"
@@ -34,8 +79,23 @@ else
   ko "S4:contract-tests" "python missing"
 fi
 
+maybe_start_stack
+
 # S1 / S2 / S3 / S7 / S8 via API if up
-API="${API_URL:-http://localhost:8010}"
+API="${API_URL:-http://[REDACTED]:8010}"
+if ! curl -sf "$API/v1/health" >/dev/null 2>&1; then
+  if [[ "$skip_docker" == "1" ]]; then
+    echo "SKIP S1/S7/S8 (API down, SKIP_DOCKER=1)"
+  else
+    echo "Waiting for API at $API ..."
+    if wait_url "$API/v1/health" "api" 60 5; then
+      ok "S1:api-wait"
+    else
+      ko "S1:api-health" "API not reachable at $API — run docker compose up"
+    fi
+  fi
+fi
+
 if curl -sf "$API/v1/health" >/dev/null 2>&1; then
   ok "S1:api-health"
   contracts=$(curl -sf "$API/v1/contracts" || true)
@@ -50,22 +110,20 @@ if curl -sf "$API/v1/health" >/dev/null 2>&1; then
   if echo "$alerts" | grep -q 'explanation'; then ok "S8:alerts"; else ko "S8:alerts" "no explanation"; fi
   entities=$(curl -sf "$API/v1/entities" || true)
   if echo "$entities" | grep -q 'name'; then ok "S3:seed-entities"; else ko "S3:seed-entities" "empty"; fi
-else
-  if [[ "$skip_docker" == "1" ]]; then
-    echo "SKIP S1/S7/S8 (API down, SKIP_DOCKER=1)"
-  else
-    ko "S1:api-health" "API not reachable at $API — run docker compose up"
-  fi
 fi
 
 # S5 / S6 fixture paths exist (live optional)
 if [[ -f tests/fixtures/agetic/sample_contracts.csv ]]; then ok "S5:agetic-fixture"; else ko "S5" "missing fixture"; fi
 if [[ -f tests/fixtures/sicoes/procesos_sample.html ]]; then ok "S6:sicoes-fixture"; else ko "S6" "missing fixture"; fi
 
-# S9 UI
-WEB="${WEB_URL:-http://localhost:3010}"
-if curl -sf "$WEB/" >/dev/null 2>&1; then ok "S9:web"; else
-  if [[ "$skip_docker" == "1" ]]; then echo "SKIP S9"; else ko "S9:web" "web not up"; fi
+# S9 UI — wait for web (Next.js cold start can exceed a single curl)
+WEB="${WEB_URL:-http://[REDACTED]:3010}"
+if [[ "$skip_docker" == "1" ]]; then
+  echo "SKIP S9"
+elif wait_url "$WEB/" "web" 60 5; then
+  ok "S9:web"
+else
+  ko "S9:web" "web not up at $WEB — run docker compose up -d web (or VERIFY_START_SERVICES=1)"
 fi
 
 # S2 migrations file present

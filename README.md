@@ -40,6 +40,17 @@ docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --prof
 docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile history
 ```
 
+**Docker con poca RAM (~512MB):** evitá seed history dentro del contenedor API. Usá el host:
+
+```bash
+docker compose up -d   # stack completo, sin BOOT_FULL_SEED
+LOW_DOCKER_RAM=1 HOST_SEED_HISTORY=1 ./scripts/host_seed_history.sh
+# o antes de verify:
+LOW_DOCKER_RAM=1 HOST_SEED_HISTORY=1 ./scripts/verify_mvp.sh
+```
+
+Variables útiles en `.env`: `SEED_SKIP_STORAGE=1`, `SEED_BATCH_SIZE=25`, `SEED_TIMEOUT_SECONDS=600`.
+
 ## Refrescar datos gubernamentales
 
 ### Presupuesto Abierto (oficial — preferido)

@@ -126,7 +126,7 @@ python scripts/analyze_audit_workbook.py
 ## Trabajo restante (post-PR)
 
 1. Integrar URLs concretas de descarga cuando el portal publique endpoints estables (copiar desde `/descargas`).
-2. Añadir `next build` y tests fire/quality a CI.
+2. ~~Añadir `next build` y tests fire/quality a CI.~~ **Hecho:** job `web-build` en CI; tests fire pendientes.
 3. Refactorizar componentes UI compartidos y gráficos de serie temporal.
 4. Retirar `scripts/_legacy/` tras migración completa al CLI.
 5. Endurecer secretos de producción y rotación documentada.

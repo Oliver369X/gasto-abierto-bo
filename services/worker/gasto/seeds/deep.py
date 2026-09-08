@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Load deep multi-source corpus + run cross-source reconciliation.
 
-Offline-safe. Intended for Docker:
+Offline-safe. Uses skip_storage + skip_alerts during ingest to avoid hangs
+in constrained Docker. Progress logs every step.
 
-  python scripts/generate_deep_corpus.py
-  python scripts/seed_deep.py
+  python -m scripts.cli gasto seed --profile deep
 """
 from __future__ import annotations
 
@@ -22,63 +22,99 @@ from sqlalchemy.orm import sessionmaker
 from schema.db import make_engine
 from schema.models import Contract, Discrepancy
 from worker.alerts import run_alert_rules
+from worker.gasto.seeds._helpers import (
+    seed_log,
+    seed_skip_alerts_during_ingest,
+    seed_skip_storage,
+)
 from worker.pipeline import run_ingest
 from worker.reconcile import reconcile_all
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql+psycopg://gasto:gasto_dev_change_me@localhost:5434/gasto_abierto",
+    "[REDACTED]ql+psycopg://gasto:gasto_dev_change_me@[REDACTED]:5434/gasto_abierto",
 )
 FIX = ROOT / "tests" / "fixtures"
 
 
-def main() -> None:
+def _ensure_deep_fixtures() -> None:
     deep_agetic = FIX / "agetic" / "deep" / "contracts_2019_2025_deep.csv"
-    if not deep_agetic.exists():
-        import runpy
+    if deep_agetic.exists():
+        return
+    seed_log("deep", "generating deep fixtures (first run)")
+    import subprocess
 
-        runpy.run_path(str(ROOT / "scripts" / "_legacy" / "generate_deep_corpus.py"), run_name="__main__")
+    script = ROOT / "scripts" / "_legacy" / "generate_deep_corpus.py"
+    subprocess.run([sys.executable, str(script)], check=True, cwd=str(ROOT))
+
+
+def _ingest_step(
+    session,
+    source_id: str,
+    fixture_path: str,
+    *,
+    skip_storage: bool,
+    skip_alerts: bool,
+) -> dict:
+    seed_log("deep", f"ingest {source_id} from {Path(fixture_path).name}")
+    result = run_ingest(
+        session,
+        source_id,
+        fixture_path=fixture_path,
+        live=False,
+        skip_storage=skip_storage,
+        skip_alerts=skip_alerts,
+    )
+    session.commit()
+    seed_log("deep", f"ingest {source_id} records={result.get('records', 0)}")
+    return result
+
+
+def main() -> None:
+    _ensure_deep_fixtures()
+    skip_storage = seed_skip_storage()
+    skip_alerts = seed_skip_alerts_during_ingest()
 
     Session = sessionmaker(bind=make_engine(DATABASE_URL), autoflush=False, autocommit=False)
     session = Session()
     try:
         results: dict = {}
-        results["agetic"] = run_ingest(
+        results["agetic"] = _ingest_step(
             session,
             "agetic",
-            fixture_path=str(FIX / "agetic" / "deep"),
-            live=False,
+            str(FIX / "agetic" / "deep"),
+            skip_storage=skip_storage,
+            skip_alerts=skip_alerts,
         )
-        session.commit()
-
-        results["sicoes"] = run_ingest(
+        results["sicoes"] = _ingest_step(
             session,
             "sicoes",
-            fixture_path=str(FIX / "sicoes" / "deep"),
-            live=False,
+            str(FIX / "sicoes" / "deep"),
+            skip_storage=skip_storage,
+            skip_alerts=skip_alerts,
         )
-        session.commit()
-
-        results["presupuesto_abierto"] = run_ingest(
+        results["presupuesto_abierto"] = _ingest_step(
             session,
             "presupuesto_abierto",
-            fixture_path=str(FIX / "presupuesto_abierto" / "deep"),
-            live=False,
+            str(FIX / "presupuesto_abierto" / "deep"),
+            skip_storage=skip_storage,
+            skip_alerts=skip_alerts,
         )
-        session.commit()
-
-        results["cge"] = run_ingest(
+        results["cge"] = _ingest_step(
             session,
             "cge",
-            fixture_path=str(FIX / "cge" / "deep"),
-            live=False,
+            str(FIX / "cge" / "deep"),
+            skip_storage=skip_storage,
+            skip_alerts=skip_alerts,
         )
-        session.commit()
 
+        seed_log("deep", "reconcile cross-source")
         recon = reconcile_all(session)
         session.commit()
         results["reconcile"] = recon
+        seed_log("deep", f"reconcile cuce={recon.get('cuce_discrepancies')} budget={recon.get('budget_vs_contracts')}")
 
+        seed_log("deep", "refreshing alerts")
         alerts = run_alert_rules(session)
         session.commit()
         results["alerts"] = len(alerts)
@@ -92,7 +128,7 @@ def main() -> None:
         n_disc = session.scalar(select(func.count()).select_from(Discrepancy)) or 0
         results["totals"] = {"contracts": n_contracts, "discrepancies": n_disc}
 
-        print(results)
+        print(results, flush=True)
         agetic_n = int(
             results["agetic"].get("records")
             or results["agetic"].get("records_out")
@@ -104,7 +140,8 @@ def main() -> None:
             raise SystemExit("seed_deep: expected CUCE cross-source discrepancies in DB")
         if n_contracts < 80:
             raise SystemExit("seed_deep: expected deep contract corpus")
-        print("Seed deep OK")
+        seed_log("deep", "done")
+        print("Seed deep OK", flush=True)
     except Exception:
         session.rollback()
         raise

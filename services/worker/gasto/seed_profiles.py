@@ -23,6 +23,8 @@ def _load_main(module_name: str) -> Callable[[], None]:
 
 
 def run_seed_cli(profile: str) -> dict:
+    from worker.gasto.seeds._helpers import run_with_timeout, seed_log
+
     key = (profile or "").strip().lower()
     if key not in PROFILES:
         raise SystemExit(
@@ -30,7 +32,9 @@ def run_seed_cli(profile: str) -> dict:
         )
     module_name = PROFILES[key]
     main = _load_main(module_name)
-    main()
+    seed_log(key, "start")
+    run_with_timeout(main, label=f"seed:{key}")
+    seed_log(key, "complete")
     return {"ok": True, "profile": key, "module": module_name}
 
 
