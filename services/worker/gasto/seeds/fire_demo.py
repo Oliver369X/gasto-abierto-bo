@@ -20,4 +20,9 @@ def main() -> None:
     # Reuse battle-tested offline fire corpus (fixtures only).
     import runpy
 
-    runpy.run_path(str(legacy), run_name="__main__")
+    saved_argv = sys.argv
+    try:
+        sys.argv = [str(legacy)]
+        runpy.run_path(str(legacy), run_name="__main__")
+    finally:
+        sys.argv = saved_argv

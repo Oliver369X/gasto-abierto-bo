@@ -32,7 +32,7 @@ from worker.reconcile import reconcile_all
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "[REDACTED]ql+psycopg://gasto:gasto_dev_change_me@[REDACTED]:5434/gasto_abierto",
+    "postgresql+psycopg://gasto:gasto_dev_change_me@127.0.0.1:5434/gasto_abierto",  # pragma: allowlist secret
 )
 FIX = ROOT / "tests" / "fixtures"
 

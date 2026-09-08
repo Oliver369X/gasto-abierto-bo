@@ -82,7 +82,7 @@ fi
 maybe_start_stack
 
 # S1 / S2 / S3 / S7 / S8 via API if up
-API="${API_URL:-http://[REDACTED]:8010}"
+API="${API_URL:-http://127.0.0.1:8010}"  # pragma: allowlist secret
 if ! curl -sf "$API/v1/health" >/dev/null 2>&1; then
   if [[ "$skip_docker" == "1" ]]; then
     echo "SKIP S1/S7/S8 (API down, SKIP_DOCKER=1)"
@@ -126,7 +126,7 @@ if [[ -f tests/fixtures/sicoes/procesos_sample.html ]]; then ok "S6:sicoes-fixtu
 if [[ -f tests/fixtures/presupuesto_abierto/sample_export.csv ]]; then ok "S6b:presupuesto-csv-fixture"; else ko "S6b" "missing presupuesto CSV fixture"; fi
 
 # S9 UI — wait for web (Next.js cold start can exceed a single curl)
-WEB="${WEB_URL:-http://[REDACTED]:3010}"
+WEB="${WEB_URL:-http://127.0.0.1:3010}"  # pragma: allowlist secret
 if [[ "$skip_docker" == "1" ]]; then
   echo "SKIP S9"
 elif wait_url "$WEB/" "web" 60 5; then

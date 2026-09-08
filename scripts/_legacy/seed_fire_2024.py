@@ -10,7 +10,7 @@ from datetime import date
 from decimal import Decimal
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "packages"))
 sys.path.insert(0, str(ROOT / "services"))
 
@@ -44,7 +44,7 @@ from worker.persist_fire import get_or_create_season, get_or_create_territory, p
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql+psycopg://gasto:gasto_dev_change_me@localhost:5434/gasto_abierto",
+    "postgresql+psycopg://gasto:gasto_dev_change_me@127.0.0.1:5434/gasto_abierto",  # pragma: allowlist secret
 )
 FIXTURES = ROOT / "tests" / "fixtures"
 REAL_DB = ROOT / "data" / "extracted" / "fire_real_db.json"
