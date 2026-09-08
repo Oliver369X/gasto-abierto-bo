@@ -55,10 +55,12 @@ export default async function HistoricoPage({
   const yearB = Number(sp.b) || sorted[0] || 2025;
 
   let compare: Compare | null = null;
+  let compareError = false;
   try {
     compare = await apiGet<Compare>(`/v1/history/compare?year_a=${yearA}&year_b=${yearB}`);
   } catch {
     compare = null;
+    compareError = !apiDown;
   }
 
   return (
@@ -71,6 +73,13 @@ export default async function HistoricoPage({
       </p>
 
       {apiDown && <p className="error-box">No pudimos cargar la serie histórica.</p>}
+
+      {!apiDown && compareError && (
+        <p className="error-box">
+          No pudimos cargar la comparación {yearA} vs {yearB}. Revisá que existan datos para
+          ambas gestiones.
+        </p>
+      )}
 
       <form className="search-bar" action="/historico" method="get">
         <label>

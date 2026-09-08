@@ -87,48 +87,13 @@ El repositorio es un **MVP maduro** con arquitectura sólida (adaptadores, SCD2,
 
 ---
 
-## Workbook de referencia — `auditoria-drive-MASTER-v9.3.xlsx`
-
-**Estado en este entorno:** Diego indicó haber descargado el archivo desde Drive, pero **no está presente** en el repositorio ni accesible vía Google Drive MCP conectado. No se ingiere como fuente de datos (no es Presupuesto Abierto oficial).
-
-**Uso previsto:** referencia de requisitos — campos obligatorios, KPIs y joins sugeridos entre institución / objeto / año / geografía.
-
-| Recurso | Propósito |
-|---------|-----------|
-| `docs/requirements/README.md` | Instrucciones para colocar el `.xlsx` localmente |
-| `scripts/analyze_audit_workbook.py` | Analiza hojas/encabezados y mapea a schema/API de Gasto Abierto |
-| `.gitignore` | Excluye `docs/requirements/*.xlsx` (no commitear borradores sensibles) |
-
-```bash
-# Cuando el archivo esté en docs/requirements/
-pip install -e ".[workbook]"
-python scripts/analyze_audit_workbook.py
-```
-
-**Mapeos inferidos por el analizador (patrones típicos de auditoría fiscal):**
-
-| Dimensión workbook | Modelo / API Gasto Abierto | Fuente oficial |
-|--------------------|----------------------------|----------------|
-| Entidad / institución | `Entity`, `/v1/entities` | Presupuesto Abierto CSV |
-| Gestión / año | `BudgetLine.year`, `/v1/history/years` | Presupuesto Abierto CSV |
-| Departamento / geografía | `Entity.department`, aggregate `group_by=department` | Clasificador geográfico MEFP |
-| Objeto / partida / programa | `BudgetLine.program_project`, `budget_item` | Presupuesto Abierto CSV |
-| CUCE / contrato | `Contract.cuce`, `/v1/discrepancies` | SICOES + datos.gob.bo OCP |
-| Proveedor / NIT | `Supplier`, masters | SICOES / OCP |
-| Ejecución / ratio | `/v1/budgets/totals`, alerts `low_execution_ratio` | Presupuesto Abierto CSV |
-| Discrepancias | `Discrepancy`, `/v1/cross-source/summary` | reconcile worker |
-| Auditoría | `AuditReport`, `/v1/audits` | Contraloría (metadatos) |
-
-**Prioridad de datos:** implementar campos del workbook contra descargas oficiales (`gasto fetch-presupuesto`), no contra celdas del Excel.
-
----
-
 ## Trabajo restante (post-PR)
 
-1. Integrar URLs concretas de descarga cuando el portal publique endpoints estables (copiar desde `/descargas`).
-2. ~~Añadir `next build` y tests fire/quality a CI.~~ **Hecho:** job `web-build` en CI; tests fire pendientes.
+1. ~~Integrar URLs concretas de descarga~~ **Hecho:** descubrimiento automático desde `/descargas` + Parquet developer URLs.
+2. ~~Añadir `next build` y tests ampliados a CI.~~ **Hecho:** job `web-build`; tests alerts/history/fetch/pipeline en CI.
 3. Refactorizar componentes UI compartidos y gráficos de serie temporal.
 4. Retirar `scripts/_legacy/` tras migración completa al CLI.
 5. Endurecer secretos de producción y rotación documentada.
 6. Enriquecer correlación geográfica con clasificador territorial del Presupuesto Abierto (352 ubicaciones).
-7. Ejecutar `scripts/analyze_audit_workbook.py` cuando Diego suba `auditoria-drive-MASTER-v9.3.xlsx` a `docs/requirements/` y cerrar gaps de trazabilidad hoja→API.
+7. Tests fire/quality completos en CI (subset crítico incluido; suite fire completa pendiente).
+8. Seed automático en primer arranque Docker (hoy manual vía `gasto seed --profile history`).

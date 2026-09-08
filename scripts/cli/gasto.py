@@ -142,8 +142,12 @@ def _cmd_fetch_presupuesto(args: argparse.Namespace) -> int:
     from common.fetch_presupuesto_abierto import fetch_presupuesto, list_download_urls
 
     if args.list_only:
-        for u in list_download_urls():
+        urls = list_download_urls(discover=True)
+        for u in urls:
             print(u)
+        if not urls:
+            print("No URLs — configure PRESUPUESTO_ABIERTO_DOWNLOAD_URLS", file=sys.stderr)
+            return 1
         return 0
     dest = ROOT / "tests" / "fixtures" / "real" / "presupuesto_abierto"
     paths = fetch_presupuesto(dest, force=args.force)

@@ -27,6 +27,29 @@ const RULES = [
   },
 ];
 
+const FIRE_RULES = [
+  {
+    id: "fire_supplier_concentration",
+    desc: "Un proveedor concentra ≥40% del gasto atribuido a incendios en una gestión.",
+  },
+  {
+    id: "fire_low_prevention_share",
+    desc: "Gasto en prevención bajo respecto al total atribuido (≥5M BOB).",
+  },
+  {
+    id: "fire_low_data_quality",
+    desc: "Muchos expedientes sin CUCE, territorio o evidencia trazable.",
+  },
+  {
+    id: "fire_aircraft_without_ops",
+    desc: "Pago o alquiler de aeronave sin salida operacional registrada.",
+  },
+  {
+    id: "fire_fragmentation",
+    desc: "Posible fraccionamiento de contratos de respuesta a incendios.",
+  },
+];
+
 export default function MetodologiaPage() {
   return (
     <section className="section">
@@ -91,6 +114,18 @@ export default function MetodologiaPage() {
           que paga ≠ territorio beneficiado ≠ ubicación del proveedor. Inventario de fuentes:{" "}
           <code>docs/sources/fire-inventory.md</code>.
         </p>
+        <h3 style={{ marginTop: "1.5rem" }}>Reglas de alerta (incendios)</h3>
+        <div className="grid-2">
+          {FIRE_RULES.map((r) => (
+            <article key={r.id} className="panel">
+              <h3>{alertRuleLabel(r.id)}</h3>
+              <p>{r.desc}</p>
+              <p className="hint">
+                Identificador técnico: <code>{r.id}</code>
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
 
       <p style={{ marginTop: "1.5rem", color: "var(--muted)" }}>

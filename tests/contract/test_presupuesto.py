@@ -36,6 +36,16 @@ def test_presupuesto_csv_column_mapping():
     assert rows[0]["year"] == 2025
 
 
+def test_presupuesto_abierto_fixture_fallback_discover():
+    adapter = PresupuestoAbiertoAdapter()
+    items = adapter.discover(Cursor(payload={}))
+    assert items, "expected bundled fixture fallback when no env URLs"
+    assert all(i.uri.startswith("file://") for i in items)
+    records = adapter.parse(adapter.fetch(items[0]))
+    assert records
+    assert records[0].record_type == "budget"
+
+
 def test_presupuesto_csv_header_aliases():
     header = build_header_map(["gestion", "institucion", "ppto_vigente", "pagado"])
     mapped = row_to_budget_dict(

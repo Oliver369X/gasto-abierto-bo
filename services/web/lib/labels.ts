@@ -5,6 +5,19 @@ const RULE: Record<string, string> = {
   source_discrepancy: "Discrepancia entre fuentes",
   possible_split_awards: "Posible fraccionamiento",
   low_execution_ratio: "Baja ejecución presupuestaria",
+  missing_nit_high_amount: "Proveedor sin NIT (monto alto)",
+  amount_claim_conflict: "Conflicto de montos en reclamaciones",
+  fire_supplier_concentration: "Incendios: concentración de proveedor",
+  fire_low_prevention_share: "Incendios: baja inversión en prevención",
+  fire_low_data_quality: "Incendios: baja calidad de datos",
+  fire_aircraft_without_ops: "Incendios: aeronave sin operación trazable",
+  fire_spend_without_territory: "Incendios: gasto sin territorio",
+  fire_announcement_without_cuce: "Incendios: anuncio sin CUCE",
+  fire_post_emergency_spend: "Incendios: gasto post-emergencia",
+  fire_fragmentation: "Incendios: posible fraccionamiento",
+  fire_atypical_price: "Incendios: precio atípico",
+  fire_direct_without_evidence: "Incendios: directa sin evidencia",
+  fire_large_pool_excluded: "Incendios: fondo grande excluido",
 };
 
 const SEVERITY: Record<string, string> = {

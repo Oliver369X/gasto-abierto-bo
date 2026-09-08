@@ -55,20 +55,19 @@ Variables útiles en `.env`: `SEED_SKIP_STORAGE=1`, `SEED_BATCH_SIZE=25`, `SEED_
 
 ### Presupuesto Abierto (oficial — preferido)
 
-1. Abrí https://abierto.economiayfinanzas.gob.bo/descargas y copiá las URLs directas de `.csv` o `.parquet`.
-2. Configurá en `.env`:
+El CLI descubre URLs directas desde [abierto.economiayfinanzas.gob.bo/descargas](https://abierto.economiayfinanzas.gob.bo/descargas) (sección «Para desarrolladores»: Parquet gasto/ingreso). Si la descarga remota falla, usa fixtures locales empaquetados.
 
 ```bash
-PRESUPUESTO_ABIERTO_DOWNLOAD_URLS=https://.../presupuesto_historico.csv
-```
-
-3. Descargá e ingestá:
-
-```bash
-python -m scripts.cli gasto fetch-presupuesto --list-only   # ver URLs configuradas
-python -m scripts.cli gasto fetch-presupuesto                 # descarga a tests/fixtures/real/presupuesto_abierto/
+python -m scripts.cli gasto fetch-presupuesto --list-only   # URLs descubiertas o de .env
+python -m scripts.cli gasto fetch-presupuesto                 # descarga o copia fixtures
 docker compose run --rm --entrypoint python api -m scripts.cli gasto ingest --source presupuesto_abierto --sync
 docker compose run --rm --entrypoint python api -m scripts.cli gasto refresh-stats
+```
+
+Opcional: fijar URLs concretas en `.env` (sobreescribe el descubrimiento automático):
+
+```bash
+PRESUPUESTO_ABIERTO_DOWNLOAD_URLS=https://abierto.economiayfinanzas.gob.bo/presupuesto/descargas/gasto/ultimo/gasto.parquet
 ```
 
 Parquet: `pip install -e ".[parquet]"` antes de ingestar archivos `.parquet`.

@@ -8,6 +8,12 @@ from common.money import parse_money
 from common.presupuesto_csv import parse_file_bytes
 from worker.adapters.base import Cursor, RawItem, StagingRecord
 
+ROOT = Path(__file__).resolve().parents[3]
+FIXTURE_DIRS = (
+    ROOT / "tests" / "fixtures" / "real" / "presupuesto_abierto",
+    ROOT / "tests" / "fixtures" / "presupuesto_abierto",
+)
+
 
 class PresupuestoAbiertoAdapter:
     """Parse Presupuesto Abierto exports: JSON fixtures, official CSV/Parquet.
@@ -51,6 +57,36 @@ class PresupuestoAbiertoAdapter:
                 if u.strip()
             ]
 
+        if cursor.payload.get("live"):
+            from common.fetch_presupuesto_abierto import list_download_urls
+
+            urls = list_download_urls(discover=True)
+            if urls:
+                return [
+                    RawItem(uri=u, meta={"note": "discovered_download"})
+                    for u in urls
+                ]
+
+        return self._fixture_items()
+
+    def _fixture_items(self) -> list[RawItem]:
+        items: list[RawItem] = []
+        for directory in FIXTURE_DIRS:
+            if not directory.is_dir():
+                continue
+            files = sorted(
+                p
+                for ext in self.DATA_EXTENSIONS
+                for p in {*directory.glob(f"*{ext}"), *directory.glob(f"**/*{ext}")}
+            )
+            for path in files:
+                items.append(RawItem(uri=f"file://{path}", meta={"kind": "fixture_fallback"}))
+            if items:
+                return items
+        # Last resort: single bundled JSON
+        fallback = FIXTURE_DIRS[1] / "entidades.json"
+        if fallback.exists():
+            return [RawItem(uri=f"file://{fallback}", meta={"kind": "fixture_fallback"})]
         return []
 
     def fetch(self, item: RawItem) -> bytes:

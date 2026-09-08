@@ -11,21 +11,24 @@
 ## Estrategia (preferida)
 
 1. **Descargas oficiales** CSV/Parquet desde `/descargas` — no scraping del portal SPA.
-2. Configurar URLs directas en `PRESUPUESTO_ABIERTO_DOWNLOAD_URLS` (comma-separated).
-3. CLI: `python -m scripts.cli gasto fetch-presupuesto` → `tests/fixtures/real/presupuesto_abierto/`.
-4. Ingesta: `python -m scripts.cli gasto ingest --source presupuesto_abierto --sync` (usa fixtures o descargas).
+2. Si `PRESUPUESTO_ABIERTO_DOWNLOAD_URLS` está vacío, el CLI **descubre URLs** desde la página oficial (Parquet «Para desarrolladores» + enlaces directos).
+3. CLI: `python -m scripts.cli gasto fetch-presupuesto` → `tests/fixtures/real/presupuesto_abierto/` (o copia fixtures locales si la red falla).
+4. Ingesta: `python -m scripts.cli gasto ingest --source presupuesto_abierto --sync` (usa fixtures empaquetados si no hay URLs).
 5. Fallback histórico: JSON en `tests/fixtures/presupuesto_abierto/` y datasets CKAN vía adapter `agetic`.
 
 ### Refrescar datos
 
 ```bash
-# 1. Copiar URLs de archivos .csv/.parquet desde la página de descargas oficial
-export PRESUPUESTO_ABIERTO_DOWNLOAD_URLS="https://.../presupuesto.csv,https://.../presupuesto.parquet"
+# Ver URLs descubiertas (sin proxy)
+python -m scripts.cli gasto fetch-presupuesto --list-only
 
-# 2. Descargar (no requiere LIVE_SCRAPE ni proxy)
+# Descargar (fallback a fixtures locales si falla la red)
 python -m scripts.cli gasto fetch-presupuesto
 
-# 3. Ingestar al stack Docker
+# Opcional: fijar URLs manualmente
+export PRESUPUESTO_ABIERTO_DOWNLOAD_URLS="https://abierto.economiayfinanzas.gob.bo/presupuesto/descargas/gasto/ultimo/gasto.parquet"
+
+# Ingestar al stack Docker
 docker compose run --rm --entrypoint python api -m scripts.cli gasto ingest --source presupuesto_abierto --sync
 ```
 

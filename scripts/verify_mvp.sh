@@ -96,7 +96,7 @@ if ! curl -sf "$API/v1/health" >/dev/null 2>&1; then
   fi
 fi
 
-if curl -sf "$API/v1/health" >/dev/null 2>&1; then
+  if curl -sf "$API/v1/health" >/dev/null 2>&1; then
   ok "S1:api-health"
   contracts=$(curl -sf "$API/v1/contracts" || true)
   if echo "$contracts" | grep -q '\['; then
@@ -109,12 +109,17 @@ if curl -sf "$API/v1/health" >/dev/null 2>&1; then
   alerts=$(curl -sf "$API/v1/alerts" || true)
   if echo "$alerts" | grep -q 'explanation'; then ok "S8:alerts"; else ko "S8:alerts" "no explanation"; fi
   entities=$(curl -sf "$API/v1/entities" || true)
-  if echo "$entities" | grep -q 'name'; then ok "S3:seed-entities"; else ko "S3:seed-entities" "empty"; fi
+  if echo "$entities" | grep -q 'name'; then ok "S3:seed-entities"; else ko "S3:seed-entities" "empty — run: docker compose run --rm --entrypoint python api -m scripts.cli gasto seed --profile history"; fi
+  budgets=$(curl -sf "$API/v1/budgets/totals" || true)
+  if echo "$budgets" | grep -q 'lines'; then ok "S13:budgets-totals"; else ko "S13:budgets-totals" "empty — seed history profile"; fi
+  history=$(curl -sf "$API/v1/history/years" || true)
+  if echo "$history" | grep -q 'year'; then ok "S14:history-years"; else ko "S14:history-years" "empty"; fi
 fi
 
-# S5 / S6 fixture paths exist (live optional)
+# S5 / S6 / presupuesto fixtures
 if [[ -f tests/fixtures/agetic/sample_contracts.csv ]]; then ok "S5:agetic-fixture"; else ko "S5" "missing fixture"; fi
 if [[ -f tests/fixtures/sicoes/procesos_sample.html ]]; then ok "S6:sicoes-fixture"; else ko "S6" "missing fixture"; fi
+if [[ -f tests/fixtures/presupuesto_abierto/sample_export.csv ]]; then ok "S6b:presupuesto-csv-fixture"; else ko "S6b" "missing presupuesto CSV fixture"; fi
 
 # S9 UI — wait for web (Next.js cold start can exceed a single curl)
 WEB="${WEB_URL:-http://[REDACTED]:3010}"
