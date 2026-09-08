@@ -3,6 +3,8 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+# shellcheck disable=SC1091
+source "$ROOT/scripts/_lib/loopback_host.sh"
 
 ALLOW_DEMO=0
 EXTRA_PY_ARGS=()
@@ -36,22 +38,35 @@ if [[ -f .env ]]; then
 fi
 
 API_HOST_PORT="${API_HOST_PORT:-8010}"
-API="${GO_LIVE_API_URL:-${STAGING_API_URL:-${API_URL:-http://[REDACTED]:${API_HOST_PORT}}}}"  # pragma: allowlist secret
+API="${GO_LIVE_API_URL:-${STAGING_API_URL:-${API_URL:-http://${_LOCAL_HOST}:${API_HOST_PORT}}}}"
 
 PASS=0
 FAIL=0
 ok() { echo "OK  $1"; PASS=$((PASS + 1)); }
 ko() { echo "FAIL $1 — $2"; FAIL=$((FAIL + 1)); }
 
+run_env_validate() {
+  if PYTHONPATH=packages:services python3 -m common.go_live_validate "${EXTRA_PY_ARGS[@]}"; then
+    return 0
+  fi
+  if command -v docker >/dev/null 2>&1 \
+    && docker compose ps api --status running -q 2>/dev/null | grep -q .; then
+    echo "Reintentando validación env en contenedor api (host sin deps del proyecto)..." >&2
+    docker compose exec -T api python -m common.go_live_validate "${EXTRA_PY_ARGS[@]}"
+    return $?
+  fi
+  return 1
+}
+
 echo "Go-live check → env + $API"
 if [[ "$ALLOW_DEMO" -eq 1 ]]; then
   echo "(modo local: --allow-demo-urls activo)"
 fi
 
-if PYTHONPATH=packages:services python -m common.go_live_validate "${EXTRA_PY_ARGS[@]}"; then
+if run_env_validate; then
   ok "env (NEXT_PUBLIC_API_URL, LIVE_SCRAPE/proxy, PRESUPUESTO URLs)"
 else
-  ko "env" "revisá los errores arriba — corregí .env antes del go-live"
+  ko "env" "revisá los errores arriba — corregí .env o usá contenedor api (pip install -e .[dev])"
 fi
 
 health=$(curl -sf "$API/v1/health" 2>/dev/null || true)

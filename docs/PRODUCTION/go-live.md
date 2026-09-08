@@ -16,7 +16,7 @@ One-pager operativo para abrir tráfico público. Base branch: `main` ← merge 
 | 8 | **DNS / TLS** | Apuntar dominios; reconstruir `web` si cambia `NEXT_PUBLIC_API_URL` | ☐ |
 | 9 | **Abrir tráfico** | Solo si pasos 6 y 7 OK | ☐ |
 
-**Caja local (no prod):** `make go-live-check --allow-demo-urls` permite hosts de ejemplo (`api.gasto.ejemplo.bo`).
+**Caja local (no prod):** `make go-live-check -- --allow-demo-urls` (GNU make) permite hosts de ejemplo (`api.gasto.ejemplo.bo`).
 
 ## Variables críticas (`.env`)
 
@@ -76,7 +76,13 @@ Verifica: `/v1/health`, `/v1/product-gate` (`pass: true`), `/v1/budgets/totals` 
 ```bash
 make go-live-check
 # API custom: GO_LIVE_API_URL=https://api.tudominio.bo make go-live-check
-# Caja local:  make go-live-check --allow-demo-urls
+# Caja local (GNU make): make go-live-check -- --allow-demo-urls
+```
+
+**Validación env (Python):** el paso env ejecuta `python -m common.go_live_validate`. En el host hace falta `pip install -e ".[dev]"` (importa `rapidfuzz` vía `common/__init__.py`). Si el host no tiene deps, el script reintenta en el contenedor `api` cuando está corriendo; alternativa manual:
+
+```bash
+docker compose exec -T api python -m common.go_live_validate
 ```
 
 **Falla si:**

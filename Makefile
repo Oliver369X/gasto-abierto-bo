@@ -5,7 +5,7 @@ staging-check:
 	bash scripts/staging_check.sh
 
 # Production go-live gate (public URLs, proxy, presupuesto env, product-gate, budgets)
-# Usage: make go-live-check [--allow-demo-urls]
+# Usage (GNU make): make go-live-check -- --allow-demo-urls
 go-live-check:
 	bash scripts/go_live_check.sh $(filter-out go-live-check,$(MAKECMDGOALS))
 

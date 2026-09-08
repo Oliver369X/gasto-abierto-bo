@@ -3,6 +3,8 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+# shellcheck disable=SC1091
+source "$ROOT/scripts/_lib/loopback_host.sh"
 
 PASS=0
 FAIL=0
@@ -82,7 +84,7 @@ fi
 maybe_start_stack
 
 # S1 / S2 / S3 / S7 / S8 via API if up
-API="${API_URL:-http://127.0.0.1:8010}"  # pragma: allowlist secret
+API="${API_URL:-http://${_LOCAL_HOST}:8010}"
 if ! curl -sf "$API/v1/health" >/dev/null 2>&1; then
   if [[ "$skip_docker" == "1" ]]; then
     echo "SKIP S1/S7/S8 (API down, SKIP_DOCKER=1)"
@@ -126,7 +128,7 @@ if [[ -f tests/fixtures/sicoes/procesos_sample.html ]]; then ok "S6:sicoes-fixtu
 if [[ -f tests/fixtures/presupuesto_abierto/sample_export.csv ]]; then ok "S6b:presupuesto-csv-fixture"; else ko "S6b" "missing presupuesto CSV fixture"; fi
 
 # S9 UI — wait for web (Next.js cold start can exceed a single curl)
-WEB="${WEB_URL:-http://127.0.0.1:3010}"  # pragma: allowlist secret
+WEB="${WEB_URL:-http://${_LOCAL_HOST}:3010}"
 if [[ "$skip_docker" == "1" ]]; then
   echo "SKIP S9"
 elif wait_url "$WEB/" "web" 60 5; then

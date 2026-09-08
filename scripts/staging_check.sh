@@ -3,6 +3,8 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+# shellcheck disable=SC1091
+source "$ROOT/scripts/_lib/loopback_host.sh"
 
 if [[ -f .env ]]; then
   # shellcheck disable=SC1091
@@ -16,7 +18,7 @@ if [[ -f .env ]]; then
 fi
 
 API_HOST_PORT="${API_HOST_PORT:-8010}"
-API="${STAGING_API_URL:-${API_URL:-http://127.0.0.1:${API_HOST_PORT}}}"  # pragma: allowlist secret
+API="${STAGING_API_URL:-${API_URL:-http://${_LOCAL_HOST}:${API_HOST_PORT}}}"
 
 PASS=0
 FAIL=0
